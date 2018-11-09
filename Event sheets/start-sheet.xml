@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>start-sheet</name>
+    <events>
+        <variable constant="0" name="checkIntegrity" sid="103344830593675" static="0" type="number">1</variable>
+        <variable constant="0" name="checkBuffer" sid="114905347693819" static="0" type="text"></variable>
+        <event-group description="" sid="639451609564821" title="Start - Initialization">
+            <sub-events>
+                <event-block sid="384610764321923">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="875725040295579" type="System" />
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="10" name="Request fullscreen" sid="793743795465632" type="Browser">
+                            <param id="0" name="Mode">3</param>
+                        </action>
+                        <action disabled="1" id="3" name="Clear storage" sid="973552874757104" type="LocalStorage" />
+                        <action id="-10" name="Set value" sid="792617937042130" type="MenuBtn">
+                            <param id="0" name="Instance variable">onScreen</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="487017645260847" type="System">
+                            <param id="0" name="Seconds">0.25</param>
+                        </action>
+                        <action id="5" name="Check item exists" sid="787104442042782" type="LocalStorage">
+                            <param id="0" name="Key">&quot;settings&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="748151581516567">
+                    <conditions>
+                        <condition id="9" name="On item exists" sid="592008110744185" type="LocalStorage">
+                            <param id="0" name="Key">&quot;settings&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Get item" sid="619806821813763" type="LocalStorage">
+                            <param id="0" name="Key">&quot;settings&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="465451921208497">
+                    <conditions>
+                        <condition id="10" name="On item missing" sid="565414068843387" type="LocalStorage">
+                            <param id="0" name="Key">&quot;settings&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Request project file" sid="594729954607323" type="AJAX">
+                            <param id="0" name="Tag">&quot;LoadQuestions&quot;</param>
+                            <param id="1" name="File">pitanja.txt</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="285736880209012" type="System">
+                            <param id="0" name="Variable">questionTime</param>
+                            <param id="1" name="Value">30</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="390601775186215" type="System">
+                            <param id="0" name="Variable">pauseTime</param>
+                            <param id="1" name="Value">10</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="799292664672701" type="System">
+                            <param id="0" name="Variable">checkIntegrity</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="969887869995117">
+                    <conditions>
+                        <condition id="1" name="On item get" sid="678618211847245" type="LocalStorage">
+                            <param id="0" name="Key">&quot;settings&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="606006081985087" type="System">
+                            <param id="0" name="Variable">questionTime</param>
+                            <param id="1" name="Value">tokenat(LocalStorage.ItemValue,0,&quot;;&quot;)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="669915392031510" type="System">
+                            <param id="0" name="Variable">pauseTime</param>
+                            <param id="1" name="Value">tokenat(LocalStorage.ItemValue,1,&quot;;&quot;)</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="693429246898994" type="System">
+                            <param id="0" name="Variable">checkIntegrity</param>
+                            <param id="1" name="Value">tokenat(LocalStorage.ItemValue,2,&quot;;&quot;)</param>
+                        </action>
+                        <action id="1" name="Request project file" sid="713511948917741" type="AJAX">
+                            <param id="0" name="Tag">&quot;LoadQuestions&quot;</param>
+                            <param id="1" name="File">pitanja.txt</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="895094125260098" title="Start - UI">
+            <sub-events>
+                <comment>START QUIZ</comment>
+                <event-block sid="954499865056376">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="652536957302273" type="btnStart" />
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Go to layout" sid="492001134600234" type="System">
+                            <param id="0" name="Layout">Quiz</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>GO TO SETTINGS</comment>
+                <event-block sid="430131625772294">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="134811979158541" type="btnSettings" />
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="850421410341690" type="MenuBtn">
+                            <param id="0" name="Instance variable">onScreen</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="380069125387120" type="System">
+                            <param id="0" name="Seconds">0.15</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="653037817597449" type="System">
+                            <param id="0" name="Layout">Settings</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>EXIT QUIZ</comment>
+                <event-block sid="724523807848762">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="403051209160432" type="btnMExit" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="786547948363911" type="System">
+                            <param id="0" name="Seconds">0.2</param>
+                        </action>
+                        <action id="1" name="Close" sid="306766419911522" type="Browser" />
+                    </actions>
+                </event-block>
+                <comment>FULLSCREEN BUTTON</comment>
+                <event-block sid="588468208341524">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="445146381521123" type="Keyboard">
+                            <param id="0" name="Key">13</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="649199319572570">
+                            <conditions>
+                                <condition id="10" name="Is fullscreen" sid="882339819419053" type="Browser" />
+                            </conditions>
+                            <actions>
+                                <action id="11" name="Cancel fullscreen" sid="347500249550307" type="Browser" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="743854041031642">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="189591209140508" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="10" name="Request fullscreen" sid="964771001857466" type="Browser">
+                                    <param id="0" name="Mode">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Move menu buttons on and off screen</comment>
+                <event-block sid="899828044081573">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="771988611516857" type="MenuBtn">
+                            <param id="0" name="Instance variable">onScreen</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="533402451781085" type="MenuBtn">
+                            <param id="0" name="Y">lerp(Self.Y,560,0.25)</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="442184471010801" type="btnMExit">
+                            <param id="0" name="Y">lerp(Self.Y,636,0.25)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="421480980981877">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="567169800568991" type="MenuBtn">
+                            <param id="0" name="Instance variable">onScreen</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="196584952920736" type="MenuBtn">
+                            <param id="0" name="Y">lerp(Self.Y,736,0.25)</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="421909585994962" type="btnMExit">
+                            <param id="0" name="Y">lerp(Self.Y,816,0.25)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="395450833397437" title="Load questions">
+            <sub-events>
+                <comment>Check if formatting of questions is correct and load them into array, if they are properly formatted</comment>
+                <event-block sid="637210819837911">
+                    <conditions>
+                        <condition id="0" name="On completed" sid="290779963055064" type="AJAX">
+                            <param id="0" name="Tag">&quot;LoadQuestions&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="225113841216426" type="System">
+                            <param id="0" name="Variable">buffer</param>
+                            <param id="1" name="Value">AJAX.LastData</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="272313781094734">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="616452951108531" type="System">
+                                    <param id="0" name="Variable">checkIntegrity</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <comment>Check if there are enough questions in the text file</comment>
+                                <event-block sid="950981719544983">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="247684415606781" type="System">
+                                            <param id="0" name="First value">tokencount(buffer,&quot;|&quot;)</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Second value">60</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="3" name="Set enabled" sid="346638985273196" type="btnStart">
+                                            <param id="0" name="Mode">0</param>
+                                        </action>
+                                        <action id="0" name="Alert" sid="189891312352537" type="Browser">
+                                            <param id="0" name="Message">&quot;GREŠKA: Fajl sa pitanjima ima više ili manje od 60 stavki.&quot; &amp; newline &amp; &quot;Izbrojte pitanja, pa ako ih ima 60, proverite da li je simbol za odvajanje (uspravna crta) između svakog pitanja.&quot; &amp; newline &amp; &quot;Posle zadnjeg pitanja NE TREBA da stoji uspravna crta.&quot; &amp; newline &amp; newline &amp; &quot; Ispravite greške, pa restartujte igru!&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Check if every question have enough parameters (check text file for formatting errors)</comment>
+                                <event-block sid="516488923695352">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="284749813204750" type="System">
+                                            <param id="0" name="Name">&quot;j&quot;</param>
+                                            <param id="1" name="Start index">0</param>
+                                            <param id="2" name="End index">59</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="767560864484139">
+                                            <conditions />
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="273076503519069" type="System">
+                                                    <param id="0" name="Variable">checkBuffer</param>
+                                                    <param id="1" name="Value">tokenat(buffer,loopindex(&quot;j&quot;),&quot;|&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="361361499934168">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="582486349787559" type="System">
+                                                    <param id="0" name="First value">tokencount(checkBuffer,&quot;;&quot;)</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">7</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="3" name="Set enabled" sid="730989767616922" type="btnStart">
+                                                    <param id="0" name="Mode">0</param>
+                                                </action>
+                                                <action id="0" name="Alert" sid="614742573319373" type="Browser">
+                                                    <param id="0" name="Message">&quot;GREŠKA: Pitanje broj &quot; &amp; loopindex(&quot;j&quot;) + 1 &amp; &quot; nije dobro formatirano. Proverite da li je simbol tačka-zarez na svom mestu i da li ste pravilno formatirali pitanje.&quot; &amp; newline &amp; &quot;Pravilan format pitanja je:&quot; &amp; newline &amp; &quot;- 1. red: pitanje;&quot; &amp; newline &amp; &quot;- 2,3,4,5 red: ponuđeni odgovori&quot; &amp; newline &amp; &quot;- 6 red: tačan odgovor&quot; &amp; newline &amp; newline &amp; &quot;Ispravite greške, pa restartujte igru!&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Load data into array</comment>
+                        <event-block sid="771867452191369">
+                            <conditions>
+                                <condition id="-10" name="For" sid="567320678780118" type="System">
+                                    <param id="0" name="Name">&quot;i&quot;</param>
+                                    <param id="1" name="Start index">0</param>
+                                    <param id="2" name="End index">tokencount(buffer,&quot;|&quot;)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Set at X" sid="695719071264988" type="QuestionArray">
+                                    <param id="0" name="X">loopindex(&quot;i&quot;)</param>
+                                    <param id="1" name="Value">tokenat(buffer,loopindex(&quot;i&quot;),&quot;|&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="917063679895160">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="546077130624183" type="System">
+                                    <param id="0" name="Variable">buffer</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>quiz-sheet</name>
+    <events>
+        <variable constant="0" name="buffer" sid="156833999366375" static="0" type="text"></variable>
+        <variable constant="0" name="names" sid="550146981318490" static="0" type="text"></variable>
+        <variable constant="0" name="exit" sid="233946520943657" static="0" type="number">0</variable>
+        <variable constant="0" name="dice" sid="933434741498112" static="0" type="number">0</variable>
+        <variable constant="0" name="correctAnswers" sid="1460359671049324" static="0" type="text"></variable>
+        <variable constant="0" name="questionNumber" sid="5105758825732516" static="0" type="number">0</variable>
+        <event-group description="" sid="977914254279670" title="Quiz - Initialization">
+            <sub-events>
+                <event-block sid="3303036903827664">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="6654444426212925" type="System" />
+                        <condition id="0" name="Compare at X" sid="810871507679583" type="QuestionArray">
+                            <param id="0" name="X">0</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="956283469905293" type="Function">
+                            <param id="0" name="Name">&quot;GetQuestion&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="282692059133439">
+                            <conditions>
+                                <condition id="3" name="For each element" sid="500691455994637" type="TeamArray">
+                                    <param id="0" name="Axes">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Set at XY" sid="714598858298355" type="TeamArray">
+                                    <param id="0" name="X">TeamArray.CurX</param>
+                                    <param id="1" name="Y">1</param>
+                                    <param id="2" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="707265115017360">
+                            <conditions>
+                                <condition id="-10" name="For" sid="876113763027585" type="System">
+                                    <param id="0" name="Name">&quot;id&quot;</param>
+                                    <param id="1" name="Start index">0</param>
+                                    <param id="2" name="End index">TeamArray.Width - 1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="600496822042503">
+                                    <conditions>
+                                        <condition id="-34" name="Pick by evaluate" sid="757399143121716" type="System">
+                                            <param id="0" name="Object">txtTeamName</param>
+                                            <param id="1" name="Expression">txtTeamName.id = loopindex(&quot;id&quot;)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="340700669448084" type="txtTeamName">
+                                            <param id="0" name="Text">TeamArray.At(loopindex(&quot;id&quot;),0)</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="306100068385432" type="txtTeamName">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="233969351002215">
+                                    <conditions>
+                                        <condition id="-34" name="Pick by evaluate" sid="223523783840245" type="System">
+                                            <param id="0" name="Object">txtTeamPoints</param>
+                                            <param id="1" name="Expression">txtTeamPoints.id = loopindex(&quot;id&quot;)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="166755021115874" type="txtTeamPoints">
+                                            <param id="0" name="Text">zeropad(TeamArray.At(loopindex(&quot;id&quot;),1),2)</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="738834076365582" type="txtTeamPoints">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="430754403815619" title="User Interface">
+            <sub-events>
+                <event-group description="" sid="768247998022238" title="Points">
+                    <sub-events>
+                        <comment>Add 1 point</comment>
+                        <event-block sid="858353780268320">
+                            <conditions>
+                                <condition id="6" name="On object clicked" sid="150246859405817" type="Mouse">
+                                    <param id="0" name="Mouse button">0</param>
+                                    <param id="1" name="Click type">0</param>
+                                    <param id="2" name="Object clicked">txtTeamPoints</param>
+                                </condition>
+                                <condition id="-9" name="Layer is visible" sid="130656745075377" type="System">
+                                    <param id="0" name="Layer">&quot;Points&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Set at XY" sid="511388709071294" type="TeamArray">
+                                    <param id="0" name="X">txtTeamPoints.id</param>
+                                    <param id="1" name="Y">1</param>
+                                    <param id="2" name="Value">TeamArray.At(txtTeamPoints.id,1) + 1</param>
+                                </action>
+                                <action id="0" name="Set text" sid="133453198639840" type="txtTeamPoints">
+                                    <param id="0" name="Text">zeropad(TeamArray.At(txtTeamPoints.id,1),2)</param>
+                                </action>
+                                <action id="6" name="Stop" sid="215490834784495" type="Audio">
+                                    <param id="0" name="Tag">&quot;sfx&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="756524830118680" type="Audio">
+                                    <param id="0" name="Audio file">click</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Remove 1 point</comment>
+                        <event-block sid="338535532819383">
+                            <conditions>
+                                <condition id="6" name="On object clicked" sid="695865141449545" type="Mouse">
+                                    <param id="0" name="Mouse button">2</param>
+                                    <param id="1" name="Click type">0</param>
+                                    <param id="2" name="Object clicked">txtTeamPoints</param>
+                                </condition>
+                                <condition id="-9" name="Layer is visible" sid="957879450263388" type="System">
+                                    <param id="0" name="Layer">&quot;Points&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="808636751136830">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="593695744662797" type="System">
+                                            <param id="0" name="First value">TeamArray.At(txtTeamPoints.id,1)</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="3" name="Set at XY" sid="137407908070793" type="TeamArray">
+                                            <param id="0" name="X">txtTeamPoints.id</param>
+                                            <param id="1" name="Y">1</param>
+                                            <param id="2" name="Value">TeamArray.At(txtTeamPoints.id,1) - 1</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="707231043895092" type="txtTeamPoints">
+                                            <param id="0" name="Text">zeropad(TeamArray.At(txtTeamPoints.id,1),2)</param>
+                                        </action>
+                                        <action id="6" name="Stop" sid="603821940507682" type="Audio">
+                                            <param id="0" name="Tag">&quot;sfx&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="211095089483854" type="Audio">
+                                            <param id="0" name="Audio file">click</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="785002189762096" title="Dice">
+                    <sub-events>
+                        <comment>Dice roll</comment>
+                        <event-block sid="937754643901518">
+                            <conditions>
+                                <condition id="6" name="On object clicked" sid="756211548015632" type="Mouse">
+                                    <param id="0" name="Mouse button">0</param>
+                                    <param id="1" name="Click type">1</param>
+                                    <param id="2" name="Object clicked">dice</param>
+                                </condition>
+                                <condition id="-9" name="Layer is visible" sid="493714447339241" type="System">
+                                    <param id="0" name="Layer">&quot;Dice&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="704915791471669" type="System">
+                                    <param id="0" name="Variable">dice</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="181049790485007" type="dice">
+                                    <param id="0" name="Instance variable">tdRolls</param>
+                                    <param id="1" name="Value">Self.maxRolls</param>
+                                </action>
+                                <action id="6" name="Set speed" sid="156220692163591" type="dice">
+                                    <param id="0" name="Speed">dice.tdRolls</param>
+                                </action>
+                                <action id="3" name="Start" sid="744830059607192" type="dice">
+                                    <param id="0" name="From">1</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="805425818782685" type="dice">
+                                    <param id="0" name="Instance variable">shake</param>
+                                    <param id="1" name="Value">0.1</param>
+                                </action>
+                                <action behavior="Sine" id="1" name="Set period" sid="100557328213917" type="dice">
+                                    <param id="0" name="Period">self.shake</param>
+                                </action>
+                                <action id="0" name="Set text" sid="867311872237207" type="txtDice">
+                                    <param id="0" name="Text">&quot;BACAM KOCKU.&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="142798861027401">
+                            <conditions>
+                                <condition id="4" name="On finished" sid="156055201392099" type="dice">
+                                    <param id="0" name="Animation">&quot;Default&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="394864776783223" type="dice">
+                                    <param id="0" name="Instance variable">tdRolls</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-11" name="Add to" sid="177461007784891" type="dice">
+                                    <param id="0" name="Instance variable">shake</param>
+                                    <param id="1" name="Value">0.05</param>
+                                </action>
+                                <action id="1" name="Append text" sid="468684347552383" type="txtDice">
+                                    <param id="0" name="Text">&quot;.&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="792950723976242">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="710696479066767" type="dice">
+                                            <param id="0" name="Instance variable">tdRolls</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">self.minRolls</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="6" name="Set speed" sid="714701100520568" type="dice">
+                                            <param id="0" name="Speed">self.tdRolls</param>
+                                        </action>
+                                        <action behavior="Sine" id="1" name="Set period" sid="955806251631740" type="dice">
+                                            <param id="0" name="Period">self.shake</param>
+                                        </action>
+                                        <action id="3" name="Start" sid="462506292079892" type="dice">
+                                            <param id="0" name="From">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="709386740967424">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="237897420828643" type="dice">
+                                            <param id="0" name="Instance variable">tdRolls</param>
+                                            <param id="1" name="Comparison">3</param>
+                                            <param id="2" name="Value">self.minRolls</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="325726373508688" type="System">
+                                            <param id="0" name="Variable">dice</param>
+                                            <param id="1" name="Value">int(random(6))</param>
+                                        </action>
+                                        <action id="5" name="Set frame" sid="601972610161952" type="dice">
+                                            <param id="0" name="Frame number">dice</param>
+                                        </action>
+                                        <action behavior="Sine" id="1" name="Set period" sid="538685087181033" type="dice">
+                                            <param id="0" name="Period">0</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="846777555338788" type="Function">
+                                            <param id="0" name="Name">&quot;n2t&quot;</param>
+                                            <param id="1" name="Parameter {n}">dice</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="208883267140361" type="txtDice">
+                                            <param id="0" name="Text">&quot;DOBIO SI BROJ &quot; &amp; Function.ReturnValue</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="658325365595156" title="Keyboard">
+                    <sub-events>
+                        <comment>EXIT BUTTON</comment>
+                        <event-block sid="137516514512642">
+                            <conditions>
+                                <condition id="0" name="On key pressed" sid="958621021809558" type="Keyboard">
+                                    <param id="0" name="Key">27</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="316065722016683">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="269366569135439" type="System">
+                                            <param id="0" name="Variable">exit</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="209450402601167" type="System">
+                                            <param id="0" name="Variable">exit</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="-16" name="Wait" sid="689147475624690" type="System">
+                                            <param id="0" name="Seconds">1.0</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="215272455617111" type="System">
+                                            <param id="0" name="Variable">exit</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="497277196184500">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="715010637393786" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-2" name="Go to layout" sid="896438336627729" type="System">
+                                            <param id="0" name="Layout">Start</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>FULLSCREEN BUTTON</comment>
+                        <event-block sid="735908702195233">
+                            <conditions>
+                                <condition id="0" name="On key pressed" sid="518487814404289" type="Keyboard">
+                                    <param id="0" name="Key">13</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="374885789218249">
+                                    <conditions>
+                                        <condition id="10" name="Is fullscreen" sid="244884291917272" type="Browser" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="11" name="Cancel fullscreen" sid="997694297036618" type="Browser" />
+                                    </actions>
+                                </event-block>
+                                <event-block sid="981485098933290">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="882580153886105" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="10" name="Request fullscreen" sid="463203492501128" type="Browser">
+                                            <param id="0" name="Mode">3</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Hide score and continue with a quiz</comment>
+                        <event-block sid="336971632946213">
+                            <conditions>
+                                <condition id="3" name="On key released" sid="924574939466119" type="Keyboard">
+                                    <param id="0" name="Key">32</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="646296344541643">
+                                    <conditions>
+                                        <condition id="-9" name="Layer is visible" sid="565168785710558" type="System">
+                                            <param id="0" name="Layer">&quot;Points&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="450600688310920" type="txtPoints">
+                                            <param id="0" name="Text">&quot;SLEDEĆA RUNDA POČINJE ZA &quot; &amp; pauseTime &amp; &quot; sekundi!&quot;</param>
+                                        </action>
+                                        <action id="-16" name="Wait" sid="290406818878259" type="System">
+                                            <param id="0" name="Seconds">pauseTime</param>
+                                        </action>
+                                        <action id="0" name="Call function" sid="516422799900834" type="Function">
+                                            <param id="0" name="Name">&quot;NextQuestion&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                        <action id="-16" name="Wait" sid="542526394966779" type="System">
+                                            <param id="0" name="Seconds">0.1</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="464213571496759" type="System">
+                                            <param id="0" name="Layer">&quot;Quiz&quot;</param>
+                                            <param id="1" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="191559909384474" type="System">
+                                            <param id="0" name="Layer">&quot;Dice&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="111654169794468" type="System">
+                                            <param id="0" name="Layer">&quot;Points&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="196608416204016">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="181354636664375" type="System" />
+                                        <condition id="-9" name="Layer is visible" sid="219168358598822" type="System">
+                                            <param id="0" name="Layer">&quot;Dice&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="907749305143829" type="txtPoints">
+                                            <param id="0" name="Text">&quot;REZULTATI I TAČNI ODGOVORI&quot;</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="595663359863291" type="System">
+                                            <param id="0" name="Layer">&quot;Quiz&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="371335976276533" type="System">
+                                            <param id="0" name="Layer">&quot;Dice&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="906185293195185" type="System">
+                                            <param id="0" name="Layer">&quot;Points&quot;</param>
+                                            <param id="1" name="Visibility">1</param>
+                                        </action>
+                                        <action id="6" name="Stop" sid="888392223224933" type="Audio">
+                                            <param id="0" name="Tag">&quot;sfx&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="179993629919370" type="Audio">
+                                            <param id="0" name="Audio file">point-screen</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">-3</param>
+                                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Show Dice screen</comment>
+                        <event-block sid="726687604047886">
+                            <conditions>
+                                <condition id="3" name="On key released" sid="724351123533318" type="Keyboard">
+                                    <param id="0" name="Key">75</param>
+                                </condition>
+                                <condition id="-9" name="Layer is visible" sid="788038961132721" type="System">
+                                    <param id="0" name="Layer">&quot;Points&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="951639440349914" type="System">
+                                    <param id="0" name="Layer">&quot;Dice&quot;</param>
+                                    <param id="1" name="Visibility">1</param>
+                                </action>
+                                <action id="-4" name="Set layer visible" sid="294212978180667" type="System">
+                                    <param id="0" name="Layer">&quot;Points&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <variable constant="0" name="numbers" sid="206238538018741" static="0" type="text">JEDAN;DVA;TRI;ČETIRI;PET;ŠEST;</variable>
+                <event-block sid="348037474270348">
+                    <conditions>
+                        <condition id="0" name="On function" sid="365657250940077" type="Function">
+                            <param id="0" name="Name">&quot;n2t&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="761451170502981" type="Function">
+                            <param id="0" name="Value">tokenat(numbers,Function.Param(0),&quot;;&quot;)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="212019649238129" title="Questions">
+            <sub-events>
+                <event-block sid="2666900784334918">
+                    <conditions>
+                        <condition id="0" name="On function" sid="5396604897605911" type="Function">
+                            <param id="0" name="Name">&quot;GetQuestion&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="4672525841493582" type="txtQuestion">
+                            <param id="0" name="Text">replace(tokenat(QuestionArray.At(questionNumber),0,&quot;;&quot;),newline,&quot;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="254013540736909" type="txtAnswer1">
+                            <param id="0" name="Text">tokenat(QuestionArray.At(questionNumber),1,&quot;;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="8259718249042361" type="txtAnswer2">
+                            <param id="0" name="Text">tokenat(QuestionArray.At(questionNumber),2,&quot;;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="8530089269907769" type="txtAnswer3">
+                            <param id="0" name="Text">tokenat(QuestionArray.At(questionNumber),3,&quot;;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="4121891394969071" type="txtAnswer4">
+                            <param id="0" name="Text">tokenat(QuestionArray.At(questionNumber),4,&quot;;&quot;)</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="1460789930136636" type="System">
+                            <param id="0" name="Variable">correctAnswers</param>
+                            <param id="1" name="Value">tokenat(QuestionArray.At(questionNumber),5,&quot;;&quot;) &amp; &quot;;&quot;</param>
+                        </action>
+                        <action id="0" name="Time countdown" sid="459089101225686" type="TimeManager">
+                            <param id="0" name="Countdown time">(questionTime * 1000) + 900</param>
+                            <param id="1" name="Label">&quot;TIMER&quot;</param>
+                            <param id="2" name="State">0</param>
+                        </action>
+                        <action id="6" name="Stop" sid="312939613024802" type="Audio">
+                            <param id="0" name="Tag">&quot;sfx&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="577842779290889" type="Audio">
+                            <param id="0" name="Audio file">tick</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8547821852552736">
+                    <conditions>
+                        <condition id="0" name="On function" sid="7296637094176059" type="Function">
+                            <param id="0" name="Name">&quot;NextQuestion&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Add to" sid="833727727144193" type="System">
+                            <param id="0" name="Variable">questionNumber</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="664606871679105" type="DEBUG">
+                            <param id="0" name="Text">questionNumber</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="5791651624615862" type="System">
+                            <param id="0" name="Seconds">0.1</param>
+                        </action>
+                        <action id="0" name="Call function" sid="7817596721022159" type="Function">
+                            <param id="0" name="Name">&quot;GetQuestion&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="841547553175255" title="Gameplay">
+            <sub-events>
+                <event-block sid="355809031783523">
+                    <conditions>
+                        <condition id="4" name="Is counter running?" sid="491102227926946" type="TimeManager">
+                            <param id="0" name="Label">&quot;TIMER&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="181198781087312" type="txtTime">
+                            <param id="0" name="Text">TimeManager.Seconds(&quot;TIMER&quot;)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="391186389017619">
+                    <conditions>
+                        <condition id="1" name="Is counter finished?" sid="109531553890040" type="TimeManager">
+                            <param id="0" name="Label">&quot;TIMER&quot;</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="547901393392521" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="351276642514362" type="txtQuestion">
+                            <param id="0" name="Text">&quot;Sledeće pitanje za &quot; &amp; pauseTime &amp; &quot; sekundi&quot;</param>
+                        </action>
+                        <action id="7" name="Stop time counter" sid="407983190313212" type="TimeManager">
+                            <param id="0" name="Label">&quot;TIMER&quot;</param>
+                        </action>
+                        <action id="0" name="Time countdown" sid="117640364776068" type="TimeManager">
+                            <param id="0" name="Countdown time">(pauseTime * 1000) + 900</param>
+                            <param id="1" name="Label">&quot;NEXT&quot;</param>
+                            <param id="2" name="State">0</param>
+                        </action>
+                        <action id="6" name="Stop" sid="823237742632965" type="Audio">
+                            <param id="0" name="Tag">&quot;sfx&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="739153136337464" type="Audio">
+                            <param id="0" name="Audio file">end</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="311742943615172">
+                    <conditions>
+                        <condition id="4" name="Is counter running?" sid="115362077611025" type="TimeManager">
+                            <param id="0" name="Label">&quot;NEXT&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="170837949806497" type="txtTime">
+                            <param id="0" name="Text">TimeManager.Seconds(&quot;NEXT&quot;)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="205035746764411">
+                    <conditions>
+                        <condition id="1" name="Is counter finished?" sid="838788253057627" type="TimeManager">
+                            <param id="0" name="Label">&quot;NEXT&quot;</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="140766722802953" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Stop time counter" sid="282818067411990" type="TimeManager">
+                            <param id="0" name="Label">&quot;NEXT&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="438014467957509">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="610869412017053" type="System">
+                                    <param id="0" name="Variable">questionNumber</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="458508140449815">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="521976054968884" type="System">
+                                            <param id="0" name="First value">questionNumber % 5</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="204464812771935" type="Function">
+                                            <param id="0" name="Name">&quot;NextQuestion&quot;</param>
+                                            <param id="1" name="Parameter {n}"></param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="748955194569010">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="879351889300671" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="256450388280926" type="txtPoints">
+                                            <param id="0" name="Text">&quot;REZULTATI I TAČNI ODGOVORI&quot;</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="156758713534429" type="System">
+                                            <param id="0" name="Layer">&quot;Quiz&quot;</param>
+                                            <param id="1" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-4" name="Set layer visible" sid="112128630619780" type="System">
+                                            <param id="0" name="Layer">&quot;Points&quot;</param>
+                                            <param id="1" name="Visibility">1</param>
+                                        </action>
+                                        <action id="6" name="Stop" sid="619302975390792" type="Audio">
+                                            <param id="0" name="Tag">&quot;sfx&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="927429558963159" type="Audio">
+                                            <param id="0" name="Audio file">point-screen</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">-3</param>
+                                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="473547053245409">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="409436635347991" type="System">
+                                                    <param id="0" name="Object">txtCorrectAnswers</param>
+                                                    <param id="1" name="Expression">txtCorrectAnswers.id = 0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Set text" sid="478774560352259" type="txtCorrectAnswers">
+                                                    <param id="0" name="Text">&quot;1 - &quot; &amp;replace(tokenat(correctAnswers,0,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;4 - &quot; &amp; replace(tokenat(correctAnswers,3,&quot;;&quot;),newline,&quot;&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="437771525275791">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="861119197826024" type="System">
+                                                    <param id="0" name="Object">txtCorrectAnswers</param>
+                                                    <param id="1" name="Expression">txtCorrectAnswers.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Set text" sid="524752455939999" type="txtCorrectAnswers">
+                                                    <param id="0" name="Text">&quot;2 - &quot; &amp; replace(tokenat(correctAnswers,1,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;5 - &quot; &amp; replace(tokenat(correctAnswers,4,&quot;;&quot;),newline,&quot;&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="183673147668268">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="248900771271660" type="System">
+                                                    <param id="0" name="Object">txtCorrectAnswers</param>
+                                                    <param id="1" name="Expression">txtCorrectAnswers.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Set text" sid="449842885941511" type="txtCorrectAnswers">
+                                                    <param id="0" name="Text">&quot;3 - &quot; &amp; replace(tokenat(correctAnswers,2,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;6 - &quot; &amp; replace(tokenat(correctAnswers,5,&quot;;&quot;),newline,&quot;&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="334651733670808">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="546715278602112" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="673587571473311" type="Function">
+                                    <param id="0" name="Name">&quot;NextQuestion&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

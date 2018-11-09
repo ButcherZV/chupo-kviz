@@ -1,0 +1,462 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>settings-sheet</name>
+    <events>
+        <variable constant="0" name="changes" sid="236939000062238" static="0" type="number">0</variable>
+        <variable constant="0" name="SUMteam" sid="341802717363174" static="0" type="number">1</variable>
+        <variable constant="0" name="haveTeam" sid="523652906827423" static="0" type="number">0</variable>
+        <variable constant="0" name="pauseTime" sid="552383046689994" static="0" type="number">0</variable>
+        <variable constant="0" name="questionTime" sid="972242196070067" static="0" type="number">0</variable>
+        <event-group description="" sid="863857444779599" title="Settings - Initialization">
+            <sub-events>
+                <event-block sid="570463939177294">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="849964690013928" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Set CSS style" sid="915936560077928" type="btnCheck">
+                            <param id="0" name="Property name">&quot;color&quot;</param>
+                            <param id="1" name="Value">&quot;white&quot;</param>
+                        </action>
+                        <action id="5" name="Set CSS style" sid="707765445628617" type="btnCheck">
+                            <param id="0" name="Property name">&quot;font-size&quot;</param>
+                            <param id="1" name="Value">&quot;18px&quot;</param>
+                        </action>
+                        <action id="0" name="Set text" sid="255551309664482" type="txtHelp">
+                            <param id="0" name="Text">&quot;POMOĆ: &quot; &amp; newline &amp; &quot;- Za dodavanje novog tima klikni na dugme DODAJ TIM;&quot; &amp; newline &amp; &quot;- Za brisanje zadneg dodanog tima klikni na dugme OBRIŠI TIM;&quot; &amp; newline &amp; &quot;- Ne zaboravi da sačuvaš unete timove, pre nego što započneš igru;&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="821625936263967" type="System">
+                            <param id="0" name="Variable">changes</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="6" name="Set focused" sid="914414922368204" type="inputTeam" />
+                        <action id="-2" name="Set Y" sid="822405561143700" type="inputPtime">
+                            <param id="0" name="Y">Self.oldY</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="959692333596325" type="inputQtime">
+                            <param id="0" name="Y">Self.oldY</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="454139491417507" type="btnCheck">
+                            <param id="0" name="Y">Self.oldY</param>
+                        </action>
+                        <action id="0" name="Set text" sid="827534263063425" type="inputPtime">
+                            <param id="0" name="Text">str(pauseTime)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="479248402414200" type="inputQtime">
+                            <param id="0" name="Text">str(questionTime)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="692984924094239">
+                            <conditions>
+                                <condition id="-24" name="For Each (ordered)" sid="513912718172310" type="System">
+                                    <param id="0" name="Object">inputTeam</param>
+                                    <param id="1" name="Expression">inputTeam.id</param>
+                                    <param id="2" name="Order">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-2" name="Set Y" sid="914775098092579" type="inputTeam">
+                                    <param id="0" name="Y">inputTeam.oldY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="721016635307276" title="Settings - UI">
+            <sub-events>
+                <event-block sid="220970577558186">
+                    <conditions>
+                        <condition id="1" name="On text changed" sid="438019199280538" type="inputTeam" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="235925903871957" type="System">
+                            <param id="0" name="Variable">changes</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>ADDING TEAM</comment>
+                <event-block any="1" sid="580901482324686">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="303698689243150" type="btnAddTeam" />
+                        <condition id="0" name="On key pressed" sid="612692856345906" type="Keyboard">
+                            <param id="0" name="Key">13</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="110810663720579" type="Function">
+                            <param id="0" name="Name">&quot;addTeam&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>REMOVING TEAM</comment>
+                <event-block sid="974250218705758">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="224845374432310" type="btnRemTeam" />
+                        <condition id="-14" name="Compare variable" sid="327928696281140" type="System">
+                            <param id="0" name="Variable">SUMteam</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="308184905418611" type="Function">
+                            <param id="0" name="Name">&quot;removeTeam&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>SAVING TEAMS AND PARAMETERS</comment>
+                <event-block sid="513308796273787">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="144584474163195" type="btnSave" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Clear" sid="804091859192687" type="TeamArray" />
+                        <action id="-9" name="Set value" sid="931117445810232" type="System">
+                            <param id="0" name="Variable">changes</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="122155020394080" type="System">
+                            <param id="0" name="Variable">pauseTime</param>
+                            <param id="1" name="Value">inputPtime.Text</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="207146840827108" type="System">
+                            <param id="0" name="Variable">questionTime</param>
+                            <param id="1" name="Value">inputQtime.Text</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="603507433730459">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="645129261899586" type="System">
+                                    <param id="0" name="Variable">haveTeam</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="980775221955265">
+                                    <conditions>
+                                        <condition id="-24" name="For Each (ordered)" sid="526383358927825" type="System">
+                                            <param id="0" name="Object">inputTeam</param>
+                                            <param id="1" name="Expression">inputTeam.id</param>
+                                            <param id="2" name="Order">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="10" name="Insert" sid="126928539050804" type="TeamArray">
+                                            <param id="0" name="Value">inputTeam.Text</param>
+                                            <param id="1" name="Index">inputTeam.id</param>
+                                            <param id="2" name="Axis">0</param>
+                                        </action>
+                                        <action id="1" name="Append text" sid="692910197852169" type="DEBUG">
+                                            <param id="0" name="Text">TeamArray.At(inputTeam.id) &amp; newline</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="764396366387874">
+                                    <conditions />
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="867191160553020" type="System">
+                                            <param id="0" name="Variable">haveTeam</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="858717990689336">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="864648354014904" type="System" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="633494848397420">
+                                    <conditions>
+                                        <condition id="-24" name="For Each (ordered)" sid="554954981539534" type="System">
+                                            <param id="0" name="Object">inputTeam</param>
+                                            <param id="1" name="Expression">inputTeam.id</param>
+                                            <param id="2" name="Order">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="10" name="Insert" sid="667606109549755" type="TeamArray">
+                                            <param id="0" name="Value">inputTeam.Text</param>
+                                            <param id="1" name="Index">inputTeam.id</param>
+                                            <param id="2" name="Axis">0</param>
+                                        </action>
+                                        <action id="1" name="Append text" sid="558189743816796" type="DEBUG">
+                                            <param id="0" name="Text">TeamArray.At(inputTeam.id) &amp; newline</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="341169866150295">
+                                            <conditions />
+                                            <actions>
+                                                <action id="9" name="Delete" sid="284202469473417" type="TeamArray">
+                                                    <param id="0" name="Index">SUMteam</param>
+                                                    <param id="1" name="Axis">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="815436297280211">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Set item" sid="161359859068116" type="LocalStorage">
+                                    <param id="0" name="Key">&quot;settings&quot;</param>
+                                    <param id="1" name="Value">questionTime &amp; &quot;;&quot; &amp; pauseTime &amp; &quot;;&quot; &amp; checkIntegrity</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>EXIT TO MENU</comment>
+                <event-block sid="854375210810443">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="746414846785939" type="btnExit" />
+                    </conditions>
+                    <actions>
+                        <action id="-2" name="Set Y" sid="484835107094419" type="inputTeam">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="722197176393103" type="inputPtime">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="172668695806108" type="inputQtime">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="119268212750252" type="btnCheck">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Go to layout" sid="591378157181466" type="System">
+                            <param id="0" name="Layout">Start</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="646420552143346">
+                    <conditions>
+                        <condition id="0" name="On item set" sid="228393550533112" type="LocalStorage">
+                            <param id="0" name="Key">&quot;settings&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Alert" sid="772274219011242" type="Browser">
+                            <param id="0" name="Message">&quot;Uspešno sačuvano!&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="678473764535956">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="819926562217403" type="System">
+                            <param id="0" name="Variable">changes</param>
+                            <param id="1" name="Comparison">1</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="346335155621885" type="btnMExit">
+                            <param id="0" name="Text">&quot;IZAĐI BEZ IZMENA&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="809247418166152">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="384930791169778" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="397742050164389" type="btnMExit">
+                            <param id="0" name="Text">&quot;IZAĐI&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="409636414349889">
+                    <conditions>
+                        <condition id="1" name="Is checked" sid="249296102550733" type="btnCheck" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="190229802973197" type="System">
+                            <param id="0" name="Variable">checkIntegrity</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="3" name="Set enabled" sid="656673152825032" type="btnStart">
+                            <param id="0" name="Mode">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="406730552925260" type="System">
+                            <param id="0" name="Seconds">0.1</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="478491785332402" type="btnCheck">
+                            <param id="0" name="Instance variable">enabled</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="174284525788862">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="794196994056447" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="273629378387679" type="System">
+                            <param id="0" name="Variable">checkIntegrity</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="265029326968791" type="btnCheck">
+                            <param id="0" name="Instance variable">enabled</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="348855929420556">
+                    <conditions>
+                        <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="506039571155500" type="btnCheck">
+                            <param id="0" name="Instance variable">enabled</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="251548393470714" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Alert" sid="740036738700842" type="Browser">
+                            <param id="0" name="Message">&quot;UPOZORENJE: Proveravanje pravilnosti fajla sa pitanjima se od sada preskače, te igra više neće prijavljivati greške u vezi formatiranja pitanja. Ovo može dovesti do nepravilnog rada programa, kao i do njegovog pucanja!&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="823087267236960" title="Functions">
+            <sub-events>
+                <event-block sid="254164427907670">
+                    <conditions>
+                        <condition id="0" name="On function" sid="692462625378012" type="Function">
+                            <param id="0" name="Name">&quot;addTeam&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="923770546713853">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="497515410729765" type="System">
+                                    <param id="0" name="Variable">SUMteam</param>
+                                    <param id="1" name="Comparison">3</param>
+                                    <param id="2" name="Value">11</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="584912945089861" type="System">
+                                    <param id="0" name="Variable">changes</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="198387451232681">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="138591814862266" type="System">
+                                            <param id="0" name="Variable">SUMteam</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Value">6</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="214735475725784" type="System">
+                                            <param id="0" name="Object to create">inputTeam</param>
+                                            <param id="1" name="Layer">&quot;MTeams&quot;</param>
+                                            <param id="2" name="X">96</param>
+                                            <param id="3" name="Y">176 + (SUMteam*64)</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="573589528918753" type="inputTeam">
+                                            <param id="0" name="Instance variable">id</param>
+                                            <param id="1" name="Value">SUMteam</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="670205197115511" type="inputTeam">
+                                            <param id="0" name="Instance variable">oldY</param>
+                                            <param id="1" name="Value">inputTeam.Y</param>
+                                        </action>
+                                        <action id="6" name="Set focused" sid="524016970172528" type="inputTeam" />
+                                        <action id="-10" name="Add to" sid="645687184573292" type="System">
+                                            <param id="0" name="Variable">SUMteam</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="1" name="Set placeholder" sid="432397161478592" type="inputTeam">
+                                            <param id="0" name="Placeholder">&quot;Unesi ime tima broj &quot; &amp; SUMteam</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="917367438364721">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="116824400753412" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="-3" name="Create object" sid="472655999482876" type="System">
+                                            <param id="0" name="Object to create">inputTeam</param>
+                                            <param id="1" name="Layer">&quot;MTeams&quot;</param>
+                                            <param id="2" name="X">320</param>
+                                            <param id="3" name="Y">176 + (SUMteam*64) - 384</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="372078283052402" type="inputTeam">
+                                            <param id="0" name="Instance variable">id</param>
+                                            <param id="1" name="Value">SUMteam</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="615741802152448" type="inputTeam">
+                                            <param id="0" name="Instance variable">oldY</param>
+                                            <param id="1" name="Value">inputTeam.Y</param>
+                                        </action>
+                                        <action id="6" name="Set focused" sid="274812363457510" type="inputTeam" />
+                                        <action id="-10" name="Add to" sid="400359766342081" type="System">
+                                            <param id="0" name="Variable">SUMteam</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action id="1" name="Set placeholder" sid="835087856090082" type="inputTeam">
+                                            <param id="0" name="Placeholder">&quot;Unesi ime tima broj &quot; &amp; SUMteam</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="479401302244783">
+                    <conditions>
+                        <condition id="0" name="On function" sid="855062862111276" type="Function">
+                            <param id="0" name="Name">&quot;removeTeam&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="273097285500294" type="System">
+                            <param id="0" name="Variable">changes</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="537772886041946">
+                            <conditions>
+                                <condition id="-34" name="Pick by evaluate" sid="312524923935348" type="System">
+                                    <param id="0" name="Object">inputTeam</param>
+                                    <param id="1" name="Expression">inputTeam.id = SUMteam-1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="9" name="Delete" sid="517746070866672" type="TeamArray">
+                                    <param id="0" name="Index">inputTeam.id</param>
+                                    <param id="1" name="Axis">0</param>
+                                </action>
+                                <action id="-11" name="Subtract from" sid="410564392820230" type="System">
+                                    <param id="0" name="Variable">SUMteam</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-9" name="Destroy" sid="428798320215857" type="inputTeam" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
