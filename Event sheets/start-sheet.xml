@@ -47,10 +47,6 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="1" name="Request project file" sid="594729954607323" type="AJAX">
-                            <param id="0" name="Tag">&quot;LoadQuestions&quot;</param>
-                            <param id="1" name="File">pitanja.txt</param>
-                        </action>
                         <action id="-9" name="Set value" sid="285736880209012" type="System">
                             <param id="0" name="Variable">questionTime</param>
                             <param id="1" name="Value">30</param>
@@ -62,6 +58,10 @@
                         <action id="-9" name="Set value" sid="799292664672701" type="System">
                             <param id="0" name="Variable">checkIntegrity</param>
                             <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="1" name="Request project file" sid="594729954607323" type="AJAX">
+                            <param id="0" name="Tag">&quot;LoadQuestions&quot;</param>
+                            <param id="1" name="File">pitanja.txt</param>
                         </action>
                     </actions>
                 </event-block>
