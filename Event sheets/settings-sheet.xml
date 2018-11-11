@@ -256,30 +256,6 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="678473764535956">
-                    <conditions>
-                        <condition id="-14" name="Compare variable" sid="819926562217403" type="System">
-                            <param id="0" name="Variable">changes</param>
-                            <param id="1" name="Comparison">1</param>
-                            <param id="2" name="Value">0</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Set text" sid="346335155621885" type="btnMExit">
-                            <param id="0" name="Text">&quot;IZAĐI BEZ IZMENA&quot;</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="809247418166152">
-                    <conditions>
-                        <condition id="-22" name="Else" sid="384930791169778" type="System" />
-                    </conditions>
-                    <actions>
-                        <action id="0" name="Set text" sid="397742050164389" type="btnMExit">
-                            <param id="0" name="Text">&quot;IZAĐI&quot;</param>
-                        </action>
-                    </actions>
-                </event-block>
                 <event-block sid="409636414349889">
                     <conditions>
                         <condition id="1" name="Is checked" sid="249296102550733" type="btnCheck" />

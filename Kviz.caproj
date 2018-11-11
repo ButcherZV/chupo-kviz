@@ -27,7 +27,9 @@
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Persist" version="1">Persist</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
         <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
+        <behavior author="lunarray" id="lunarray_LiteTween" version="1.700000048">LiteTween</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -121,6 +123,11 @@
             </object-type>
             <object-type name="txtQuestion" sid="3492399872735528">
                 <plugin id="Text" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="866160955814407">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
             </object-type>
             <object-type name="txtTeamName" sid="239268539928320">
                 <plugin id="Text" />
@@ -287,6 +294,30 @@
         </object-folder>
         <object-type name="Function" sid="942795225166898">
             <plugin id="Function" />
+        </object-type>
+        <object-type name="lion" sid="458909975692468">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="LiteTween" sid="957953766573015">
+                    <behavior id="lunarray_LiteTween" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="637727189293140" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Predrag\Desktop\lion.png">
+                        <collision-poly>
+                            <point x="0.21944" y="0.229231" />
+                            <point x="0.5" y="0.0315385" />
+                            <point x="0.737113" y="0.274615" />
+                            <point x="0.598675" y="0.5" />
+                            <point x="0.918262" y="0.914615" />
+                            <point x="0.5" y="0.966923" />
+                            <point x="0.0493373" y="0.948462" />
+                            <point x="0.267305" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families>

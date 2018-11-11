@@ -14,7 +14,7 @@
                 <event-block sid="3303036903827664">
                     <conditions>
                         <condition id="-2" name="On start of layout" sid="6654444426212925" type="System" />
-                        <condition id="0" name="Compare at X" sid="810871507679583" type="QuestionArray">
+                        <condition disabled="1" id="0" name="Compare at X" sid="810871507679583" type="QuestionArray">
                             <param id="0" name="X">0</param>
                             <param id="1" name="Comparison">1</param>
                             <param id="2" name="Value">0</param>
@@ -24,6 +24,14 @@
                         <action id="0" name="Call function" sid="956283469905293" type="Function">
                             <param id="0" name="Name">&quot;GetQuestion&quot;</param>
                             <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="652362550587835" type="txtQuestion">
+                            <param id="0" name="Pin to">lion</param>
+                            <param id="1" name="Mode">1</param>
+                        </action>
+                        <action behavior="LiteTween" id="10" name="Start" sid="820201413089575" type="lion">
+                            <param id="0" name="Start Mode">0</param>
+                            <param id="1" name="Force use current">1</param>
                         </action>
                     </actions>
                     <sub-events>
