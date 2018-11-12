@@ -12,7 +12,7 @@
                         <condition id="-2" name="On start of layout" sid="875725040295579" type="System" />
                     </conditions>
                     <actions>
-                        <action disabled="1" id="10" name="Request fullscreen" sid="793743795465632" type="Browser">
+                        <action id="10" name="Request fullscreen" sid="793743795465632" type="Browser">
                             <param id="0" name="Mode">3</param>
                         </action>
                         <action disabled="1" id="3" name="Clear storage" sid="973552874757104" type="LocalStorage" />

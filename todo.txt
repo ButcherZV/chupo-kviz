@@ -1,10 +1,5 @@
-*30 sekundi je vreme za cecaknje odgovora
-*2-12 timova
+6 oblasti po 10 pitanja
 
-*6 oblasti po 10 pitanja
-*tek nakon zavrsene oblasti, da izlaze  tacni odgovori, sa trenutnim stanjem poena
-*po 1 poen se dobija na tacnom odgovoru
+pitanja sa slikama, pored normalnih tekstualnih pitanja
 
-napraviti pitanje bez ponudjenih odgovora, na kraju oblasti, ako dva ili vise timova ima isti broj poena
-
-35 pitanja do sad
+vremenski tajmer sa oblacima
