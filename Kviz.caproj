@@ -110,6 +110,19 @@
                     <instance-variable name="enabled" sid="961110380847635" type="boolean" />
                 </instance-variables>
             </object-type>
+            <object-type global="1" name="btnMute" sid="901407822657837">
+                <plugin id="Button" />
+                <instance-variables>
+                    <instance-variable name="oldY" sid="449865415136628" type="number" />
+                    <instance-variable name="enabled" sid="248537270056372" type="boolean" />
+                </instance-variables>
+            </object-type>
+            <object-type global="1" name="inputAtime" sid="893385657728358">
+                <plugin id="TextBox" />
+                <instance-variables>
+                    <instance-variable name="oldY" sid="793197686066810" type="number" />
+                </instance-variables>
+            </object-type>
         </object-folder>
         <object-folder name="Text">
             <object-type name="txtAnswer1" sid="1725080667890236">
@@ -182,6 +195,30 @@
                 <plugin id="Text" />
                 <instance-variables>
                     <instance-variable name="id" sid="997700226274464" type="number" />
+                </instance-variables>
+            </object-type>
+            <object-type name="txtDice2" sid="386490618442492">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="id" sid="901755560132690" type="number" />
+                </instance-variables>
+            </object-type>
+            <object-type name="txtRinfo" sid="516578840558854">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="id" sid="433742385041935" type="number" />
+                </instance-variables>
+            </object-type>
+            <object-type name="txtResTeam" sid="771495290251590">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="id" sid="136492866727419" type="number" />
+                </instance-variables>
+            </object-type>
+            <object-type name="txtResScore" sid="314346932826946">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="id" sid="619562170407056" type="number" />
                 </instance-variables>
             </object-type>
         </object-folder>
@@ -294,61 +331,95 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="lion" sid="458909975692468">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="LiteTween" sid="957953766573015">
+                        <behavior id="lunarray_LiteTween" />
+                    </behavior-type>
+                    <behavior-type name="Wrap" sid="719404726776254">
+                        <behavior id="wrap" />
+                    </behavior-type>
+                </behaviors>
+                <effects>
+                    <effect-type name="Outline">
+                        <effect id="outline" />
+                    </effect-type>
+                </effects>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="637727189293140" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Predrag\Desktop\lion.png">
+                            <collision-poly>
+                                <point x="0.21944" y="0.229231" />
+                                <point x="0.5" y="0.0315385" />
+                                <point x="0.737113" y="0.274615" />
+                                <point x="0.598675" y="0.5" />
+                                <point x="0.918262" y="0.914615" />
+                                <point x="0.5" y="0.966923" />
+                                <point x="0.0493373" y="0.948462" />
+                                <point x="0.267305" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="speechBubble" sid="196036539017665">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="182599962482816">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="517860435913201" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.497992" original-source="C:\Users\Predrag\Desktop\speechBubble.png">
+                            <collision-poly>
+                                <point x="0.0562963" y="0.305221" />
+                                <point x="0.5" y="0" />
+                                <point x="0.993333" y="0.0361446" />
+                                <point x="0.993333" y="0.963855" />
+                                <point x="0.5" y="1" />
+                                <point x="0.0518519" y="0.718876" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
         </object-folder>
         <object-type name="Function" sid="942795225166898">
             <plugin id="Function" />
         </object-type>
-        <object-type name="lion" sid="458909975692468">
+        <object-type name="Sprite2" sid="805992219426548">
             <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="LiteTween" sid="957953766573015">
-                    <behavior id="lunarray_LiteTween" />
-                </behavior-type>
-                <behavior-type name="Wrap" sid="719404726776254">
-                    <behavior id="wrap" />
-                </behavior-type>
-            </behaviors>
-            <effects>
-                <effect-type name="Outline">
-                    <effect id="outline" />
-                </effect-type>
-            </effects>
             <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="637727189293140" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\Predrag\Desktop\lion.png">
-                        <collision-poly>
-                            <point x="0.21944" y="0.229231" />
-                            <point x="0.5" y="0.0315385" />
-                            <point x="0.737113" y="0.274615" />
-                            <point x="0.598675" y="0.5" />
-                            <point x="0.918262" y="0.914615" />
-                            <point x="0.5" y="0.966923" />
-                            <point x="0.0493373" y="0.948462" />
-                            <point x="0.267305" y="0.5" />
-                        </collision-poly>
-                    </frame>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="342808249959396" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="speechBubble" sid="196036539017665">
+        <object-type name="bgAnswerR" sid="501349961561587">
             <plugin id="Sprite" />
             <behaviors>
-                <behavior-type name="Pin" sid="182599962482816">
+                <behavior-type name="Pin" sid="671728535627606">
                     <behavior id="Pin" />
                 </behavior-type>
             </behaviors>
             <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="517860435913201" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.497992" original-source="C:\Users\Predrag\Desktop\speechBubble.png">
-                        <collision-poly>
-                            <point x="0.0562963" y="0.305221" />
-                            <point x="0.5" y="0" />
-                            <point x="0.993333" y="0.0361446" />
-                            <point x="0.993333" y="0.963855" />
-                            <point x="0.5" y="1" />
-                            <point x="0.0518519" y="0.718876" />
-                        </collision-poly>
-                    </frame>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="609151336442732" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="bgAnswerL" sid="352848633163505">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Pin" sid="491561434428867">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="725345804866576" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -369,6 +440,7 @@
                 <member>btnCheck</member>
                 <member>btnExit</member>
                 <member>btnMExit</member>
+                <member>btnMute</member>
                 <member>btnRemTeam</member>
                 <member>btnSave</member>
                 <member>btnSettings</member>
@@ -391,6 +463,12 @@
                     <behavior id="lunarray_LiteTween" />
                 </behavior-type>
             </behaviors>
+        </family>
+        <family name="Check" plugin-id="Button" sid="679298543883499">
+            <members>
+                <member>btnCheck</member>
+                <member>btnMute</member>
+            </members>
         </family>
     </families>
     <layout-folder>

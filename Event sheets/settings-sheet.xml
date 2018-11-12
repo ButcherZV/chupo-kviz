@@ -3,6 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>settings-sheet</name>
     <events>
+        <variable constant="0" name="timeout" sid="442950222663124" static="0" type="number">0</variable>
+        <variable constant="0" name="DBlevel" sid="891970592890070" static="0" type="number">0</variable>
         <variable constant="0" name="changes" sid="236939000062238" static="0" type="number">0</variable>
         <variable constant="0" name="SUMteam" sid="341802717363174" static="0" type="number">1</variable>
         <variable constant="0" name="haveTeam" sid="523652906827423" static="0" type="number">0</variable>
@@ -15,11 +17,11 @@
                         <condition id="-2" name="On start of layout" sid="849964690013928" type="System" />
                     </conditions>
                     <actions>
-                        <action id="5" name="Set CSS style" sid="915936560077928" type="btnCheck">
+                        <action id="5" name="Set CSS style" sid="915936560077928" type="Check">
                             <param id="0" name="Property name">&quot;color&quot;</param>
                             <param id="1" name="Value">&quot;white&quot;</param>
                         </action>
-                        <action id="5" name="Set CSS style" sid="707765445628617" type="btnCheck">
+                        <action id="5" name="Set CSS style" sid="707765445628617" type="Check">
                             <param id="0" name="Property name">&quot;font-size&quot;</param>
                             <param id="1" name="Value">&quot;18px&quot;</param>
                         </action>
@@ -34,10 +36,16 @@
                         <action id="-2" name="Set Y" sid="822405561143700" type="inputPtime">
                             <param id="0" name="Y">Self.oldY</param>
                         </action>
+                        <action id="-2" name="Set Y" sid="245795352884129" type="inputAtime">
+                            <param id="0" name="Y">Self.oldY</param>
+                        </action>
                         <action id="-2" name="Set Y" sid="959692333596325" type="inputQtime">
                             <param id="0" name="Y">Self.oldY</param>
                         </action>
                         <action id="-2" name="Set Y" sid="454139491417507" type="btnCheck">
+                            <param id="0" name="Y">Self.oldY</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="252711958437267" type="btnMute">
                             <param id="0" name="Y">Self.oldY</param>
                         </action>
                         <action id="0" name="Set text" sid="827534263063425" type="inputPtime">
@@ -45,6 +53,9 @@
                         </action>
                         <action id="0" name="Set text" sid="479248402414200" type="inputQtime">
                             <param id="0" name="Text">str(questionTime)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="366029771351908" type="inputAtime">
+                            <param id="0" name="Text">str(timeout)</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -129,6 +140,10 @@
                         <action id="-9" name="Set value" sid="207146840827108" type="System">
                             <param id="0" name="Variable">questionTime</param>
                             <param id="1" name="Value">inputQtime.Text</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="854437123860896" type="System">
+                            <param id="0" name="Variable">timeout</param>
+                            <param id="1" name="Value">inputAtime.Text</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -215,7 +230,7 @@
                             <actions>
                                 <action id="0" name="Set item" sid="161359859068116" type="LocalStorage">
                                     <param id="0" name="Key">&quot;settings&quot;</param>
-                                    <param id="1" name="Value">questionTime &amp; &quot;;&quot; &amp; pauseTime &amp; &quot;;&quot; &amp; checkIntegrity</param>
+                                    <param id="1" name="Value">questionTime &amp; &quot;;&quot; &amp; pauseTime &amp; &quot;;&quot; &amp; checkIntegrity &amp; &quot;;&quot; &amp; timeout</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -236,7 +251,13 @@
                         <action id="-2" name="Set Y" sid="172668695806108" type="inputQtime">
                             <param id="0" name="Y">-128</param>
                         </action>
+                        <action id="-2" name="Set Y" sid="941435042715174" type="inputAtime">
+                            <param id="0" name="Y">-128</param>
+                        </action>
                         <action id="-2" name="Set Y" sid="119268212750252" type="btnCheck">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="585171469041009" type="btnMute">
                             <param id="0" name="Y">-128</param>
                         </action>
                         <action id="-2" name="Go to layout" sid="591378157181466" type="System">
@@ -302,6 +323,28 @@
                     <actions>
                         <action id="0" name="Alert" sid="740036738700842" type="Browser">
                             <param id="0" name="Message">&quot;UPOZORENJE: Proveravanje pravilnosti fajla sa pitanjima se od sada preskače, te igra više neće prijavljivati greške u vezi formatiranja pitanja. Ovo može dovesti do nepravilnog rada programa, kao i do njegovog pucanja!&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="197921854081959">
+                    <conditions>
+                        <condition id="1" name="Is checked" sid="569994229988837" type="btnMute" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="392873746192463" type="System">
+                            <param id="0" name="Variable">DBlevel</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="261822660260274">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="698209011812628" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="516240615127437" type="System">
+                            <param id="0" name="Variable">DBlevel</param>
+                            <param id="1" name="Value">-100</param>
                         </action>
                     </actions>
                 </event-block>
