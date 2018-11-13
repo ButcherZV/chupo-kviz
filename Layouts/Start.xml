@@ -74,7 +74,7 @@
                         <text>ZAPOČNI KVIZ</text>
                         <tooltip></tooltip>
                         <initial-visibility>Visible</initial-visibility>
-                        <enabled>Yes</enabled>
+                        <enabled>No</enabled>
                         <auto-font-size>Yes</auto-font-size>
                         <id-optional></id-optional>
                         <checked>No</checked>
@@ -138,8 +138,8 @@
                         <x>647.755859375</x>
                         <y>360</y>
                         <z>0</z>
-                        <width>606.200195313</width>
-                        <height>625.852600098</height>
+                        <width>401</width>
+                        <height>414</height>
                         <depth>0</depth>
                         <hotspotX>0.50124687</hotspotX>
                         <hotspotY>0.5</hotspotY>

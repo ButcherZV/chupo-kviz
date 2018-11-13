@@ -20,6 +20,8 @@
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="LocalStorage" version="1">Local storage</plugin>
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="NinePatch" version="1">9-patch</plugin>
+        <plugin author="Scirra" id="NodeWebkit" version="1">NW.js</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
@@ -75,7 +77,7 @@
             <object-type name="btnSave" sid="728039107009039">
                 <plugin id="Button" />
             </object-type>
-            <object-type name="btnStart" sid="270400902177698">
+            <object-type global="1" name="btnStart" sid="270400902177698">
                 <plugin id="Button" />
             </object-type>
             <object-type name="btnSettings" sid="317128499051889">
@@ -122,6 +124,9 @@
                 <instance-variables>
                     <instance-variable name="oldY" sid="793197686066810" type="number" />
                 </instance-variables>
+            </object-type>
+            <object-type name="btnLoad" sid="253480371503552">
+                <plugin id="Button" />
             </object-type>
         </object-folder>
         <object-folder name="Text">
@@ -387,6 +392,9 @@
             </object-type>
             <object-type name="bgAnswerL" sid="352848633163505">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="id" sid="303455951632192" type="number" />
+                </instance-variables>
                 <behaviors>
                     <behavior-type name="Pin" sid="491561434428867">
                         <behavior id="Pin" />
@@ -400,6 +408,9 @@
             </object-type>
             <object-type name="bgAnswerR" sid="501349961561587">
                 <plugin id="Sprite" />
+                <instance-variables>
+                    <instance-variable name="id" sid="798127128811790" type="number" />
+                </instance-variables>
                 <behaviors>
                     <behavior-type name="Pin" sid="671728535627606">
                         <behavior id="Pin" />
@@ -407,9 +418,18 @@
                 </behaviors>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="609151336442732" speed="5">
-                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Users\User\Desktop\1.png" />
                     </animation>
                 </animation-folder>
+            </object-type>
+            <object-type name="border" sid="483116323968951">
+                <plugin id="NinePatch" />
+                <effects>
+                    <effect-type name="Outline">
+                        <effect id="outline" />
+                    </effect-type>
+                </effects>
+                <texture original-source="C:\Users\User\Desktop\box.png" />
             </object-type>
         </object-folder>
         <object-type name="Function" sid="942795225166898">
@@ -420,6 +440,17 @@
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="342808249959396" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="NWjs" sid="787915898037988">
+            <plugin id="NodeWebkit" />
+        </object-type>
+        <object-type name="picture" sid="965782453215978">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="407934249425130" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.50152" />
                 </animation>
             </animation-folder>
         </object-type>
@@ -439,6 +470,7 @@
                 <member>btnAddTeam</member>
                 <member>btnCheck</member>
                 <member>btnExit</member>
+                <member>btnLoad</member>
                 <member>btnMExit</member>
                 <member>btnMute</member>
                 <member>btnRemTeam</member>
@@ -503,6 +535,7 @@
                 <roll-off-factor>1</roll-off-factor>
             </properties>
         </global-instance>
+        <global-instance type="NWjs" uid="81" />
     </global-instances>
     <sounds-folder>
         <file name="end.m4a" />

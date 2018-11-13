@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>settings-sheet</name>
     <events>
+        <variable constant="0" name="loadQ" sid="886993497551971" static="0" type="number">1</variable>
         <variable constant="0" name="timeout" sid="442950222663124" static="0" type="number">0</variable>
         <variable constant="0" name="DBlevel" sid="891970592890070" static="0" type="number">0</variable>
         <variable constant="0" name="changes" sid="236939000062238" static="0" type="number">0</variable>
@@ -119,6 +120,17 @@
                         <action id="0" name="Call function" sid="308184905418611" type="Function">
                             <param id="0" name="Name">&quot;removeTeam&quot;</param>
                             <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>LOAD QUESTIONS</comment>
+                <event-block sid="277037212593416">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="705723952669821" type="btnLoad" />
+                    </conditions>
+                    <actions>
+                        <action id="6" name="Show open dialog" sid="384710752949772" type="NWjs">
+                            <param id="0" name="Accept">&quot;.txt&quot;</param>
                         </action>
                     </actions>
                 </event-block>
@@ -365,7 +377,7 @@
                                 <condition id="-14" name="Compare variable" sid="497515410729765" type="System">
                                     <param id="0" name="Variable">SUMteam</param>
                                     <param id="1" name="Comparison">3</param>
-                                    <param id="2" name="Value">11</param>
+                                    <param id="2" name="Value">13</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -380,7 +392,7 @@
                                         <condition id="-14" name="Compare variable" sid="138591814862266" type="System">
                                             <param id="0" name="Variable">SUMteam</param>
                                             <param id="1" name="Comparison">2</param>
-                                            <param id="2" name="Value">6</param>
+                                            <param id="2" name="Value">7</param>
                                         </condition>
                                     </conditions>
                                     <actions>
@@ -388,7 +400,7 @@
                                             <param id="0" name="Object to create">inputTeam</param>
                                             <param id="1" name="Layer">&quot;MTeams&quot;</param>
                                             <param id="2" name="X">96</param>
-                                            <param id="3" name="Y">176 + (SUMteam*64)</param>
+                                            <param id="3" name="Y">208 + (SUMteam*64)</param>
                                         </action>
                                         <action id="-10" name="Set value" sid="573589528918753" type="inputTeam">
                                             <param id="0" name="Instance variable">id</param>
@@ -417,7 +429,7 @@
                                             <param id="0" name="Object to create">inputTeam</param>
                                             <param id="1" name="Layer">&quot;MTeams&quot;</param>
                                             <param id="2" name="X">320</param>
-                                            <param id="3" name="Y">176 + (SUMteam*64) - 384</param>
+                                            <param id="3" name="Y">208 + (SUMteam*64) - 448</param>
                                         </action>
                                         <action id="-10" name="Set value" sid="372078283052402" type="inputTeam">
                                             <param id="0" name="Instance variable">id</param>
@@ -471,6 +483,187 @@
                                     <param id="1" name="Value">1</param>
                                 </action>
                                 <action id="-9" name="Destroy" sid="428798320215857" type="inputTeam" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="234869822426277" title="Load questions">
+            <sub-events>
+                <comment>Check if formatting of questions is correct and load them into array, if they are properly formatted</comment>
+                <event-block sid="511150431519791">
+                    <conditions>
+                        <condition id="2" name="On open dialog OK" sid="446469934594899" type="NWjs" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="736757978295737" type="System">
+                            <param id="0" name="Variable">loadQ</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="161691819013372" type="System">
+                            <param id="0" name="Variable">buffer</param>
+                            <param id="1" name="Value">replace(NWjs.ReadFile(NWjs.ChosenPath),newline,&quot;&quot;)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="231255506016705">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="838539687534045" type="System">
+                                    <param id="0" name="Variable">checkIntegrity</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <comment>Check if there are enough questions in the text file</comment>
+                                <event-block sid="385672647180130">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="554205516208206" type="System">
+                                            <param id="0" name="First value">tokencount(buffer,&quot;|&quot;)</param>
+                                            <param id="1" name="Comparison">1</param>
+                                            <param id="2" name="Second value">60</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="953370496921957" type="System">
+                                            <param id="0" name="Variable">loadQ</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="3" name="Set enabled" sid="503858990803009" type="btnStart">
+                                            <param id="0" name="Mode">0</param>
+                                        </action>
+                                        <action id="0" name="Alert" sid="705797610515837" type="Browser">
+                                            <param id="0" name="Message">&quot;GREŠKA: Fajl sa pitanjima ima više ili manje od 60 stavki.&quot; &amp; newline &amp; &quot;Izbrojte pitanja, pa ako ih ima 60, proverite da li je simbol za odvajanje (uspravna crta) između svakog pitanja.&quot; &amp; newline &amp; &quot;Posle zadnjeg pitanja NE TREBA da stoji uspravna crta.&quot; &amp; newline &amp; newline &amp; &quot;Ispravite greške, pa ponovo učitajte pitanja!&quot;</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="758815999911714" type="System">
+                                            <param id="0" name="Variable">loadQ</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Check if every question have enough parameters (check text file for formatting errors)</comment>
+                                <event-block sid="772799508279053">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="301633112930493" type="System">
+                                            <param id="0" name="Name">&quot;j&quot;</param>
+                                            <param id="1" name="Start index">0</param>
+                                            <param id="2" name="End index">59</param>
+                                        </condition>
+                                        <condition id="-14" name="Compare variable" sid="689540911786708" type="System">
+                                            <param id="0" name="Variable">loadQ</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="257134993151428">
+                                            <conditions />
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="446818960249335" type="System">
+                                                    <param id="0" name="Variable">checkBuffer</param>
+                                                    <param id="1" name="Value">tokenat(buffer,loopindex(&quot;j&quot;),&quot;|&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="892671377154477">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="605291354366569" type="System">
+                                                    <param id="0" name="First value">tokencount(checkBuffer,&quot;;&quot;)</param>
+                                                    <param id="1" name="Comparison">1</param>
+                                                    <param id="2" name="Second value">8</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="3" name="Set enabled" sid="739260599644346" type="btnStart">
+                                                    <param id="0" name="Mode">0</param>
+                                                </action>
+                                                <action id="0" name="Alert" sid="337406392194970" type="Browser">
+                                                    <param id="0" name="Message">&quot;GREŠKA: Pitanje broj &quot; &amp; loopindex(&quot;j&quot;) + 1 &amp; &quot; nije dobro formatirano. Proverite da li je simbol tačka-zarez na svom mestu i da li ste pravilno formatirali pitanje.&quot; &amp; newline &amp; &quot;Pravilan format pitanja je:&quot; &amp; newline &amp; &quot;- 1. red: pitanje;&quot; &amp; newline &amp; &quot;- 2,3,4,5 red: ponuđeni odgovori&quot; &amp; newline &amp; &quot;- 6 red: tačan odgovor&quot; &amp; newline &amp; newline &amp; &quot;Ispravite greške, pa ponovo učitajte pitanja!&quot;</param>
+                                                </action>
+                                                <action id="-9" name="Set value" sid="939027326620970" type="System">
+                                                    <param id="0" name="Variable">loadQ</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Load data into array</comment>
+                        <event-block sid="366507706421068">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="359437367496477" type="System">
+                                    <param id="0" name="Variable">loadQ</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="-10" name="For" sid="138209149395984" type="System">
+                                    <param id="0" name="Name">&quot;i&quot;</param>
+                                    <param id="1" name="Start index">0</param>
+                                    <param id="2" name="End index">tokencount(buffer,&quot;|&quot;)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="564664109082135">
+                                    <conditions>
+                                        <condition id="-10" name="For" sid="441453647880219" type="System">
+                                            <param id="0" name="Name">&quot;j&quot;</param>
+                                            <param id="1" name="Start index">0</param>
+                                            <param id="2" name="End index">6</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="3" name="Set at XY" sid="485308351215611" type="QuestionArray">
+                                            <param id="0" name="X">loopindex(&quot;i&quot;)</param>
+                                            <param id="1" name="Y">loopindex(&quot;j&quot;)</param>
+                                            <param id="2" name="Value">tokenat(tokenat(buffer,loopindex(&quot;i&quot;),&quot;|&quot;),loopindex(&quot;j&quot;),&quot;;&quot;)</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="560665391652071">
+                            <conditions />
+                            <actions>
+                                <action id="-9" name="Set value" sid="670823496408971" type="System">
+                                    <param id="0" name="Variable">buffer</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="134138128188679" type="System">
+                                    <param id="0" name="Variable">checkBuffer</param>
+                                    <param id="1" name="Value">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="634331052753334">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="391540854489284" type="System">
+                                    <param id="0" name="Variable">loadQ</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                                <condition id="0" name="Compare at X" sid="734039056991553" type="QuestionArray">
+                                    <param id="0" name="X">0</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">0 | &quot;&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="906266924882840" type="DEBUG">
+                                    <param id="0" name="Text">QuestionArray.At(0,0)</param>
+                                </action>
+                                <action id="0" name="Alert" sid="248013720826888" type="Browser">
+                                    <param id="0" name="Message">&quot;Pitanja su uspešno učitana!&quot;</param>
+                                </action>
+                                <action id="3" name="Set enabled" sid="693110521228945" type="btnStart">
+                                    <param id="0" name="Mode">1</param>
+                                </action>
                             </actions>
                         </event-block>
                     </sub-events>

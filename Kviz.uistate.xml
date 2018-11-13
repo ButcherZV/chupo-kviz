@@ -10,12 +10,12 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="1">Quiz</layout>
-        <layout order="3">Start</layout>
-        <layout order="5">Settings</layout>
-        <event-sheet active="1" order="2">quiz-sheet</event-sheet>
-        <event-sheet order="4">start-sheet</event-sheet>
-        <event-sheet order="6">settings-sheet</event-sheet>
+        <layout order="0">Quiz</layout>
+        <layout order="2">Start</layout>
+        <layout order="4">Settings</layout>
+        <event-sheet order="1">quiz-sheet</event-sheet>
+        <event-sheet active="1" order="3">start-sheet</event-sheet>
+        <event-sheet order="5">settings-sheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -23,7 +23,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="0" name="Window Size" />
         <property expanded="1" name="Configuration Settings" />
     </properties>
-    <families-expanded root="0">
+    <families-expanded root="1">
         <family expanded="0" name="MenuBtn" />
         <family expanded="0" name="Teams" />
         <family expanded="0" name="Answers" />
@@ -51,5 +51,6 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/bgAnswerL/" />
         <folder expanded="1" path="animation-folder/bgAnswerR/" />
         <folder expanded="1" path="animation-folder/Sprite2/" />
+        <folder expanded="1" path="animation-folder/picture/" />
     </folders-expanded>
 </c2uistate>

@@ -12,10 +12,10 @@
                         <condition id="-2" name="On start of layout" sid="875725040295579" type="System" />
                     </conditions>
                     <actions>
-                        <action id="10" name="Request fullscreen" sid="793743795465632" type="Browser">
+                        <action disabled="1" id="10" name="Request fullscreen" sid="793743795465632" type="Browser">
                             <param id="0" name="Mode">3</param>
                         </action>
-                        <action disabled="1" id="3" name="Clear storage" sid="973552874757104" type="LocalStorage" />
+                        <action id="3" name="Clear storage" sid="973552874757104" type="LocalStorage" />
                         <action id="-10" name="Set value" sid="792617937042130" type="MenuBtn">
                             <param id="0" name="Instance variable">onScreen</param>
                             <param id="1" name="Value">1</param>
@@ -23,7 +23,7 @@
                         <action id="-16" name="Wait" sid="487017645260847" type="System">
                             <param id="0" name="Seconds">0.25</param>
                         </action>
-                        <action id="5" name="Check item exists" sid="787104442042782" type="LocalStorage">
+                        <action disabled="1" id="5" name="Check item exists" sid="787104442042782" type="LocalStorage">
                             <param id="0" name="Key">&quot;settings&quot;</param>
                         </action>
                     </actions>
@@ -63,10 +63,6 @@
                             <param id="0" name="Variable">timeout</param>
                             <param id="1" name="Value">10</param>
                         </action>
-                        <action id="1" name="Request project file" sid="594729954607323" type="AJAX">
-                            <param id="0" name="Tag">&quot;LoadQuestions&quot;</param>
-                            <param id="1" name="File">pitanja.txt</param>
-                        </action>
                     </actions>
                 </event-block>
                 <event-block sid="969887869995117">
@@ -92,10 +88,6 @@
                             <param id="0" name="Variable">timeout</param>
                             <param id="1" name="Value">tokenat(LocalStorage.ItemValue,3,&quot;;&quot;)</param>
                         </action>
-                        <action id="1" name="Request project file" sid="713511948917741" type="AJAX">
-                            <param id="0" name="Tag">&quot;LoadQuestions&quot;</param>
-                            <param id="1" name="File">pitanja.txt</param>
-                        </action>
                     </actions>
                 </event-block>
             </sub-events>
@@ -108,6 +100,13 @@
                         <condition id="0" name="On clicked" sid="652536957302273" type="btnStart" />
                     </conditions>
                     <actions>
+                        <action id="-10" name="Set value" sid="262511646840947" type="MenuBtn">
+                            <param id="0" name="Instance variable">onScreen</param>
+                            <param id="1" name="Value">2</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="430679505025787" type="System">
+                            <param id="0" name="Seconds">0.2</param>
+                        </action>
                         <action id="-2" name="Go to layout" sid="492001134600234" type="System">
                             <param id="0" name="Layout">Quiz</param>
                         </action>
@@ -124,7 +123,7 @@
                             <param id="1" name="Value">2</param>
                         </action>
                         <action id="-16" name="Wait" sid="380069125387120" type="System">
-                            <param id="0" name="Seconds">0.15</param>
+                            <param id="0" name="Seconds">0.2</param>
                         </action>
                         <action id="-2" name="Go to layout" sid="653037817597449" type="System">
                             <param id="0" name="Layout">Settings</param>
@@ -206,124 +205,6 @@
                             <param id="0" name="Y">lerp(Self.Y,816,0.25)</param>
                         </action>
                     </actions>
-                </event-block>
-            </sub-events>
-        </event-group>
-        <event-group description="" sid="395450833397437" title="Load questions">
-            <sub-events>
-                <comment>Check if formatting of questions is correct and load them into array, if they are properly formatted</comment>
-                <event-block sid="637210819837911">
-                    <conditions>
-                        <condition id="0" name="On completed" sid="290779963055064" type="AJAX">
-                            <param id="0" name="Tag">&quot;LoadQuestions&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Set value" sid="225113841216426" type="System">
-                            <param id="0" name="Variable">buffer</param>
-                            <param id="1" name="Value">AJAX.LastData</param>
-                        </action>
-                    </actions>
-                    <sub-events>
-                        <event-block sid="272313781094734">
-                            <conditions>
-                                <condition id="-14" name="Compare variable" sid="616452951108531" type="System">
-                                    <param id="0" name="Variable">checkIntegrity</param>
-                                    <param id="1" name="Comparison">0</param>
-                                    <param id="2" name="Value">1</param>
-                                </condition>
-                            </conditions>
-                            <actions />
-                            <sub-events>
-                                <comment>Check if there are enough questions in the text file</comment>
-                                <event-block sid="950981719544983">
-                                    <conditions>
-                                        <condition id="-8" name="Compare two values" sid="247684415606781" type="System">
-                                            <param id="0" name="First value">tokencount(buffer,&quot;|&quot;)</param>
-                                            <param id="1" name="Comparison">1</param>
-                                            <param id="2" name="Second value">60</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="3" name="Set enabled" sid="346638985273196" type="btnStart">
-                                            <param id="0" name="Mode">0</param>
-                                        </action>
-                                        <action id="0" name="Alert" sid="189891312352537" type="Browser">
-                                            <param id="0" name="Message">&quot;GREŠKA: Fajl sa pitanjima ima više ili manje od 60 stavki.&quot; &amp; newline &amp; &quot;Izbrojte pitanja, pa ako ih ima 60, proverite da li je simbol za odvajanje (uspravna crta) između svakog pitanja.&quot; &amp; newline &amp; &quot;Posle zadnjeg pitanja NE TREBA da stoji uspravna crta.&quot; &amp; newline &amp; newline &amp; &quot; Ispravite greške, pa restartujte igru!&quot;</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <comment>Check if every question have enough parameters (check text file for formatting errors)</comment>
-                                <event-block sid="516488923695352">
-                                    <conditions>
-                                        <condition id="-10" name="For" sid="284749813204750" type="System">
-                                            <param id="0" name="Name">&quot;j&quot;</param>
-                                            <param id="1" name="Start index">0</param>
-                                            <param id="2" name="End index">59</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions />
-                                    <sub-events>
-                                        <event-block sid="767560864484139">
-                                            <conditions />
-                                            <actions>
-                                                <action id="-9" name="Set value" sid="273076503519069" type="System">
-                                                    <param id="0" name="Variable">checkBuffer</param>
-                                                    <param id="1" name="Value">tokenat(buffer,loopindex(&quot;j&quot;),&quot;|&quot;)</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                        <event-block sid="361361499934168">
-                                            <conditions>
-                                                <condition id="-8" name="Compare two values" sid="582486349787559" type="System">
-                                                    <param id="0" name="First value">tokencount(checkBuffer,&quot;;&quot;)</param>
-                                                    <param id="1" name="Comparison">1</param>
-                                                    <param id="2" name="Second value">7</param>
-                                                </condition>
-                                            </conditions>
-                                            <actions>
-                                                <action id="3" name="Set enabled" sid="730989767616922" type="btnStart">
-                                                    <param id="0" name="Mode">0</param>
-                                                </action>
-                                                <action id="0" name="Alert" sid="614742573319373" type="Browser">
-                                                    <param id="0" name="Message">&quot;GREŠKA: Pitanje broj &quot; &amp; loopindex(&quot;j&quot;) + 1 &amp; &quot; nije dobro formatirano. Proverite da li je simbol tačka-zarez na svom mestu i da li ste pravilno formatirali pitanje.&quot; &amp; newline &amp; &quot;Pravilan format pitanja je:&quot; &amp; newline &amp; &quot;- 1. red: pitanje;&quot; &amp; newline &amp; &quot;- 2,3,4,5 red: ponuđeni odgovori&quot; &amp; newline &amp; &quot;- 6 red: tačan odgovor&quot; &amp; newline &amp; newline &amp; &quot;Ispravite greške, pa restartujte igru!&quot;</param>
-                                                </action>
-                                            </actions>
-                                        </event-block>
-                                    </sub-events>
-                                </event-block>
-                            </sub-events>
-                        </event-block>
-                        <comment>Load data into array</comment>
-                        <event-block sid="771867452191369">
-                            <conditions>
-                                <condition id="-10" name="For" sid="567320678780118" type="System">
-                                    <param id="0" name="Name">&quot;i&quot;</param>
-                                    <param id="1" name="Start index">0</param>
-                                    <param id="2" name="End index">tokencount(buffer,&quot;|&quot;)</param>
-                                </condition>
-                            </conditions>
-                            <actions>
-                                <action id="2" name="Set at X" sid="695719071264988" type="QuestionArray">
-                                    <param id="0" name="X">loopindex(&quot;i&quot;)</param>
-                                    <param id="1" name="Value">tokenat(buffer,loopindex(&quot;i&quot;),&quot;|&quot;)</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                        <event-block sid="917063679895160">
-                            <conditions />
-                            <actions>
-                                <action id="-9" name="Set value" sid="546077130624183" type="System">
-                                    <param id="0" name="Variable">buffer</param>
-                                    <param id="1" name="Value">0</param>
-                                </action>
-                                <action id="-9" name="Set value" sid="481322136955641" type="System">
-                                    <param id="0" name="Variable">checkBuffer</param>
-                                    <param id="1" name="Value">&quot;&quot;</param>
-                                </action>
-                            </actions>
-                        </event-block>
-                    </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
