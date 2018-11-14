@@ -226,6 +226,12 @@
                     <instance-variable name="id" sid="619562170407056" type="number" />
                 </instance-variables>
             </object-type>
+            <object-type name="txtSponsorName" sid="541719875957628">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtSponsorInfo" sid="943175298632794">
+                <plugin id="Text" />
+            </object-type>
         </object-folder>
         <object-folder name="Data">
             <object-type global="1" name="QuestionArray" sid="7596737848745202">
@@ -236,6 +242,9 @@
             </object-type>
             <object-type name="LocalStorage" sid="845827480570101">
                 <plugin id="LocalStorage" />
+            </object-type>
+            <object-type global="1" name="SponsorArray" sid="504819563750081">
+                <plugin id="Arr" />
             </object-type>
         </object-folder>
         <object-folder name="Plugins">
@@ -431,33 +440,41 @@
                 </effects>
                 <texture original-source="C:\Users\User\Desktop\box.png" />
             </object-type>
+            <object-type name="picture" sid="965782453215978">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="LiteTween" sid="945520195284060">
+                        <behavior id="lunarray_LiteTween" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="407934249425130" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.50152" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="sponsorImg" sid="685321222619972">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="894980229730333" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="Sprite2" sid="805992219426548">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="342808249959396" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
         </object-folder>
         <object-type name="Function" sid="942795225166898">
             <plugin id="Function" />
         </object-type>
-        <object-type name="Sprite2" sid="805992219426548">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="342808249959396" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
         <object-type name="NWjs" sid="787915898037988">
             <plugin id="NodeWebkit" />
-        </object-type>
-        <object-type name="picture" sid="965782453215978">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="LiteTween" sid="945520195284060">
-                    <behavior id="lunarray_LiteTween" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="407934249425130" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.50152" />
-                </animation>
-            </animation-folder>
         </object-type>
     </object-folder>
     <families>
