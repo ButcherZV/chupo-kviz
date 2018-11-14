@@ -448,6 +448,11 @@
         </object-type>
         <object-type name="picture" sid="965782453215978">
             <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="LiteTween" sid="945520195284060">
+                    <behavior id="lunarray_LiteTween" />
+                </behavior-type>
+            </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="407934249425130" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.50152" />

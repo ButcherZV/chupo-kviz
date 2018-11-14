@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>settings-sheet</name>
     <events>
+        <variable constant="0" name="qPath" sid="135907534592314" static="0" type="text"></variable>
         <variable constant="0" name="loadQ" sid="886993497551971" static="0" type="number">1</variable>
         <variable constant="0" name="timeout" sid="442950222663124" static="0" type="number">0</variable>
         <variable constant="0" name="DBlevel" sid="891970592890070" static="0" type="number">0</variable>
@@ -129,9 +130,10 @@
                         <condition id="0" name="On clicked" sid="705723952669821" type="btnLoad" />
                     </conditions>
                     <actions>
-                        <action id="6" name="Show open dialog" sid="384710752949772" type="NWjs">
+                        <action disabled="1" id="6" name="Show open dialog" sid="384710752949772" type="NWjs">
                             <param id="0" name="Accept">&quot;.txt&quot;</param>
                         </action>
+                        <action id="7" name="Show folder dialog" sid="263918210953130" type="NWjs" />
                     </actions>
                 </event-block>
                 <comment>SAVING TEAMS AND PARAMETERS</comment>
@@ -494,16 +496,20 @@
                 <comment>Check if formatting of questions is correct and load them into array, if they are properly formatted</comment>
                 <event-block sid="511150431519791">
                     <conditions>
-                        <condition id="2" name="On open dialog OK" sid="446469934594899" type="NWjs" />
+                        <condition id="3" name="On folder dialog OK" sid="516317486728451" type="NWjs" />
                     </conditions>
                     <actions>
                         <action id="-9" name="Set value" sid="736757978295737" type="System">
                             <param id="0" name="Variable">loadQ</param>
                             <param id="1" name="Value">1</param>
                         </action>
+                        <action id="-9" name="Set value" sid="318858175405462" type="System">
+                            <param id="0" name="Variable">qPath</param>
+                            <param id="1" name="Value">NWjs.ChosenPath</param>
+                        </action>
                         <action id="-9" name="Set value" sid="161691819013372" type="System">
                             <param id="0" name="Variable">buffer</param>
-                            <param id="1" name="Value">replace(NWjs.ReadFile(NWjs.ChosenPath),newline,&quot;&quot;)</param>
+                            <param id="1" name="Value">replace(NWjs.ReadFile(qPath &amp; &quot;/pitanja.txt&quot;),newline,&quot;&quot;)</param>
                         </action>
                     </actions>
                     <sub-events>
