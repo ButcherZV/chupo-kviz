@@ -2,7 +2,7 @@
 <c2project>
     <name>Kviz</name>
     <description></description>
-    <version>1.0.0.0</version>
+    <version>0.75</version>
     <author></author>
     <author-email></author-email>
     <author-website>http://</author-website>
@@ -16,6 +16,7 @@
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Button" version="1">Button</plugin>
         <plugin author="Mikael Nilsson" id="CAMFTimeManager" version="1.100000024">Time Manager</plugin>
+        <plugin author="Gregory Georges" id="DialogBox" version="1">Dialog Box</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
         <plugin author="Scirra" id="LocalStorage" version="1">Local storage</plugin>
@@ -74,11 +75,14 @@
             <object-type name="btnRemTeam" sid="546545531019902">
                 <plugin id="Button" />
             </object-type>
-            <object-type name="btnSave" sid="728039107009039">
+            <object-type name="btnReset" sid="728039107009039">
                 <plugin id="Button" />
             </object-type>
             <object-type global="1" name="btnStart" sid="270400902177698">
                 <plugin id="Button" />
+                <instance-variables>
+                    <instance-variable name="haveSave" sid="180508714117892" type="number" />
+                </instance-variables>
             </object-type>
             <object-type name="btnSettings" sid="317128499051889">
                 <plugin id="Button" />
@@ -127,6 +131,12 @@
             </object-type>
             <object-type name="btnLoad" sid="253480371503552">
                 <plugin id="Button" />
+            </object-type>
+            <object-type global="1" name="inputStime" sid="602773319938985">
+                <plugin id="TextBox" />
+                <instance-variables>
+                    <instance-variable name="oldY" sid="799860634356158" type="number" />
+                </instance-variables>
             </object-type>
         </object-folder>
         <object-folder name="Text">
@@ -226,11 +236,35 @@
                     <instance-variable name="id" sid="619562170407056" type="number" />
                 </instance-variables>
             </object-type>
-            <object-type name="txtSponsorName" sid="541719875957628">
+            <object-type name="txtSponsorTopic" sid="541719875957628">
                 <plugin id="Text" />
             </object-type>
             <object-type name="txtSponsorInfo" sid="943175298632794">
                 <plugin id="Text" />
+            </object-type>
+            <object-type name="txtSponsorTime" sid="774359330006332">
+                <plugin id="Text" />
+                <effects>
+                    <effect-type name="Outline">
+                        <effect id="outline" />
+                    </effect-type>
+                </effects>
+            </object-type>
+            <object-type name="txtSponsorName" sid="335015087611429">
+                <plugin id="Text" />
+                <behaviors>
+                    <behavior-type name="Persist" sid="773813913418571">
+                        <behavior id="Persist" />
+                    </behavior-type>
+                </behaviors>
+            </object-type>
+            <object-type name="txtVer" sid="215414087780422">
+                <plugin id="Text" />
+                <behaviors>
+                    <behavior-type name="Persist" sid="628780280242323">
+                        <behavior id="Persist" />
+                    </behavior-type>
+                </behaviors>
             </object-type>
         </object-folder>
         <object-folder name="Data">
@@ -265,6 +299,12 @@
             </object-type>
             <object-type name="Audio" sid="995352363563884">
                 <plugin id="Audio" />
+            </object-type>
+            <object-type name="NWjs" sid="787915898037988">
+                <plugin id="NodeWebkit" />
+            </object-type>
+            <object-type name="DialogBox" sid="269987659210143">
+                <plugin id="DialogBox" />
             </object-type>
         </object-folder>
         <object-folder name="Graphics">
@@ -433,6 +473,11 @@
             </object-type>
             <object-type name="border" sid="483116323968951">
                 <plugin id="NinePatch" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="247165035765848">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
                 <effects>
                     <effect-type name="Outline">
                         <effect id="outline" />
@@ -469,12 +514,13 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="sBG" sid="501197663433031">
+                <plugin id="NinePatch" />
+                <texture original-source="C:\Users\User\Desktop\1.png" />
+            </object-type>
         </object-folder>
         <object-type name="Function" sid="942795225166898">
             <plugin id="Function" />
-        </object-type>
-        <object-type name="NWjs" sid="787915898037988">
-            <plugin id="NodeWebkit" />
         </object-type>
     </object-folder>
     <families>
@@ -496,7 +542,7 @@
                 <member>btnMExit</member>
                 <member>btnMute</member>
                 <member>btnRemTeam</member>
-                <member>btnSave</member>
+                <member>btnReset</member>
                 <member>btnSettings</member>
             </members>
             <behaviors>
@@ -558,6 +604,7 @@
             </properties>
         </global-instance>
         <global-instance type="NWjs" uid="81" />
+        <global-instance type="DialogBox" uid="98" />
     </global-instances>
     <sounds-folder>
         <file name="end.m4a" />
@@ -579,6 +626,5 @@
             <file name="icon-256.png" />
             <file name="loading-logo.png" />
         </file-folder>
-        <file name="pitanja.txt" />
     </files-folder>
 </c2project>

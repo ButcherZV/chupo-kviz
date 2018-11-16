@@ -1,4 +1,5 @@
 ﻿p;
+4;
 Koji je glavni grad Velike Britanije?;
 Mančester;
 London;
@@ -7,6 +8,7 @@ Edinburg;
 London;
 |
 s;
+4;
 Koja tvrđava je prikazana na slici?;
 Kula Grad;
 Gradina;
@@ -15,6 +17,7 @@ Kastel;
 Kula Grad;
 |
 p;
+2;
 Bend MESHUGGAH svira koji podžanr metal muzike?;
 Djent;
 Death Metal;
@@ -23,6 +26,7 @@ Sludge Metal;
 Djent;
 |
 s;
+2;
 Ime poznate ličnosti sa slike?;
 Savo Kikindski;
 Zmaj od Šipova;
@@ -31,6 +35,7 @@ Mirza Hatić;
 Zmaj od Šipova;
 |
 p;
+4;
 Koji tim nije iz Španije?;
 Xerez;
 Malaga;
@@ -39,6 +44,7 @@ Maritimo;
 Maritimo;
 |
 p;
+4;
 Koju od ovih knjiga je napisao Cezar?;
 Metamorfoze;
 De Bello Gallico;
@@ -47,6 +53,7 @@ Pro Marcello;
 De Bello Gallico;
 |
 p;
+0;
 U kojem ratu se odigrava radnja filma Saving Private Ryan?;
 Prvi Svetski Rat;
 Korejski Rat;
@@ -55,6 +62,7 @@ Vijetnamski Rat;
 Drugi Svetski Rat;
 |
 p;
+4;
 U kojoj zemlji je bio na vlasti diktator Salazar?;
 Čile;
 Istočni Timor;
@@ -63,6 +71,7 @@ Brazil;
 Čile;
 |
 p;
+4;
 U kojoj zemlji je rođen Arnold Schwarzenegger?;
 SAD;
 Engleskoj;
@@ -71,6 +80,7 @@ Austriji;
 Austriji;
 |
 p;
+4;
 Na Hampden parku domaće utakmice igra...;
 Celtic;
 Aston Villa;
@@ -79,6 +89,7 @@ Gl. Rangers;
 Gl. Rangers;
 |
 p;
+4;
 Koje države je glavni grad Karakas?;
 Venecuele;
 Argentine;
@@ -87,6 +98,7 @@ Kolumbije;
 Venecuele;
 |
 p;
+4;
 Ko je osvojio Svjetsko prvenstvo u fudbalu 2002. godine?;
 Brazil;
 Francuska;
@@ -95,6 +107,7 @@ Italija;
 Brazil;
 |
 p;
+4;
 Osim filma Pretty Woman, u kojem filmu zajedno glume Julia Roberts i Richard Gere?;
 Step Mom;
 Runaway Bride;
@@ -103,6 +116,7 @@ Nothing Hill;
 Runaway Bride;
 |
 p;
+4;
 Ko je igrao u filmu The Man With No Name, trilogije Sergio Leonea?;
 Gene Hackman;
 Gary Cooper;
@@ -111,6 +125,7 @@ Clint Eastwood;
 Gene Hackman;
 |
 p;
+4;
 Umro je sa samo 24 godine u automobilskoj nesreći, snimio je 7 filmova i ušao u legendu...;
 Errol Flyn;
 James Dean;
@@ -119,6 +134,7 @@ Bruce Lee;
 James Dean;
 |
 p;
+4;
 Vlad III Tepeš je inspiracija za knjigu o Drakuli. Kojom zemljom je on vladao?;
 Rumunija;
 Bugarska;
@@ -127,6 +143,7 @@ Vlaška;
 Vlaška;
 |
 p;
+4;
 Filmski hit Braveheart iz 1995. sa Mel Gibsonom se odigrao u kojoj zemlji?;
 SAD;
 Engleska;
@@ -135,6 +152,7 @@ Irska;
 Škotska;
 |
 p;
+4;
 Kojoj državi pripada Grenland?;
 Velika Britanija;
 Danska;
@@ -143,6 +161,7 @@ Irska;
 Danska;
 |
 p;
+4;
 U kojoj zemlji su rođene Olimpijske igre?;
 Mesopotamiji;
 Gečkoj;
@@ -151,7 +170,8 @@ Kini;
 Grčkoj;
 |
 p;
-Koja pop zvijezda ima značajnu ulogu u filmu Bodyguard?;
+4;
+Koja pop zvezda ima značajnu ulogu u filmu Bodyguard?;
 Whitney Houston;
 Vanessa Williams;
 Cher;
@@ -159,6 +179,7 @@ Madonna;
 Whitney Houston;
 |
 p;
+4;
 Ko je napravio prvi telefonski poziv na Mesec?;
 Theodore Roosevelt;
 Richard Nixon;
@@ -167,6 +188,7 @@ Barrack Obama;
 Richard Nixon;
 |
 p;
+4;
 Koje ostrvo od Italije razdvaja Ligursko more?;
 Korzika;
 Sicilija;
@@ -175,6 +197,7 @@ Kreta;
 Korzika;
 |
 p;
+4;
 Čiju teritoriju, danas modernih država, nije u potpunosti okupiralo Rimsko carstvo?;
 Nemačke;
 Španije;
@@ -183,6 +206,7 @@ Francuske;
 Nemačke;
 |
 p;
+4;
 Koji sultan je proširio Otomansko carstvo nadomak Beča?;
 Mehmed II Osvajač;
 Selim I Mrgodni;
@@ -191,6 +215,7 @@ Murat V;
 Sulejman Veličanstveni;
 |
 p;
+4;
 Od koje države je 1956. godine Tunis stekao nezavisnost?;
 Španije;
 Alžira;
@@ -199,6 +224,7 @@ Francuske;
 Francuske;
 |
 p;
+4;
 Koja legenda je "nestala u 60 sekundi"?;
 Michael Henderson;
 Sean Connery;
@@ -207,7 +233,8 @@ Nicolas Cage;
 Nicolas Cage;
 |
 p;
-Ime francuza koji je u 18. i 19. vijeku pomogao svojoj zemlji da osvoji mnoge bitke je...;
+4;
+Ime francuza koji je u 18. i 19. veku pomogao svojoj zemlji da osvoji mnoge bitke je...;
 Napoleon;
 Luj IV;
 Karlo Veliki;
@@ -215,6 +242,7 @@ Pipin Mali;
 Napoleon;
 |
 p;
+4;
 Koje godine je Hitler postao kancelar Njemačke?;
 1920. godine;
 1923. godine;
@@ -223,6 +251,7 @@ Koje godine je Hitler postao kancelar Njemačke?;
 1933. godine;
 |
 p;
+4;
 Tom Hanks i Meg Ryan glume u filmu...;
 You've got mail;
 Titanic;
@@ -231,6 +260,7 @@ Pretty Woman;
 You've got mail;
 |
 p;
+4;
 Čiji stadion nema u nazivu "olimpijski"?;
 SS Lazio;
 Hertha;
@@ -239,6 +269,7 @@ AEK Athens;
 Lyon;
 |
 p;
+4;
 Koji od ponuđenih gradova je najsevernije?;
 Norvič;
 Liverpul;
@@ -247,6 +278,7 @@ Lids;
 Lids;
 |
 p;
+4;
 Gde žive Hobiti?;
 Gondor;
 Shire;
@@ -255,6 +287,7 @@ Eriador;
 Shire;
 |
 p;
+4;
 Nastavite originalan naziv filma Harrison Forda: What lies...;
 ...in the house;
 ...beneath;
@@ -263,6 +296,7 @@ Nastavite originalan naziv filma Harrison Forda: What lies...;
 ...beneath;
 |
 p;
+4;
 Ko je izumeo i patentirao telefon?;
 Thomas Edison;
 Graham Bell;
@@ -271,6 +305,7 @@ Mihajlo Pupin;
 Graham Bell;
 |
 p;
+4;
 Koja je zemlja osvojila prvo Svetsko prvenstvo u fudbalu?;
 Urugvaj;
 Brazil;
@@ -279,6 +314,7 @@ Nemačka;
 Urugvaj;
 |
 p;
+4;
 Prvi američki predsednik je bio...;
 Abraham Lincoln;
 Ronald Raegan;
@@ -287,6 +323,7 @@ Ben Franklin;
 George Washington;
 |
 p;
+4;
 Ko je igrao James Bonda u "Diamonds are forever"?;
 Sean Connery;
 Roger Moore;
@@ -295,6 +332,7 @@ George Lazenby;
 Sean Connery;
 |
 p;
+4;
 Koja od ponuđenih zemalja je bila portugalska kolonija?;
 Mozambik;
 Šri Lanka;
@@ -303,6 +341,7 @@ Madagaskar;
 Mozambik;
 |
 p;
+4;
 Kako se zove prvi čovek koji je stupio na Mesec?;
 Neil Armstrong;
 Buzz Aldrin;
@@ -311,6 +350,7 @@ Adrian Nutt;
 Neil Armstrong;
 |
 p;
+4;
 Čiji parlament nosi naziv Alting?;
 Engleska;
 Island;
@@ -319,6 +359,7 @@ Irska;
 Island;
 |
 p;
+4;
 U kojoj godini je formiran NATO?;
 1945. godine;
 1946. godine;
@@ -327,6 +368,7 @@ U kojoj godini je formiran NATO?;
 1949. godine;
 |
 p;
+4;
 Mogadiš je glavni grad...;
 Zaira;
 Sudana;
@@ -335,6 +377,7 @@ Somalije;
 Somalije;
 |
 p;
+4;
 Koja je najveća planina u Zapadnoj Evropi?;
 Mont Blan;
 Monte Rosa;
@@ -343,6 +386,7 @@ Materrhorn;
 Mont Blan;
 |
 p;
+4;
 Odakle je Kristofer Kolumbo?;
 Đenova;
 Firenca;
@@ -351,6 +395,7 @@ Madrid;
 Đenova;
 |
 p;
+4;
 Ko je igrao u filmu "The Man With No Name", trilogije Sergio Leonea?;
 Gene Hackman;
 Gary Cooper;
@@ -359,6 +404,7 @@ Clint Eastwood;
 Gene Hackman;
 |
 p;
+4;
 Kako se zvao pas u Čarobnjaku iz Oza (The Wizard of Oz)?;
 Lassie;
 Timmy;
@@ -367,6 +413,7 @@ Toto;
 Toto;
 |
 p;
+4;
 Glavni grad Severne Koreje je...;
 Pnom Pen;
 Seul;
@@ -375,6 +422,7 @@ Bangkok;
 Pnom Pen;
 |
 p;
+4;
 Koji je bio glavni grad Nemačke, pre ujedinjenja 1990. godine?;
 Hamburg;
 Minhen;
@@ -383,6 +431,7 @@ Bon;
 Bon;
 |
 p;
+4;
 George Gaynes igra ulogu komadanta Lassarda, u kojem serijalu filmova?;
 Jaws;
 Rambo;
@@ -391,6 +440,7 @@ Police Academy;
 Police Academy;
 |
 p;
+4;
 Otava je glavni grad...;
 Bolivije;
 Australije;
@@ -399,6 +449,7 @@ SAD;
 Kanade;
 |
 p;
+4;
 Prema procenama UN-a, koje je najgušće naseljeno područje u Zapadnoj Evropi?;
 Madrid;
 Pariz;
@@ -407,6 +458,7 @@ Rim;
 Pariz;
 |
 p;
+4;
 Prvi glavni grad drevnog Egipta je bio...;
 Kairo;
 Aleksandrija;
@@ -415,6 +467,7 @@ Teba;
 Memfis;
 |
 p;
+4;
 Koju pesmu ne peva Zdravko Čolić?;
 Sto puta;
 Ostala si uvjek ista;
@@ -423,6 +476,7 @@ Stanica Podlugovi;
 Ostala si uvjek ista;
 |
 p;
+4;
 U koju zemlju je Rusija poslala 200.000 vojnika da spreči nezavisnost više država?;
 Kinu;
 Otomansko Carstvo;
@@ -431,6 +485,7 @@ Srbiju;
 Austriju;
 |
 p;
+4;
 Čiji je život "igra bez granica?";
 Toni Cetinski;
 Toše Proeski;
@@ -439,6 +494,7 @@ Mišo Kovač;
 Toše Proeski;
 |
 p;
+4;
 Koja od navedenih država nije u EU?;
 Island;
 Finska;
@@ -447,6 +503,7 @@ Finska;
 Švajcarska;
 |
 p;
+4;
 Glavni grad Belorusije je...;
 Riga;
 Donjeck;
@@ -455,6 +512,7 @@ Minsk;
 Minsk;
 |
 p;
+4;
 Prvi Iron Maiden album, na kojem je pevao Bruce Dickinson je...;
 Killers;
 The Number of the Beast;
@@ -463,6 +521,7 @@ Powerslave;
 The Number of the Beast;
 |
 p;
+4;
 Olandska ostrva su ulaz u koje vode?;
 Zaliv Rige;
 Finski zaliv;
@@ -471,6 +530,7 @@ Zaliv Botnije;
 Urugvaj;
 |
 p;
+4;
 Koji tim igra na Estadio de Luz?;
 Porto;
 Benfica;

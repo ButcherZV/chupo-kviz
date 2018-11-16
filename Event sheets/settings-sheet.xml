@@ -3,15 +3,16 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>settings-sheet</name>
     <events>
+        <variable constant="0" name="sponsorTime" sid="102741803845124" static="0" type="number">30</variable>
         <variable constant="0" name="qPath" sid="135907534592314" static="0" type="text"></variable>
         <variable constant="0" name="loadQ" sid="886993497551971" static="0" type="number">1</variable>
-        <variable constant="0" name="timeout" sid="442950222663124" static="0" type="number">0</variable>
+        <variable constant="0" name="timeout" sid="442950222663124" static="0" type="number">120</variable>
         <variable constant="0" name="DBlevel" sid="891970592890070" static="0" type="number">0</variable>
         <variable constant="0" name="changes" sid="236939000062238" static="0" type="number">0</variable>
         <variable constant="0" name="SUMteam" sid="341802717363174" static="0" type="number">1</variable>
         <variable constant="0" name="haveTeam" sid="523652906827423" static="0" type="number">0</variable>
-        <variable constant="0" name="pauseTime" sid="552383046689994" static="0" type="number">0</variable>
-        <variable constant="0" name="questionTime" sid="972242196070067" static="0" type="number">0</variable>
+        <variable constant="0" name="pauseTime" sid="552383046689994" static="0" type="number">10</variable>
+        <variable constant="0" name="questionTime" sid="972242196070067" static="0" type="number">30</variable>
         <event-group description="" sid="863857444779599" title="Settings - Initialization">
             <sub-events>
                 <event-block sid="570463939177294">
@@ -19,6 +20,9 @@
                         <condition id="-2" name="On start of layout" sid="849964690013928" type="System" />
                     </conditions>
                     <actions>
+                        <action id="0" name="Set text" sid="560645031809250" type="txtVer">
+                            <param id="0" name="Text">&quot;ver &quot; &amp; projectversion</param>
+                        </action>
                         <action id="5" name="Set CSS style" sid="915936560077928" type="Check">
                             <param id="0" name="Property name">&quot;color&quot;</param>
                             <param id="1" name="Value">&quot;white&quot;</param>
@@ -50,6 +54,9 @@
                         <action id="-2" name="Set Y" sid="252711958437267" type="btnMute">
                             <param id="0" name="Y">Self.oldY</param>
                         </action>
+                        <action id="-2" name="Set Y" sid="904722954177892" type="inputStime">
+                            <param id="0" name="Y">Self.oldY</param>
+                        </action>
                         <action id="0" name="Set text" sid="827534263063425" type="inputPtime">
                             <param id="0" name="Text">str(pauseTime)</param>
                         </action>
@@ -58,6 +65,9 @@
                         </action>
                         <action id="0" name="Set text" sid="366029771351908" type="inputAtime">
                             <param id="0" name="Text">str(timeout)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="862736040997873" type="inputStime">
+                            <param id="0" name="Text">str(sponsorTime)</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -136,10 +146,38 @@
                         <action id="7" name="Show folder dialog" sid="263918210953130" type="NWjs" />
                     </actions>
                 </event-block>
-                <comment>SAVING TEAMS AND PARAMETERS</comment>
+                <comment>RESET THE GAME</comment>
                 <event-block sid="513308796273787">
                     <conditions>
-                        <condition id="0" name="On clicked" sid="144584474163195" type="btnSave" />
+                        <condition id="0" name="On clicked" sid="144584474163195" type="btnReset" />
+                    </conditions>
+                    <actions>
+                        <action id="3" name="Clear storage" sid="799095939937272" type="LocalStorage" />
+                        <action id="-21" name="Reset global variables" sid="647543947488031" type="System" />
+                        <action id="0" name="Clear" sid="427366990566912" type="QuestionArray" />
+                        <action id="0" name="Clear" sid="986843219154628" type="SponsorArray" />
+                        <action id="-10" name="Set value" sid="356854424134650" type="btnStart">
+                            <param id="0" name="Instance variable">haveSave</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action id="0" name="Set text" sid="970932804652699" type="inputPtime">
+                            <param id="0" name="Text">str(pauseTime)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="440664900624126" type="inputQtime">
+                            <param id="0" name="Text">str(questionTime)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="538890973334308" type="inputAtime">
+                            <param id="0" name="Text">str(timeout)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="740872021519680" type="inputStime">
+                            <param id="0" name="Text">str(sponsorTime)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>SAVE PARAMETERS AND EXIT TO MAIN MENU</comment>
+                <event-block sid="854375210810443">
+                    <conditions>
+                        <condition id="0" name="On clicked" sid="746414846785939" type="btnExit" />
                     </conditions>
                     <actions>
                         <action id="0" name="Clear" sid="804091859192687" type="TeamArray" />
@@ -158,6 +196,31 @@
                         <action id="-9" name="Set value" sid="854437123860896" type="System">
                             <param id="0" name="Variable">timeout</param>
                             <param id="1" name="Value">inputAtime.Text</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="696015619504770" type="System">
+                            <param id="0" name="Variable">sponsorTime</param>
+                            <param id="1" name="Value">inputStime.Text</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="484835107094419" type="inputTeam">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="722197176393103" type="inputPtime">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="172668695806108" type="inputQtime">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="941435042715174" type="inputAtime">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="119268212750252" type="btnCheck">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="585171469041009" type="btnMute">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="508687621802078" type="inputStime">
+                            <param id="0" name="Y">-128</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -244,40 +307,11 @@
                             <actions>
                                 <action id="0" name="Set item" sid="161359859068116" type="LocalStorage">
                                     <param id="0" name="Key">&quot;settings&quot;</param>
-                                    <param id="1" name="Value">questionTime &amp; &quot;;&quot; &amp; pauseTime &amp; &quot;;&quot; &amp; checkIntegrity &amp; &quot;;&quot; &amp; timeout</param>
+                                    <param id="1" name="Value">questionTime &amp; &quot;;&quot; &amp; pauseTime &amp; &quot;;&quot; &amp; checkIntegrity &amp; &quot;;&quot; &amp; timeout &amp; &quot;;&quot; &amp; sponsorTime</param>
                                 </action>
                             </actions>
                         </event-block>
                     </sub-events>
-                </event-block>
-                <comment>EXIT TO MENU</comment>
-                <event-block sid="854375210810443">
-                    <conditions>
-                        <condition id="0" name="On clicked" sid="746414846785939" type="btnExit" />
-                    </conditions>
-                    <actions>
-                        <action id="-2" name="Set Y" sid="484835107094419" type="inputTeam">
-                            <param id="0" name="Y">-128</param>
-                        </action>
-                        <action id="-2" name="Set Y" sid="722197176393103" type="inputPtime">
-                            <param id="0" name="Y">-128</param>
-                        </action>
-                        <action id="-2" name="Set Y" sid="172668695806108" type="inputQtime">
-                            <param id="0" name="Y">-128</param>
-                        </action>
-                        <action id="-2" name="Set Y" sid="941435042715174" type="inputAtime">
-                            <param id="0" name="Y">-128</param>
-                        </action>
-                        <action id="-2" name="Set Y" sid="119268212750252" type="btnCheck">
-                            <param id="0" name="Y">-128</param>
-                        </action>
-                        <action id="-2" name="Set Y" sid="585171469041009" type="btnMute">
-                            <param id="0" name="Y">-128</param>
-                        </action>
-                        <action id="-2" name="Go to layout" sid="591378157181466" type="System">
-                            <param id="0" name="Layout">Start</param>
-                        </action>
-                    </actions>
                 </event-block>
                 <event-block sid="646420552143346">
                     <conditions>
@@ -286,8 +320,8 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="0" name="Alert" sid="772274219011242" type="Browser">
-                            <param id="0" name="Message">&quot;Uspešno sačuvano!&quot;</param>
+                        <action id="-2" name="Go to layout" sid="591378157181466" type="System">
+                            <param id="0" name="Layout">Start</param>
                         </action>
                     </actions>
                 </event-block>
@@ -491,7 +525,7 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="234869822426277" title="Load questions">
+        <event-group description="" sid="234869822426277" title="Load data">
             <sub-events>
                 <comment>Check if formatting of questions is correct and load them into array, if they are properly formatted</comment>
                 <event-block sid="511150431519791">
@@ -580,7 +614,7 @@
                                                 <condition id="-8" name="Compare two values" sid="605291354366569" type="System">
                                                     <param id="0" name="First value">tokencount(checkBuffer,&quot;;&quot;)</param>
                                                     <param id="1" name="Comparison">1</param>
-                                                    <param id="2" name="Second value">8</param>
+                                                    <param id="2" name="Second value">9</param>
                                                 </condition>
                                             </conditions>
                                             <actions>
@@ -588,7 +622,7 @@
                                                     <param id="0" name="Mode">0</param>
                                                 </action>
                                                 <action id="0" name="Alert" sid="337406392194970" type="Browser">
-                                                    <param id="0" name="Message">&quot;GREŠKA: Pitanje broj &quot; &amp; loopindex(&quot;j&quot;) + 1 &amp; &quot; nije dobro formatirano. Proverite da li je simbol tačka-zarez na svom mestu i da li ste pravilno formatirali pitanje.&quot; &amp; newline &amp; &quot;Pravilan format pitanja je:&quot; &amp; newline &amp; &quot;- 1. red: pitanje;&quot; &amp; newline &amp; &quot;- 2,3,4,5 red: ponuđeni odgovori&quot; &amp; newline &amp; &quot;- 6 red: tačan odgovor&quot; &amp; newline &amp; newline &amp; &quot;Ispravite greške, pa ponovo učitajte pitanja!&quot;</param>
+                                                    <param id="0" name="Message">&quot;GREŠKA: Pitanje broj &quot; &amp; loopindex(&quot;j&quot;) + 1 &amp; &quot; nije dobro formatirano. Proverite da li je simbol tačka-zarez na svom mestu i da li ste pravilno formatirali pitanje.&quot; &amp; newline &amp; newline &amp; &quot;Ispravite greške, pa ponovo učitajte pitanja!&quot;</param>
                                                 </action>
                                                 <action id="-9" name="Set value" sid="939027326620970" type="System">
                                                     <param id="0" name="Variable">loadQ</param>
@@ -621,7 +655,7 @@
                                         <condition id="-10" name="For" sid="441453647880219" type="System">
                                             <param id="0" name="Name">&quot;j&quot;</param>
                                             <param id="1" name="Start index">0</param>
-                                            <param id="2" name="End index">6</param>
+                                            <param id="2" name="End index">7</param>
                                         </condition>
                                     </conditions>
                                     <actions>
@@ -647,6 +681,7 @@
                                 </action>
                             </actions>
                         </event-block>
+                        <comment>Load sponsors</comment>
                         <event-block sid="659498517942592">
                             <conditions>
                                 <condition id="-10" name="For" sid="199610692430635" type="System">
@@ -662,7 +697,7 @@
                                         <condition id="-10" name="For" sid="555510551885553" type="System">
                                             <param id="0" name="Name">&quot;y&quot;</param>
                                             <param id="1" name="Start index">0</param>
-                                            <param id="2" name="End index">1</param>
+                                            <param id="2" name="End index">2</param>
                                         </condition>
                                     </conditions>
                                     <actions>

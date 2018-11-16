@@ -61,6 +61,9 @@
                         <hotspot>Top-left</hotspot>
                         <seams>Overlap</seams>
                     </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
                     <effect-instances>
                         <effect-instance type="Outline">
                             <parameters>
@@ -98,6 +101,9 @@
                         <hotspot>Top-left</hotspot>
                         <seams>Overlap</seams>
                     </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
                     <effect-instances>
                         <effect-instance type="Outline">
                             <parameters>
@@ -135,6 +141,9 @@
                         <hotspot>Top-left</hotspot>
                         <seams>Overlap</seams>
                     </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
                     <effect-instances>
                         <effect-instance type="Outline">
                             <parameters>
@@ -233,10 +242,10 @@
                         <hotspotY>0</hotspotY>
                     </world>
                 </instance>
-                <instance type="btnSave" uid="40">
+                <instance type="btnReset" uid="40">
                     <properties>
                         <type>Button</type>
-                        <text>SNIMI IZMENE</text>
+                        <text>RESET</text>
                         <tooltip></tooltip>
                         <initial-visibility>Visible</initial-visibility>
                         <enabled>Yes</enabled>
@@ -323,7 +332,7 @@
                 <instance type="btnExit" uid="47">
                     <properties>
                         <type>Button</type>
-                        <text>IZAĐI</text>
+                        <text>NAZAD</text>
                         <tooltip></tooltip>
                         <initial-visibility>Visible</initial-visibility>
                         <enabled>Yes</enabled>
@@ -576,7 +585,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>864</x>
-                        <y>208</y>
+                        <y>240</y>
                         <z>0</z>
                         <width>208</width>
                         <height>32</height>
@@ -601,13 +610,13 @@
                         <id-optional></id-optional>
                     </properties>
                     <instance-variables>
-                        <oldY>208</oldY>
+                        <oldY>240</oldY>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>1040</x>
-                        <y>208</y>
+                        <y>240</y>
                         <z>0</z>
                         <width>48</width>
                         <height>22</height>
@@ -643,6 +652,95 @@
                         <hotspotY>0</hotspotY>
                     </world>
                 </instance>
+                <instance type="Text" uid="93">
+                    <properties>
+                        <text>Trajanje sponzora:</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-19,400,0</font>
+                        <color>255,255,255</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Persist" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>864</x>
+                        <y>208</y>
+                        <z>0</z>
+                        <width>176</width>
+                        <height>32</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="inputStime" uid="94">
+                    <properties>
+                        <text>30</text>
+                        <placeholder></placeholder>
+                        <tooltip>Koliko dugo će ekran sa sponzorima da stoji na ekranu</tooltip>
+                        <initial-visibility>Visible</initial-visibility>
+                        <enabled>Yes</enabled>
+                        <read-only>No</read-only>
+                        <spell-check>No</spell-check>
+                        <type>Number</type>
+                        <auto-font-size>Yes</auto-font-size>
+                        <id-optional></id-optional>
+                    </properties>
+                    <instance-variables>
+                        <oldY>208</oldY>
+                    </instance-variables>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>1040</x>
+                        <y>208</y>
+                        <z>0</z>
+                        <width>48</width>
+                        <height>22</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                    </world>
+                </instance>
+                <instance type="txtVer" uid="97">
+                    <properties>
+                        <text>ver</text>
+                        <initial-visibility>Visible</initial-visibility>
+                        <font>Arial,-19,400,0</font>
+                        <color>255,255,255</color>
+                        <horizontal-alignment>Left</horizontal-alignment>
+                        <vertical-alignment>Top</vertical-alignment>
+                        <hotspot>Top-left</hotspot>
+                        <wrapping>Word</wrapping>
+                        <line-height>0</line-height>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Persist" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>16</x>
+                        <y>688</y>
+                        <z>0</z>
+                        <width>176</width>
+                        <height>32</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
@@ -651,7 +749,7 @@
         <instance type="SponsorArray" uid="90">
             <properties>
                 <width>6</width>
-                <height>2</height>
+                <height>3</height>
                 <depth>1</depth>
             </properties>
         </instance>

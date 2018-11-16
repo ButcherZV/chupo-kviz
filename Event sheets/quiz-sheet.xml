@@ -3,11 +3,13 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>quiz-sheet</name>
     <events>
+        <variable constant="0" name="aAmount" sid="132028479875871" static="0" type="number">0</variable>
         <variable constant="0" name="qType" sid="876643699798550" static="0" type="text">a</variable>
         <variable constant="0" name="buffer" sid="156833999366375" static="0" type="text"></variable>
         <variable constant="0" name="names" sid="550146981318490" static="0" type="text"></variable>
         <variable constant="0" name="exit" sid="233946520943657" static="0" type="number">0</variable>
         <variable constant="0" name="dice" sid="933434741498112" static="0" type="number">0</variable>
+        <variable constant="0" name="sponsorNo" sid="286863362173162" static="0" type="number">0</variable>
         <variable constant="0" name="correctAnswers" sid="1460359671049324" static="0" type="text"></variable>
         <variable constant="0" name="questionNumber" sid="5105758825732516" static="0" type="number">0</variable>
         <event-group description="" sid="977914254279670" title="Quiz - Initialization">
@@ -17,13 +19,17 @@
                         <condition id="-2" name="On start of layout" sid="6654444426212925" type="System" />
                     </conditions>
                     <actions>
-                        <action id="-9" name="Set value" sid="573311455834155" type="System">
-                            <param id="0" name="Variable">questionNumber</param>
-                            <param id="1" name="Value">0</param>
+                        <action id="-4" name="Set layer visible" sid="611421919954960" type="System">
+                            <param id="0" name="Layer">&quot;Quiz&quot;</param>
+                            <param id="1" name="Visibility">0</param>
                         </action>
-                        <action id="0" name="Call function" sid="956283469905293" type="Function">
-                            <param id="0" name="Name">&quot;GetQuestion&quot;</param>
-                            <param id="1" name="Parameter {n}"></param>
+                        <action id="-4" name="Set layer visible" sid="621502163295525" type="System">
+                            <param id="0" name="Layer">&quot;Points&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="140831104810917" type="System">
+                            <param id="0" name="Layer">&quot;Dice&quot;</param>
+                            <param id="1" name="Visibility">0</param>
                         </action>
                         <action behavior="Pin" id="0" name="Pin to object" sid="652362550587835" type="txtQuestion">
                             <param id="0" name="Pin to">lion</param>
@@ -33,12 +39,25 @@
                             <param id="0" name="Pin to">lion</param>
                             <param id="1" name="Mode">0</param>
                         </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="899231841112780" type="border">
+                            <param id="0" name="Pin to">picture</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action id="0" name="Call function" sid="833716714140838" type="Function">
+                            <param id="0" name="Name">&quot;getSponsor&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
                     </actions>
                     <sub-events>
                         <event-block sid="282692059133439">
                             <conditions>
                                 <condition id="3" name="For each element" sid="500691455994637" type="TeamArray">
                                     <param id="0" name="Axes">1</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="991617178181301" type="System">
+                                    <param id="0" name="Variable">questionNumber</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
                                 </condition>
                             </conditions>
                             <actions>
@@ -335,6 +354,7 @@
                                         <action id="-2" name="Go to layout" sid="896438336627729" type="System">
                                             <param id="0" name="Layout">Start</param>
                                         </action>
+                                        <action id="6" name="Destroy Time Manager instances" sid="626555082130758" type="TimeManager" />
                                         <action id="33" name="Stop all" sid="777806261790769" type="Audio" />
                                     </actions>
                                 </event-block>
@@ -401,24 +421,17 @@
                                                 <action id="-16" name="Wait" sid="290406818878259" type="System">
                                                     <param id="0" name="Seconds">pauseTime</param>
                                                 </action>
-                                                <action id="0" name="Call function" sid="516422799900834" type="Function">
-                                                    <param id="0" name="Name">&quot;NextQuestion&quot;</param>
-                                                    <param id="1" name="Parameter {n}"></param>
+                                                <action id="-4" name="Set layer visible" sid="554292797474943" type="System">
+                                                    <param id="0" name="Layer">&quot;Points&quot;</param>
+                                                    <param id="1" name="Visibility">0</param>
                                                 </action>
-                                                <action id="-16" name="Wait" sid="542526394966779" type="System">
-                                                    <param id="0" name="Seconds">0.1</param>
-                                                </action>
-                                                <action id="-4" name="Set layer visible" sid="464213571496759" type="System">
-                                                    <param id="0" name="Layer">&quot;Quiz&quot;</param>
-                                                    <param id="1" name="Visibility">1</param>
-                                                </action>
-                                                <action id="-4" name="Set layer visible" sid="191559909384474" type="System">
+                                                <action id="-4" name="Set layer visible" sid="839841201169698" type="System">
                                                     <param id="0" name="Layer">&quot;Dice&quot;</param>
                                                     <param id="1" name="Visibility">0</param>
                                                 </action>
-                                                <action id="-4" name="Set layer visible" sid="111654169794468" type="System">
-                                                    <param id="0" name="Layer">&quot;Points&quot;</param>
-                                                    <param id="1" name="Visibility">0</param>
+                                                <action id="0" name="Call function" sid="516422799900834" type="Function">
+                                                    <param id="0" name="Name">&quot;getSponsor&quot;</param>
+                                                    <param id="1" name="Parameter {n}"></param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -479,6 +492,9 @@
                                             <param id="0" name="Layer">&quot;Results&quot;</param>
                                             <param id="1" name="Visibility">1</param>
                                         </action>
+                                        <action id="2" name="Remove item" sid="539244855049428" type="LocalStorage">
+                                            <param id="0" name="Key">&quot;save&quot;</param>
+                                        </action>
                                     </actions>
                                     <sub-events>
                                         <event-block sid="870858448726778">
@@ -494,10 +510,7 @@
                                                     <param id="0" name="Axis">0</param>
                                                 </action>
                                                 <action id="1" name="Append text" sid="609981891594865" type="txtResTeam">
-                                                    <param id="0" name="Text">loopindex(&quot;i&quot;) &amp; &quot;: &quot; &amp; TeamArray.At(TeamArray.Width - loopindex(&quot;i&quot;),1) &amp; newline</param>
-                                                </action>
-                                                <action id="1" name="Append text" sid="168099794227614" type="txtResScore">
-                                                    <param id="0" name="Text">TeamArray.At(TeamArray.Width - loopindex(&quot;i&quot;),0) &amp; newline</param>
+                                                    <param id="0" name="Text">loopindex(&quot;i&quot;) &amp; &quot; -&quot; &amp; TeamArray.At(TeamArray.Width - loopindex(&quot;i&quot;),1) &amp; &quot;: &quot; &amp; TeamArray.At(TeamArray.Width - loopindex(&quot;i&quot;),0) &amp; &quot; poena&quot; &amp; newline</param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -526,35 +539,11 @@
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="628357599109978">
-                            <conditions>
-                                <condition id="3" name="On key released" sid="173654152366567" type="Keyboard">
-                                    <param id="0" name="Key">79</param>
-                                </condition>
-                                <condition id="-9" name="Layer is visible" sid="222098862119049" type="System">
-                                    <param id="0" name="Layer">&quot;Points&quot;</param>
-                                </condition>
-                            </conditions>
-                            <actions />
-                        </event-block>
                     </sub-events>
                 </event-group>
-                <variable constant="0" name="numbers" sid="206238538018741" static="0" type="text">JEDAN;DVA;TRI;ČETIRI;PET;ŠEST;</variable>
-                <event-block sid="348037474270348">
-                    <conditions>
-                        <condition id="0" name="On function" sid="365657250940077" type="Function">
-                            <param id="0" name="Name">&quot;n2t&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="1" name="Set return value" sid="761451170502981" type="Function">
-                            <param id="0" name="Value">tokenat(numbers,Function.Param(0),&quot;;&quot;)</param>
-                        </action>
-                    </actions>
-                </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="212019649238129" title="Questions">
+        <event-group description="" sid="212019649238129" title="Quiz - Functions">
             <sub-events>
                 <event-block sid="2666900784334918">
                     <conditions>
@@ -566,6 +555,33 @@
                         <action id="-9" name="Set value" sid="481459188057340" type="System">
                             <param id="0" name="Variable">qType</param>
                             <param id="1" name="Value">trim(QuestionArray.At(questionNumber,0))</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="202563876283231" type="System">
+                            <param id="0" name="Variable">aAmount</param>
+                            <param id="1" name="Value">trim(QuestionArray.At(questionNumber,1))</param>
+                        </action>
+                        <action id="0" name="Set text" sid="4672525841493582" type="txtQuestion">
+                            <param id="0" name="Text">replace(QuestionArray.At(questionNumber,2),newline,&quot;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="254013540736909" type="txtAnswer1">
+                            <param id="0" name="Text">replace(QuestionArray.At(questionNumber,3),newline,&quot;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="8259718249042361" type="txtAnswer2">
+                            <param id="0" name="Text">replace(QuestionArray.At(questionNumber,4),newline,&quot;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="8530089269907769" type="txtAnswer3">
+                            <param id="0" name="Text">replace(QuestionArray.At(questionNumber,5),newline,&quot;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="4121891394969071" type="txtAnswer4">
+                            <param id="0" name="Text">replace(QuestionArray.At(questionNumber,6),newline,&quot;&quot;)</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="1460789930136636" type="System">
+                            <param id="0" name="Variable">correctAnswers</param>
+                            <param id="1" name="Value">replace(QuestionArray.At(questionNumber,7),newline,&quot;&quot;) &amp; &quot;;&quot;</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="735511348249301" type="System">
+                            <param id="0" name="Layer">&quot;Quiz&quot;</param>
+                            <param id="1" name="Visibility">1</param>
                         </action>
                     </actions>
                     <sub-events>
@@ -582,27 +598,32 @@
                                 <event-block sid="176369482618954">
                                     <conditions />
                                     <actions>
-                                        <action id="0" name="Set text" sid="4672525841493582" type="txtQuestion">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,1)</param>
-                                        </action>
-                                        <action id="0" name="Set text" sid="254013540736909" type="txtAnswer1">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,2)</param>
-                                        </action>
-                                        <action id="0" name="Set text" sid="8259718249042361" type="txtAnswer2">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,3)</param>
-                                        </action>
-                                        <action id="0" name="Set text" sid="8530089269907769" type="txtAnswer3">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,4)</param>
-                                        </action>
-                                        <action id="0" name="Set text" sid="4121891394969071" type="txtAnswer4">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,5)</param>
-                                        </action>
-                                        <action id="-10" name="Add to" sid="1460789930136636" type="System">
-                                            <param id="0" name="Variable">correctAnswers</param>
-                                            <param id="1" name="Value">QuestionArray.At(questionNumber,6) &amp; &quot;;&quot;</param>
-                                        </action>
                                         <action behavior="Pin" id="1" name="Unpin" sid="426477699744006" type="bgAnswerL" />
                                         <action behavior="Pin" id="1" name="Unpin" sid="216657452606797" type="bgAnswerR" />
+                                        <action behavior="Pin" id="1" name="Unpin" sid="162214481515505" type="border" />
+                                        <action id="-3" name="Set position" sid="946324279140879" type="txtTime">
+                                            <param id="0" name="X">528</param>
+                                            <param id="1" name="Y">419</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="202360554463912" type="picture">
+                                            <param id="0" name="X">-600</param>
+                                            <param id="1" name="Y">-600</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="649481933679962" type="border">
+                                            <param id="0" name="X">picture.X</param>
+                                            <param id="1" name="Y">picture.Y</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="343393015090954">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="560624761667584" type="System">
+                                            <param id="0" name="Variable">aAmount</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">4</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
                                         <action id="-3" name="Set position" sid="140085602853627" type="txtAnswer1">
                                             <param id="0" name="X">-608</param>
                                             <param id="1" name="Y">389</param>
@@ -639,71 +660,277 @@
                                             <param id="1" name="Relativity">1</param>
                                             <param id="2" name="Value">-624</param>
                                         </action>
-                                        <action id="-3" name="Set position" sid="946324279140879" type="txtTime">
-                                            <param id="0" name="X">528</param>
-                                            <param id="1" name="Y">419</param>
-                                        </action>
-                                        <action id="-3" name="Set position" sid="202360554463912" type="picture">
-                                            <param id="0" name="X">-600</param>
-                                            <param id="1" name="Y">-600</param>
-                                        </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="102484878139210">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="984996685536825" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="789816489190785" type="bgAnswerL">
+                                                    <param id="0" name="X">-304</param>
+                                                    <param id="1" name="Y">448</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="566647787782602">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="568088980556414" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="219345798611543" type="bgAnswerL">
+                                                    <param id="0" name="X">-304</param>
+                                                    <param id="1" name="Y">624</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="371725046940574">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="221212886903019" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="950689534314901" type="bgAnswerR">
+                                                    <param id="0" name="X">1584</param>
+                                                    <param id="1" name="Y">448</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="725205579595302">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="491732899536430" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="485487198994171" type="bgAnswerR">
+                                                    <param id="0" name="X">1584</param>
+                                                    <param id="1" name="Y">624</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
-                                <event-block sid="102484878139210">
+                                <event-block sid="544052149974197">
                                     <conditions>
-                                        <condition id="-34" name="Pick by evaluate" sid="984996685536825" type="System">
-                                            <param id="0" name="Object">bgAnswerL</param>
-                                            <param id="1" name="Expression">bgAnswerL.id = 1</param>
+                                        <condition id="-22" name="Else" sid="426073594485092" type="System" />
+                                        <condition id="-14" name="Compare variable" sid="535033234440406" type="System">
+                                            <param id="0" name="Variable">aAmount</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">2</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-3" name="Set position" sid="789816489190785" type="bgAnswerL">
-                                            <param id="0" name="X">-304</param>
-                                            <param id="1" name="Y">448</param>
+                                        <action id="-3" name="Set position" sid="125674846917002" type="txtAnswer1">
+                                            <param id="0" name="X">-608</param>
+                                            <param id="1" name="Y">389</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="721553733154282" type="txtAnswer2">
+                                            <param id="0" name="X">1280</param>
+                                            <param id="1" name="Y">389</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="401389041652491" type="txtAnswer3">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="184201120546814" type="txtAnswer4">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="980456297946911" type="txtAnswer1">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="256735206724914" type="txtAnswer2">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">-624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="341526652098408" type="txtAnswer3">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="890972991937902" type="txtAnswer4">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">-624</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="330720782308655">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="113684273839560" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="382090157912840" type="bgAnswerL">
+                                                    <param id="0" name="X">-304</param>
+                                                    <param id="1" name="Y">448</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="972556043955529">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="668748017087033" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="142612591467708" type="bgAnswerL">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="169504423177385">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="538329089416893" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="653074055192599" type="bgAnswerR">
+                                                    <param id="0" name="X">1584</param>
+                                                    <param id="1" name="Y">448</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="850914616484824">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="305067708179081" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="201155049910056" type="bgAnswerR">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
-                                <event-block sid="566647787782602">
+                                <event-block sid="498776221852181">
                                     <conditions>
-                                        <condition id="-34" name="Pick by evaluate" sid="568088980556414" type="System">
-                                            <param id="0" name="Object">bgAnswerL</param>
-                                            <param id="1" name="Expression">bgAnswerL.id = 2</param>
+                                        <condition id="-22" name="Else" sid="772557603039734" type="System" />
+                                        <condition id="-14" name="Compare variable" sid="258312915056966" type="System">
+                                            <param id="0" name="Variable">aAmount</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-3" name="Set position" sid="219345798611543" type="bgAnswerL">
-                                            <param id="0" name="X">-304</param>
-                                            <param id="1" name="Y">624</param>
+                                        <action id="-3" name="Set position" sid="748281273074378" type="txtAnswer1">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="624632986027209" type="txtAnswer2">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="465612798023404" type="txtAnswer3">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="670925435885071" type="txtAnswer4">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="617186709670698" type="txtAnswer1">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="597477798980242" type="txtAnswer2">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">-624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="666021449982341" type="txtAnswer3">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="253130354348459" type="txtAnswer4">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">-624</param>
                                         </action>
                                     </actions>
-                                </event-block>
-                                <event-block sid="371725046940574">
-                                    <conditions>
-                                        <condition id="-34" name="Pick by evaluate" sid="221212886903019" type="System">
-                                            <param id="0" name="Object">bgAnswerR</param>
-                                            <param id="1" name="Expression">bgAnswerR.id = 1</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Set position" sid="950689534314901" type="bgAnswerR">
-                                            <param id="0" name="X">1584</param>
-                                            <param id="1" name="Y">448</param>
-                                        </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="725205579595302">
-                                    <conditions>
-                                        <condition id="-34" name="Pick by evaluate" sid="491732899536430" type="System">
-                                            <param id="0" name="Object">bgAnswerR</param>
-                                            <param id="1" name="Expression">bgAnswerR.id = 2</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Set position" sid="485487198994171" type="bgAnswerR">
-                                            <param id="0" name="X">1584</param>
-                                            <param id="1" name="Y">624</param>
-                                        </action>
-                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="405397101908048">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="281522420671457" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="962793735939138" type="bgAnswerL">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="392021039186540">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="753266171729414" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="729911527061160" type="bgAnswerL">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="909575779609411">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="408420349574954" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="543482690443064" type="bgAnswerR">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="792611645359792">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="448860099940867" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="539608364630634" type="bgAnswerR">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="149910043688000">
                                     <conditions />
@@ -761,67 +988,9 @@
                                 <event-block sid="555391898826498">
                                     <conditions />
                                     <actions>
-                                        <action id="0" name="Set text" sid="107086734190847" type="txtQuestion">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,1)</param>
-                                        </action>
-                                        <action id="0" name="Set text" sid="593128204547850" type="txtAnswer1">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,2)</param>
-                                        </action>
-                                        <action id="0" name="Set text" sid="813230019442444" type="txtAnswer2">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,3)</param>
-                                        </action>
-                                        <action id="0" name="Set text" sid="625650057148150" type="txtAnswer3">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,4)</param>
-                                        </action>
-                                        <action id="0" name="Set text" sid="149900093004377" type="txtAnswer4">
-                                            <param id="0" name="Text">QuestionArray.At(questionNumber,5)</param>
-                                        </action>
-                                        <action id="-10" name="Add to" sid="615003219767728" type="System">
-                                            <param id="0" name="Variable">correctAnswers</param>
-                                            <param id="1" name="Value">QuestionArray.At(questionNumber,6) &amp; &quot;;&quot;</param>
-                                        </action>
                                         <action behavior="Pin" id="1" name="Unpin" sid="485815346780035" type="bgAnswerL" />
                                         <action behavior="Pin" id="1" name="Unpin" sid="637765406773969" type="bgAnswerR" />
-                                        <action id="-3" name="Set position" sid="352250558055240" type="txtAnswer1">
-                                            <param id="0" name="X">-608</param>
-                                            <param id="1" name="Y">312</param>
-                                        </action>
-                                        <action id="-3" name="Set position" sid="861567884148491" type="txtAnswer2">
-                                            <param id="0" name="X">-608</param>
-                                            <param id="1" name="Y">406</param>
-                                        </action>
-                                        <action id="-3" name="Set position" sid="533773164619288" type="txtAnswer3">
-                                            <param id="0" name="X">-608</param>
-                                            <param id="1" name="Y">504</param>
-                                        </action>
-                                        <action id="-3" name="Set position" sid="586610651512322" type="txtAnswer4">
-                                            <param id="0" name="X">-608</param>
-                                            <param id="1" name="Y">600</param>
-                                        </action>
-                                        <action behavior="LiteTween" id="3" name="Set target" sid="141236133461464" type="txtAnswer1">
-                                            <param id="0" name="Target is">0</param>
-                                            <param id="1" name="Relativity">1</param>
-                                            <param id="2" name="Value">624</param>
-                                        </action>
-                                        <action behavior="LiteTween" id="3" name="Set target" sid="251698941772921" type="txtAnswer2">
-                                            <param id="0" name="Target is">0</param>
-                                            <param id="1" name="Relativity">1</param>
-                                            <param id="2" name="Value">624</param>
-                                        </action>
-                                        <action behavior="LiteTween" id="3" name="Set target" sid="843287481952077" type="txtAnswer3">
-                                            <param id="0" name="Target is">0</param>
-                                            <param id="1" name="Relativity">1</param>
-                                            <param id="2" name="Value">624</param>
-                                        </action>
-                                        <action behavior="LiteTween" id="3" name="Set target" sid="431643816770156" type="txtAnswer4">
-                                            <param id="0" name="Target is">0</param>
-                                            <param id="1" name="Relativity">1</param>
-                                            <param id="2" name="Value">624</param>
-                                        </action>
-                                        <action id="-3" name="Set position" sid="658909213850657" type="txtTime">
-                                            <param id="0" name="X">848</param>
-                                            <param id="1" name="Y">176</param>
-                                        </action>
+                                        <action behavior="Pin" id="1" name="Unpin" sid="827925355872618" type="border" />
                                         <action id="-3" name="Set position" sid="572187860780093" type="picture">
                                             <param id="0" name="X">1600</param>
                                             <param id="1" name="Y">512</param>
@@ -831,63 +1000,355 @@
                                             <param id="1" name="Size">1</param>
                                             <param id="2" name="Cross-origin">0</param>
                                         </action>
-                                    </actions>
-                                </event-block>
-                                <event-block sid="600092146708209">
-                                    <conditions>
-                                        <condition id="-34" name="Pick by evaluate" sid="552587527691199" type="System">
-                                            <param id="0" name="Object">bgAnswerL</param>
-                                            <param id="1" name="Expression">bgAnswerL.id = 1</param>
-                                        </condition>
-                                    </conditions>
-                                    <actions>
-                                        <action id="-3" name="Set position" sid="557310723520828" type="bgAnswerL">
-                                            <param id="0" name="X">-304</param>
-                                            <param id="1" name="Y">368</param>
+                                        <action id="-3" name="Set position" sid="436442552027942" type="border">
+                                            <param id="0" name="X">picture.X</param>
+                                            <param id="1" name="Y">picture.Y</param>
                                         </action>
                                     </actions>
                                 </event-block>
-                                <event-block sid="708421765676762">
+                                <event-block sid="373726825357913">
                                     <conditions>
-                                        <condition id="-34" name="Pick by evaluate" sid="480502666656604" type="System">
-                                            <param id="0" name="Object">bgAnswerL</param>
-                                            <param id="1" name="Expression">bgAnswerL.id = 2</param>
+                                        <condition id="-14" name="Compare variable" sid="222814355845781" type="System">
+                                            <param id="0" name="Variable">aAmount</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">4</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-3" name="Set position" sid="341848442797553" type="bgAnswerL">
-                                            <param id="0" name="X">-304</param>
-                                            <param id="1" name="Y">560</param>
+                                        <action id="-3" name="Set position" sid="658909213850657" type="txtTime">
+                                            <param id="0" name="X">848</param>
+                                            <param id="1" name="Y">176</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="876686333732409" type="txtAnswer1">
+                                            <param id="0" name="X">-608</param>
+                                            <param id="1" name="Y">312</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="684052054888754" type="txtAnswer2">
+                                            <param id="0" name="X">-608</param>
+                                            <param id="1" name="Y">406</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="891062109084437" type="txtAnswer3">
+                                            <param id="0" name="X">-608</param>
+                                            <param id="1" name="Y">504</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="931422228977130" type="txtAnswer4">
+                                            <param id="0" name="X">-608</param>
+                                            <param id="1" name="Y">600</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="371303790260509" type="txtAnswer1">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="229860633107375" type="txtAnswer2">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="996449464363949" type="txtAnswer3">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="759706327332358" type="txtAnswer4">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="882127166452360" type="picture">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">-640</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="696039365017177">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="356681702244706" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="465161781504965" type="bgAnswerL">
+                                                    <param id="0" name="X">-304</param>
+                                                    <param id="1" name="Y">368</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="717482055308968">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="952366396359563" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="379873452544016" type="bgAnswerL">
+                                                    <param id="0" name="X">-304</param>
+                                                    <param id="1" name="Y">560</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="122009403751432">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="981525788912114" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="117380178714241" type="bgAnswerR">
+                                                    <param id="0" name="X">-304</param>
+                                                    <param id="1" name="Y">464</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="500748535685416">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="840364785591815" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="763156623023008" type="bgAnswerR">
+                                                    <param id="0" name="X">-304</param>
+                                                    <param id="1" name="Y">656</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
-                                <event-block sid="466439302367921">
+                                <event-block sid="575911675464274">
                                     <conditions>
-                                        <condition id="-34" name="Pick by evaluate" sid="333744343700880" type="System">
-                                            <param id="0" name="Object">bgAnswerR</param>
-                                            <param id="1" name="Expression">bgAnswerR.id = 1</param>
+                                        <condition id="-22" name="Else" sid="394370041073468" type="System" />
+                                        <condition id="-14" name="Compare variable" sid="879733944176111" type="System">
+                                            <param id="0" name="Variable">aAmount</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">2</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-3" name="Set position" sid="487590330944050" type="bgAnswerR">
-                                            <param id="0" name="X">-304</param>
-                                            <param id="1" name="Y">464</param>
+                                        <action id="-3" name="Set position" sid="550742724845439" type="txtTime">
+                                            <param id="0" name="X">216</param>
+                                            <param id="1" name="Y">480</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="622103122335216" type="txtAnswer1">
+                                            <param id="0" name="X">-608</param>
+                                            <param id="1" name="Y">312</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="806219983939526" type="txtAnswer2">
+                                            <param id="0" name="X">-608</param>
+                                            <param id="1" name="Y">406</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="206474688665062" type="txtAnswer3">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="195618930432021" type="txtAnswer4">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="384154317206361" type="txtAnswer1">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="465653453370687" type="txtAnswer2">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="582949525163663" type="txtAnswer3">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="399703515052691" type="txtAnswer4">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="373971859390773" type="picture">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">-640</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="479986833070001">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="631218082758240" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="946136594556700" type="bgAnswerL">
+                                                    <param id="0" name="X">-304</param>
+                                                    <param id="1" name="Y">368</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="184357167720565">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="250012867884396" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="973860501905686" type="bgAnswerL">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="635526544994428">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="684227383320079" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="255866669332066" type="bgAnswerR">
+                                                    <param id="0" name="X">-304</param>
+                                                    <param id="1" name="Y">464</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="601046455361417">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="617543647196443" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="450089605746788" type="bgAnswerR">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
-                                <event-block sid="270939446562190">
+                                <event-block sid="883553946937364">
                                     <conditions>
-                                        <condition id="-34" name="Pick by evaluate" sid="551251342176444" type="System">
-                                            <param id="0" name="Object">bgAnswerR</param>
-                                            <param id="1" name="Expression">bgAnswerR.id = 2</param>
+                                        <condition id="-22" name="Else" sid="500269600923416" type="System" />
+                                        <condition id="-14" name="Compare variable" sid="290830765001723" type="System">
+                                            <param id="0" name="Variable">aAmount</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action id="-3" name="Set position" sid="578242033641334" type="bgAnswerR">
-                                            <param id="0" name="X">-304</param>
-                                            <param id="1" name="Y">656</param>
+                                        <action id="-3" name="Set position" sid="568789985484045" type="txtTime">
+                                            <param id="0" name="X">912</param>
+                                            <param id="1" name="Y">400</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="946911184226385" type="txtAnswer1">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="906445024092143" type="txtAnswer2">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="162721523212102" type="txtAnswer3">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action id="-3" name="Set position" sid="487204324180084" type="txtAnswer4">
+                                            <param id="0" name="X">-1608</param>
+                                            <param id="1" name="Y">1566</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="623467112605881" type="txtAnswer1">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="442876912554335" type="txtAnswer2">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="628663891881162" type="txtAnswer3">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="156341523829758" type="txtAnswer4">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">624</param>
+                                        </action>
+                                        <action behavior="LiteTween" id="3" name="Set target" sid="562016613349152" type="picture">
+                                            <param id="0" name="Target is">0</param>
+                                            <param id="1" name="Relativity">1</param>
+                                            <param id="2" name="Value">-960</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="896404052919260">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="640238808419000" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="326393275232633" type="bgAnswerL">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="685015782337202">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="149093162731435" type="System">
+                                                    <param id="0" name="Object">bgAnswerL</param>
+                                                    <param id="1" name="Expression">bgAnswerL.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="920780008983693" type="bgAnswerL">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="975542462075714">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="401789536422653" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="386400706055546" type="bgAnswerR">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="409489256946526">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="997881963810525" type="System">
+                                                    <param id="0" name="Object">bgAnswerR</param>
+                                                    <param id="1" name="Expression">bgAnswerR.id = 2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="103082199539012" type="bgAnswerR">
+                                                    <param id="0" name="X">-1608</param>
+                                                    <param id="1" name="Y">1566</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="437751020910883">
                                     <conditions />
@@ -898,6 +1359,10 @@
                                         </action>
                                         <action behavior="Pin" id="0" name="Pin to object" sid="865959559947088" type="bgAnswerR">
                                             <param id="0" name="Pin to">txtAnswer2</param>
+                                            <param id="1" name="Mode">0</param>
+                                        </action>
+                                        <action behavior="Pin" id="0" name="Pin to object" sid="599709383754406" type="border">
+                                            <param id="0" name="Pin to">picture</param>
                                             <param id="1" name="Mode">0</param>
                                         </action>
                                         <action behavior="LiteTween" id="10" name="Start" sid="408893247346431" type="lion">
@@ -961,6 +1426,52 @@
                         </action>
                     </actions>
                 </event-block>
+                <comment>Return text version of number</comment>
+                <variable constant="0" name="numbers" sid="840157615702686" static="0" type="text">JEDAN;DVA;TRI;ČETIRI;PET;ŠEST;</variable>
+                <event-block sid="880284090244489">
+                    <conditions>
+                        <condition id="0" name="On function" sid="834934748948982" type="Function">
+                            <param id="0" name="Name">&quot;n2t&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="1" name="Set return value" sid="264360432344981" type="Function">
+                            <param id="0" name="Value">tokenat(numbers,Function.Param(0),&quot;;&quot;)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="677844392795046">
+                    <conditions>
+                        <condition id="0" name="On function" sid="374784209503099" type="Function">
+                            <param id="0" name="Name">&quot;getSponsor&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-4" name="Set layer visible" sid="717580722686468" type="System">
+                            <param id="0" name="Layer">&quot;Sponsor&quot;</param>
+                            <param id="1" name="Visibility">1</param>
+                        </action>
+                        <action id="0" name="Set text" sid="622012539239704" type="txtSponsorName">
+                            <param id="0" name="Text">&quot;Sponzor oblasti - &quot; &amp; replace(SponsorArray.At(sponsorNo,0),newline,&quot;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="182788007490617" type="txtSponsorTopic">
+                            <param id="0" name="Text">&quot;Tema oblasti: &quot; &amp; replace(SponsorArray.At(sponsorNo,1),newline,&quot;&quot;)</param>
+                        </action>
+                        <action id="0" name="Set text" sid="707742491804492" type="txtSponsorInfo">
+                            <param id="0" name="Text">replace(SponsorArray.At(sponsorNo,2),newline,&quot;&quot;)</param>
+                        </action>
+                        <action id="10" name="Load image from URL" sid="911901556442818" type="sponsorImg">
+                            <param id="0" name="URI">qPath &amp; &quot;/sponzori/&quot; &amp; (sponsorNo + 1) &amp; &quot;.jpg&quot;</param>
+                            <param id="1" name="Size">0</param>
+                            <param id="2" name="Cross-origin">0</param>
+                        </action>
+                        <action id="0" name="Time countdown" sid="780228296109950" type="TimeManager">
+                            <param id="0" name="Countdown time">(sponsorTime * 1000) + 900</param>
+                            <param id="1" name="Label">&quot;SPONSOR&quot;</param>
+                            <param id="2" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="841547553175255" title="Gameplay">
@@ -984,28 +1495,194 @@
                         </condition>
                         <condition id="-4" name="Trigger once while true" sid="547901393392521" type="System" />
                     </conditions>
-                    <actions>
-                        <action id="0" name="Set text" sid="351276642514362" type="txtQuestion">
-                            <param id="0" name="Text">&quot;Sledeće pitanje za &quot; &amp; pauseTime &amp; &quot; sekundi&quot;</param>
-                        </action>
-                        <action id="7" name="Stop time counter" sid="407983190313212" type="TimeManager">
-                            <param id="0" name="Label">&quot;TIMER&quot;</param>
-                        </action>
-                        <action id="0" name="Time countdown" sid="117640364776068" type="TimeManager">
-                            <param id="0" name="Countdown time">(pauseTime * 1000) + 900</param>
-                            <param id="1" name="Label">&quot;NEXT&quot;</param>
-                            <param id="2" name="State">0</param>
-                        </action>
-                        <action id="6" name="Stop" sid="823237742632965" type="Audio">
-                            <param id="0" name="Tag">&quot;sfx&quot;</param>
-                        </action>
-                        <action id="0" name="Play" sid="739153136337464" type="Audio">
-                            <param id="0" name="Audio file">end</param>
-                            <param id="2" name="Loop">0</param>
-                            <param id="3" name="Volume">DBlevel</param>
-                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block any="1" sid="278108923137184">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="357691063068968" type="System">
+                                    <param id="0" name="First value">questionNumber</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">9</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="933375636614136" type="System">
+                                    <param id="0" name="First value">questionNumber</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">19</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="443480964286795" type="System">
+                                    <param id="0" name="First value">questionNumber</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">29</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="673333251774679" type="System">
+                                    <param id="0" name="First value">questionNumber</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">39</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="421805330320290" type="System">
+                                    <param id="0" name="First value">questionNumber</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">49</param>
+                                </condition>
+                                <condition id="-8" name="Compare two values" sid="607848372951285" type="System">
+                                    <param id="0" name="First value">questionNumber</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">59</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="315142790319011">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="752512739432593" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="351276642514362" type="txtQuestion">
+                                            <param id="0" name="Text">&quot;KRAJ OBLASTI!&quot; &amp; newline &amp; &quot;Rezultati će biti prikazani za &quot; &amp; pauseTime &amp; &quot; sekundi&quot;</param>
+                                        </action>
+                                        <action id="7" name="Stop time counter" sid="407983190313212" type="TimeManager">
+                                            <param id="0" name="Label">&quot;TIMER&quot;</param>
+                                        </action>
+                                        <action id="0" name="Time countdown" sid="117640364776068" type="TimeManager">
+                                            <param id="0" name="Countdown time">(pauseTime * 1000) + 900</param>
+                                            <param id="1" name="Label">&quot;NEXT&quot;</param>
+                                            <param id="2" name="State">0</param>
+                                        </action>
+                                        <action id="6" name="Stop" sid="823237742632965" type="Audio">
+                                            <param id="0" name="Tag">&quot;sfx&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="739153136337464" type="Audio">
+                                            <param id="0" name="Audio file">end</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">DBlevel</param>
+                                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="570538190314464">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="502577905993325" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="318761701717905" type="txtQuestion">
+                                            <param id="0" name="Text">&quot;Sledeće pitanje za &quot; &amp; pauseTime &amp; &quot; sekundi&quot;</param>
+                                        </action>
+                                        <action id="7" name="Stop time counter" sid="228219134664648" type="TimeManager">
+                                            <param id="0" name="Label">&quot;TIMER&quot;</param>
+                                        </action>
+                                        <action id="0" name="Time countdown" sid="798547549854572" type="TimeManager">
+                                            <param id="0" name="Countdown time">(pauseTime * 1000) + 900</param>
+                                            <param id="1" name="Label">&quot;NEXT&quot;</param>
+                                            <param id="2" name="State">0</param>
+                                        </action>
+                                        <action id="6" name="Stop" sid="569012182955261" type="Audio">
+                                            <param id="0" name="Tag">&quot;sfx&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="994806276598414" type="Audio">
+                                            <param id="0" name="Audio file">end</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">DBlevel</param>
+                                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="316362040455786">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="297117082978235" type="System" />
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block any="1" sid="460494134725162">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="873131877004119" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">10</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="377156642217254" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">20</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="362412009148955" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">30</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="865590587693369" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">40</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="568394090236548" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">50</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set item" sid="360660787420352" type="LocalStorage">
+                                            <param id="0" name="Key">&quot;save&quot;</param>
+                                            <param id="1" name="Value">questionNumber &amp; &quot;|&quot; &amp; sponsorNo &amp; &quot;|&quot; &amp; TeamArray.AsJSON</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="392506258884738" type="txtQuestion">
+                                            <param id="0" name="Text">&quot;Sledeće pitanje za &quot; &amp; pauseTime &amp; &quot; sekundi&quot;</param>
+                                        </action>
+                                        <action id="7" name="Stop time counter" sid="680627191472703" type="TimeManager">
+                                            <param id="0" name="Label">&quot;TIMER&quot;</param>
+                                        </action>
+                                        <action id="0" name="Time countdown" sid="795381644246946" type="TimeManager">
+                                            <param id="0" name="Countdown time">(pauseTime * 1000) + 900</param>
+                                            <param id="1" name="Label">&quot;NEXT&quot;</param>
+                                            <param id="2" name="State">0</param>
+                                        </action>
+                                        <action id="6" name="Stop" sid="277417819848619" type="Audio">
+                                            <param id="0" name="Tag">&quot;sfx&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="447812843323507" type="Audio">
+                                            <param id="0" name="Audio file">end</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">DBlevel</param>
+                                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="873107244050477">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="779892124174797" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="315655355154079" type="txtQuestion">
+                                            <param id="0" name="Text">&quot;Sledeće pitanje za &quot; &amp; pauseTime &amp; &quot; sekundi&quot;</param>
+                                        </action>
+                                        <action id="7" name="Stop time counter" sid="163871649654794" type="TimeManager">
+                                            <param id="0" name="Label">&quot;TIMER&quot;</param>
+                                        </action>
+                                        <action id="0" name="Time countdown" sid="514118161777474" type="TimeManager">
+                                            <param id="0" name="Countdown time">(pauseTime * 1000) + 900</param>
+                                            <param id="1" name="Label">&quot;NEXT&quot;</param>
+                                            <param id="2" name="State">0</param>
+                                        </action>
+                                        <action id="6" name="Stop" sid="608018701315071" type="Audio">
+                                            <param id="0" name="Tag">&quot;sfx&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="396239099684496" type="Audio">
+                                            <param id="0" name="Audio file">end</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">DBlevel</param>
+                                            <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-block sid="311742943615172">
                     <conditions>
@@ -1045,12 +1722,37 @@
                             </conditions>
                             <actions />
                             <sub-events>
-                                <event-block sid="328166056655132">
+                                <event-block any="1" sid="328166056655132">
                                     <conditions>
-                                        <condition id="-8" name="Compare two values" sid="521976054968884" type="System">
-                                            <param id="0" name="First value">(questionNumber + 1) % 10</param>
+                                        <condition id="-8" name="Compare two values" sid="162572140928042" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
                                             <param id="1" name="Comparison">0</param>
-                                            <param id="2" name="Second value">0</param>
+                                            <param id="2" name="Second value">9</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="294451434811798" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">19</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="969315139729222" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">29</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="917164648167712" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">39</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="748001118250969" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">49</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="750339609809953" type="System">
+                                            <param id="0" name="First value">questionNumber</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Second value">59</param>
                                         </condition>
                                     </conditions>
                                     <actions>
@@ -1059,6 +1761,10 @@
                                         </action>
                                         <action id="-15" name="Set visible" sid="973250350383393" type="txtCorrectAnswers">
                                             <param id="0" name="Visibility">0</param>
+                                        </action>
+                                        <action id="-10" name="Add to" sid="273185948526602" type="System">
+                                            <param id="0" name="Variable">sponsorNo</param>
+                                            <param id="1" name="Value">1</param>
                                         </action>
                                         <action id="-4" name="Set layer visible" sid="156758713534429" type="System">
                                             <param id="0" name="Layer">&quot;Quiz&quot;</param>
@@ -1091,7 +1797,7 @@
                                             </conditions>
                                             <actions>
                                                 <action id="0" name="Set text" sid="523820656020554" type="txtCorrectAnswers">
-                                                    <param id="0" name="Text">&quot;1 - &quot; &amp;replace(tokenat(correctAnswers,0,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;4 - &quot; &amp; replace(tokenat(correctAnswers,3,&quot;;&quot;),newline,&quot;&quot;)</param>
+                                                    <param id="0" name="Text">&quot;1 - &quot; &amp; replace(tokenat(correctAnswers,0,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;2 - &quot; &amp; replace(tokenat(correctAnswers,1,&quot;;&quot;),newline,&quot;&quot;)</param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -1104,7 +1810,7 @@
                                             </conditions>
                                             <actions>
                                                 <action id="0" name="Set text" sid="599530209248962" type="txtCorrectAnswers">
-                                                    <param id="0" name="Text">&quot;2 - &quot; &amp; replace(tokenat(correctAnswers,1,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;5 - &quot; &amp; replace(tokenat(correctAnswers,4,&quot;;&quot;),newline,&quot;&quot;)</param>
+                                                    <param id="0" name="Text">&quot;3 - &quot; &amp; replace(tokenat(correctAnswers,2,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;4 - &quot; &amp; replace(tokenat(correctAnswers,3,&quot;;&quot;),newline,&quot;&quot;)</param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -1117,7 +1823,33 @@
                                             </conditions>
                                             <actions>
                                                 <action id="0" name="Set text" sid="701365172177442" type="txtCorrectAnswers">
-                                                    <param id="0" name="Text">&quot;3 - &quot; &amp; replace(tokenat(correctAnswers,2,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;6 - &quot; &amp; replace(tokenat(correctAnswers,5,&quot;;&quot;),newline,&quot;&quot;)</param>
+                                                    <param id="0" name="Text">&quot;5 - &quot; &amp; replace(tokenat(correctAnswers,4,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;6 - &quot; &amp; replace(tokenat(correctAnswers,5,&quot;;&quot;),newline,&quot;&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="492860216500490">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="719182517003300" type="System">
+                                                    <param id="0" name="Object">txtCorrectAnswers</param>
+                                                    <param id="1" name="Expression">txtCorrectAnswers.id = 3</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Set text" sid="213334410631813" type="txtCorrectAnswers">
+                                                    <param id="0" name="Text">&quot;7 - &quot; &amp; replace(tokenat(correctAnswers,6,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;8 - &quot; &amp; replace(tokenat(correctAnswers,7,&quot;;&quot;),newline,&quot;&quot;)</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="997584733967032">
+                                            <conditions>
+                                                <condition id="-34" name="Pick by evaluate" sid="740266473434114" type="System">
+                                                    <param id="0" name="Object">txtCorrectAnswers</param>
+                                                    <param id="1" name="Expression">txtCorrectAnswers.id = 4</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Set text" sid="286113197311018" type="txtCorrectAnswers">
+                                                    <param id="0" name="Text">&quot;9 - &quot; &amp; replace(tokenat(correctAnswers,8,&quot;;&quot;),newline,&quot;&quot;) &amp; newline &amp; &quot;10 - &quot; &amp; replace(tokenat(correctAnswers,9,&quot;;&quot;),newline,&quot;&quot;)</param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -1147,6 +1879,72 @@
                                     </actions>
                                 </event-block>
                             </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="986807549661504">
+                    <conditions>
+                        <condition id="4" name="Is counter running?" sid="876988999060569" type="TimeManager">
+                            <param id="0" name="Label">&quot;SPONSOR&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="539059210162575" type="txtSponsorTime">
+                            <param id="0" name="Text">&quot;Kviz počinje za &quot; &amp; TimeManager.Seconds(&quot;SPONSOR&quot;) &amp; &quot; sekundi&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="602832259304905">
+                    <conditions>
+                        <condition id="1" name="Is counter finished?" sid="575372105058272" type="TimeManager">
+                            <param id="0" name="Label">&quot;SPONSOR&quot;</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="379976011529845" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Stop time counter" sid="637155540833603" type="TimeManager">
+                            <param id="0" name="Label">&quot;SPONSOR&quot;</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="295778033291051" type="System">
+                            <param id="0" name="Layer">&quot;Sponsor&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block any="1" sid="695496418589239">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="122945141837617" type="System">
+                                    <param id="0" name="Variable">questionNumber</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                                <condition id="-7" name="Compare instance variable" sid="498417225970068" type="btnStart">
+                                    <param id="0" name="Instance variable">haveSave</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="162320434938188" type="Function">
+                                    <param id="0" name="Name">&quot;GetQuestion&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="302408297571407">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="162497819983768" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="205495819114064" type="Function">
+                                    <param id="0" name="Name">&quot;NextQuestion&quot;</param>
+                                    <param id="1" name="Parameter {n}"></param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="672071774624509">
+                            <conditions />
+                            <actions />
                         </event-block>
                     </sub-events>
                 </event-block>

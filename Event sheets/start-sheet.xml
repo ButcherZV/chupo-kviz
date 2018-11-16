@@ -15,81 +15,157 @@
                         <action disabled="1" id="10" name="Request fullscreen" sid="793743795465632" type="Browser">
                             <param id="0" name="Mode">3</param>
                         </action>
-                        <action disabled="1" id="3" name="Clear storage" sid="973552874757104" type="LocalStorage" />
-                        <action id="-10" name="Set value" sid="792617937042130" type="MenuBtn">
-                            <param id="0" name="Instance variable">onScreen</param>
-                            <param id="1" name="Value">1</param>
+                        <action id="3" name="Clear storage" sid="973552874757104" type="LocalStorage" />
+                        <action disabled="1" id="5" name="Check item exists" sid="787104442042782" type="LocalStorage">
+                            <param id="0" name="Key">&quot;settings&quot;</param>
+                        </action>
+                        <action disabled="1" id="5" name="Check item exists" sid="311162235681333" type="LocalStorage">
+                            <param id="0" name="Key">&quot;save&quot;</param>
                         </action>
                         <action id="-16" name="Wait" sid="487017645260847" type="System">
                             <param id="0" name="Seconds">0.25</param>
                         </action>
-                        <action id="5" name="Check item exists" sid="787104442042782" type="LocalStorage">
-                            <param id="0" name="Key">&quot;settings&quot;</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="748151581516567">
-                    <conditions>
-                        <condition id="9" name="On item exists" sid="592008110744185" type="LocalStorage">
-                            <param id="0" name="Key">&quot;settings&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="1" name="Get item" sid="619806821813763" type="LocalStorage">
-                            <param id="0" name="Key">&quot;settings&quot;</param>
-                        </action>
-                    </actions>
-                </event-block>
-                <event-block sid="465451921208497">
-                    <conditions>
-                        <condition id="10" name="On item missing" sid="565414068843387" type="LocalStorage">
-                            <param id="0" name="Key">&quot;settings&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Set value" sid="285736880209012" type="System">
-                            <param id="0" name="Variable">questionTime</param>
-                            <param id="1" name="Value">30</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="390601775186215" type="System">
-                            <param id="0" name="Variable">pauseTime</param>
-                            <param id="1" name="Value">10</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="799292664672701" type="System">
-                            <param id="0" name="Variable">checkIntegrity</param>
+                        <action id="-10" name="Set value" sid="792617937042130" type="MenuBtn">
+                            <param id="0" name="Instance variable">onScreen</param>
                             <param id="1" name="Value">1</param>
                         </action>
-                        <action id="-9" name="Set value" sid="337769477500832" type="System">
-                            <param id="0" name="Variable">timeout</param>
-                            <param id="1" name="Value">10</param>
-                        </action>
                     </actions>
                 </event-block>
-                <event-block sid="969887869995117">
-                    <conditions>
-                        <condition id="1" name="On item get" sid="678618211847245" type="LocalStorage">
-                            <param id="0" name="Key">&quot;settings&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-9" name="Set value" sid="606006081985087" type="System">
-                            <param id="0" name="Variable">questionTime</param>
-                            <param id="1" name="Value">tokenat(LocalStorage.ItemValue,0,&quot;;&quot;)</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="669915392031510" type="System">
-                            <param id="0" name="Variable">pauseTime</param>
-                            <param id="1" name="Value">tokenat(LocalStorage.ItemValue,1,&quot;;&quot;)</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="693429246898994" type="System">
-                            <param id="0" name="Variable">checkIntegrity</param>
-                            <param id="1" name="Value">tokenat(LocalStorage.ItemValue,2,&quot;;&quot;)</param>
-                        </action>
-                        <action id="-9" name="Set value" sid="864561178788823" type="System">
-                            <param id="0" name="Variable">timeout</param>
-                            <param id="1" name="Value">tokenat(LocalStorage.ItemValue,3,&quot;;&quot;)</param>
-                        </action>
-                    </actions>
-                </event-block>
+                <event-group description="" sid="362054474742271" title="Get save">
+                    <sub-events>
+                        <event-block sid="533606027644475">
+                            <conditions>
+                                <condition id="9" name="On item exists" sid="950745092076915" type="LocalStorage">
+                                    <param id="0" name="Key">&quot;save&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Get item" sid="504700339658032" type="LocalStorage">
+                                    <param id="0" name="Key">&quot;save&quot;</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="221269842785065" type="btnStart">
+                                    <param id="0" name="Instance variable">haveSave</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="497110865193624">
+                            <conditions>
+                                <condition id="10" name="On item missing" sid="892163905184631" type="LocalStorage">
+                                    <param id="0" name="Key">&quot;save&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="435877825908709" type="System">
+                                    <param id="0" name="Variable">questionNumber</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="590032139624332" type="System">
+                                    <param id="0" name="Variable">sponsorNo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="147346764521266" type="btnStart">
+                                    <param id="0" name="Instance variable">haveSave</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="188544062428426">
+                            <conditions>
+                                <condition id="1" name="On item get" sid="972910495598422" type="LocalStorage">
+                                    <param id="0" name="Key">&quot;save&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="345294961567775" type="System">
+                                    <param id="0" name="Variable">questionNumber</param>
+                                    <param id="1" name="Value">tokenat(LocalStorage.ItemValue,0,&quot;|&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="200020970323341" type="System">
+                                    <param id="0" name="Variable">sponsorNo</param>
+                                    <param id="1" name="Value">tokenat(LocalStorage.ItemValue,1,&quot;|&quot;)</param>
+                                </action>
+                                <action id="11" name="Load" sid="160601648262781" type="TeamArray">
+                                    <param id="0" name="JSON">tokenat(LocalStorage.ItemValue,2,&quot;|&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="846133373216878" title="Get settings">
+                    <sub-events>
+                        <event-block sid="748151581516567">
+                            <conditions>
+                                <condition id="9" name="On item exists" sid="592008110744185" type="LocalStorage">
+                                    <param id="0" name="Key">&quot;settings&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="1" name="Get item" sid="619806821813763" type="LocalStorage">
+                                    <param id="0" name="Key">&quot;settings&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="465451921208497">
+                            <conditions>
+                                <condition id="10" name="On item missing" sid="565414068843387" type="LocalStorage">
+                                    <param id="0" name="Key">&quot;settings&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="285736880209012" type="System">
+                                    <param id="0" name="Variable">questionTime</param>
+                                    <param id="1" name="Value">30</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="390601775186215" type="System">
+                                    <param id="0" name="Variable">pauseTime</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="799292664672701" type="System">
+                                    <param id="0" name="Variable">checkIntegrity</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="337769477500832" type="System">
+                                    <param id="0" name="Variable">timeout</param>
+                                    <param id="1" name="Value">120</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="570283528202990" type="System">
+                                    <param id="0" name="Variable">sponsorTime</param>
+                                    <param id="1" name="Value">30</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="969887869995117">
+                            <conditions>
+                                <condition id="1" name="On item get" sid="678618211847245" type="LocalStorage">
+                                    <param id="0" name="Key">&quot;settings&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="606006081985087" type="System">
+                                    <param id="0" name="Variable">questionTime</param>
+                                    <param id="1" name="Value">tokenat(LocalStorage.ItemValue,0,&quot;;&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="669915392031510" type="System">
+                                    <param id="0" name="Variable">pauseTime</param>
+                                    <param id="1" name="Value">tokenat(LocalStorage.ItemValue,1,&quot;;&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="693429246898994" type="System">
+                                    <param id="0" name="Variable">checkIntegrity</param>
+                                    <param id="1" name="Value">tokenat(LocalStorage.ItemValue,2,&quot;;&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="864561178788823" type="System">
+                                    <param id="0" name="Variable">timeout</param>
+                                    <param id="1" name="Value">tokenat(LocalStorage.ItemValue,3,&quot;;&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="769235456627737" type="System">
+                                    <param id="0" name="Variable">sponsorTime</param>
+                                    <param id="1" name="Value">tokenat(LocalStorage.ItemValue,4,&quot;;&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-group>
             </sub-events>
         </event-group>
         <event-group description="" sid="895094125260098" title="Start - UI">
@@ -99,18 +175,83 @@
                     <conditions>
                         <condition id="0" name="On clicked" sid="652536957302273" type="btnStart" />
                     </conditions>
-                    <actions>
-                        <action id="-10" name="Set value" sid="262511646840947" type="MenuBtn">
-                            <param id="0" name="Instance variable">onScreen</param>
-                            <param id="1" name="Value">2</param>
-                        </action>
-                        <action id="-16" name="Wait" sid="430679505025787" type="System">
-                            <param id="0" name="Seconds">0.2</param>
-                        </action>
-                        <action id="-2" name="Go to layout" sid="492001134600234" type="System">
-                            <param id="0" name="Layout">Quiz</param>
-                        </action>
-                    </actions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="155587776615471">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="860171381698776" type="btnStart">
+                                    <param id="0" name="Instance variable">haveSave</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="262511646840947" type="MenuBtn">
+                                    <param id="0" name="Instance variable">onScreen</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="430679505025787" type="System">
+                                    <param id="0" name="Seconds">0.2</param>
+                                </action>
+                                <action id="-2" name="Go to layout" sid="492001134600234" type="System">
+                                    <param id="0" name="Layout">Quiz</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="818877653908729">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="684698364627259" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="2" name="Open a confirm dialog" sid="210479970262220" type="DialogBox">
+                                    <param id="0" name="Message:">&quot;Detektovana je već započeta igra. Da li želite nastaviti tu igru?&quot; &amp; newline &amp; &quot;Klikni OK da nastaviš, a CANCEL da počneš novu igru.&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="472087338098658">
+                            <conditions>
+                                <condition id="0" name="is OK button clicked" sid="756653027698794" type="DialogBox" />
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="461762906111911" type="MenuBtn">
+                                    <param id="0" name="Instance variable">onScreen</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="662958409419063" type="System">
+                                    <param id="0" name="Seconds">0.2</param>
+                                </action>
+                                <action id="-2" name="Go to layout" sid="353196781388325" type="System">
+                                    <param id="0" name="Layout">Quiz</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="287747558970045">
+                            <conditions>
+                                <condition id="1" name="is Cancel button clicked" sid="821939036900358" type="DialogBox" />
+                            </conditions>
+                            <actions>
+                                <action id="3" name="Clear storage" sid="332792893832050" type="LocalStorage" />
+                                <action id="-9" name="Set value" sid="205834447562005" type="System">
+                                    <param id="0" name="Variable">questionNumber</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="979752399456298" type="System">
+                                    <param id="0" name="Variable">sponsorNo</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="189270789825140" type="MenuBtn">
+                                    <param id="0" name="Instance variable">onScreen</param>
+                                    <param id="1" name="Value">2</param>
+                                </action>
+                                <action id="-16" name="Wait" sid="948262209301094" type="System">
+                                    <param id="0" name="Seconds">0.2</param>
+                                </action>
+                                <action id="-2" name="Go to layout" sid="489117407041057" type="System">
+                                    <param id="0" name="Layout">Quiz</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <comment>GO TO SETTINGS</comment>
                 <event-block sid="430131625772294">

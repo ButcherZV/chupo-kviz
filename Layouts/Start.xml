@@ -81,6 +81,7 @@
                     </properties>
                     <instance-variables>
                         <onScreen>0</onScreen>
+                        <haveSave>0</haveSave>
                     </instance-variables>
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
@@ -135,11 +136,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>647.755859375</x>
+                        <x>647.598754883</x>
                         <y>360</y>
                         <z>0</z>
-                        <width>401</width>
-                        <height>414</height>
+                        <width>480.212524414</width>
+                        <height>495.780517578</height>
                         <depth>0</depth>
                         <hotspotX>0.50124687</hotspotX>
                         <hotspotY>0.5</hotspotY>

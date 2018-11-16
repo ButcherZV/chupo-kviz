@@ -10,12 +10,12 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <display name="HTML5" />
     </configurations>
     <open-tabs>
-        <layout order="0">Quiz</layout>
+        <layout active="1" order="0">Quiz</layout>
         <layout order="2">Start</layout>
         <layout order="4">Settings</layout>
         <event-sheet order="1">quiz-sheet</event-sheet>
         <event-sheet order="3">start-sheet</event-sheet>
-        <event-sheet active="1" order="5">settings-sheet</event-sheet>
+        <event-sheet order="5">settings-sheet</event-sheet>
     </open-tabs>
     <properties>
         <property expanded="1" name="About" />
@@ -23,7 +23,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="0" name="Window Size" />
         <property expanded="1" name="Configuration Settings" />
     </properties>
-    <families-expanded root="1">
+    <families-expanded root="0">
         <family expanded="0" name="MenuBtn" />
         <family expanded="0" name="Teams" />
         <family expanded="0" name="Answers" />
