@@ -266,6 +266,29 @@
                     </behavior-type>
                 </behaviors>
             </object-type>
+            <object-type name="txtSponsorName2" sid="465098663399265">
+                <plugin id="Text" />
+                <behaviors>
+                    <behavior-type name="Persist" sid="720936577734176">
+                        <behavior id="Persist" />
+                    </behavior-type>
+                </behaviors>
+            </object-type>
+            <object-type name="txtSponsorAward" sid="172458502286111">
+                <plugin id="Text" />
+            </object-type>
+            <object-type name="txtHalfTeam" sid="492583214346612">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="id" sid="584212784304559" type="number" />
+                </instance-variables>
+            </object-type>
+            <object-type name="txtHalfScore" sid="606634073887506">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="id" sid="268072012950344" type="number" />
+                </instance-variables>
+            </object-type>
         </object-folder>
         <object-folder name="Data">
             <object-type global="1" name="QuestionArray" sid="7596737848745202">

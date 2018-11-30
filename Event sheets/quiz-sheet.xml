@@ -66,6 +66,11 @@
                                     <param id="1" name="Y">0</param>
                                     <param id="2" name="Value">0</param>
                                 </action>
+                                <action id="3" name="Set at XY" sid="531937570609573" type="TeamArray">
+                                    <param id="0" name="X">TeamArray.CurX</param>
+                                    <param id="1" name="Y">1</param>
+                                    <param id="2" name="Value">0</param>
+                                </action>
                             </actions>
                         </event-block>
                         <event-block sid="707265115017360">
@@ -87,7 +92,7 @@
                                     </conditions>
                                     <actions>
                                         <action id="0" name="Set text" sid="340700669448084" type="txtTeamName">
-                                            <param id="0" name="Text">TeamArray.At(loopindex(&quot;id&quot;),1)</param>
+                                            <param id="0" name="Text">TeamArray.At(loopindex(&quot;id&quot;),2)</param>
                                         </action>
                                         <action id="-15" name="Set visible" sid="306100068385432" type="txtTeamName">
                                             <param id="0" name="Visibility">1</param>
@@ -103,7 +108,7 @@
                                     </conditions>
                                     <actions>
                                         <action id="0" name="Set text" sid="166755021115874" type="txtTeamPoints">
-                                            <param id="0" name="Text">zeropad(TeamArray.At(loopindex(&quot;id&quot;),0),2)</param>
+                                            <param id="0" name="Text">zeropad(TeamArray.At(loopindex(&quot;id&quot;),1),2)</param>
                                         </action>
                                         <action id="-15" name="Set visible" sid="738834076365582" type="txtTeamPoints">
                                             <param id="0" name="Visibility">1</param>
@@ -136,11 +141,11 @@
                             <actions>
                                 <action id="3" name="Set at XY" sid="511388709071294" type="TeamArray">
                                     <param id="0" name="X">txtTeamPoints.id</param>
-                                    <param id="1" name="Y">0</param>
-                                    <param id="2" name="Value">TeamArray.At(txtTeamPoints.id,0) + 1</param>
+                                    <param id="1" name="Y">1</param>
+                                    <param id="2" name="Value">TeamArray.At(txtTeamPoints.id,1) + 1</param>
                                 </action>
                                 <action id="0" name="Set text" sid="133453198639840" type="txtTeamPoints">
-                                    <param id="0" name="Text">zeropad(TeamArray.At(txtTeamPoints.id,0),2)</param>
+                                    <param id="0" name="Text">zeropad(TeamArray.At(txtTeamPoints.id,1),2)</param>
                                 </action>
                                 <action id="6" name="Stop" sid="215490834784495" type="Audio">
                                     <param id="0" name="Tag">&quot;sfx&quot;</param>
@@ -171,7 +176,7 @@
                                 <event-block sid="808636751136830">
                                     <conditions>
                                         <condition id="-8" name="Compare two values" sid="593695744662797" type="System">
-                                            <param id="0" name="First value">TeamArray.At(txtTeamPoints.id,0)</param>
+                                            <param id="0" name="First value">TeamArray.At(txtTeamPoints.id,1)</param>
                                             <param id="1" name="Comparison">4</param>
                                             <param id="2" name="Second value">0</param>
                                         </condition>
@@ -179,11 +184,11 @@
                                     <actions>
                                         <action id="3" name="Set at XY" sid="137407908070793" type="TeamArray">
                                             <param id="0" name="X">txtTeamPoints.id</param>
-                                            <param id="1" name="Y">0</param>
-                                            <param id="2" name="Value">TeamArray.At(txtTeamPoints.id,0) - 1</param>
+                                            <param id="1" name="Y">1</param>
+                                            <param id="2" name="Value">TeamArray.At(txtTeamPoints.id,1) - 1</param>
                                         </action>
                                         <action id="0" name="Set text" sid="707231043895092" type="txtTeamPoints">
-                                            <param id="0" name="Text">zeropad(TeamArray.At(txtTeamPoints.id,0),2)</param>
+                                            <param id="0" name="Text">zeropad(TeamArray.At(txtTeamPoints.id,1),2)</param>
                                         </action>
                                         <action id="6" name="Stop" sid="603821940507682" type="Audio">
                                             <param id="0" name="Tag">&quot;sfx&quot;</param>
@@ -414,26 +419,176 @@
                                                     <param id="0" name="Layer">&quot;Points&quot;</param>
                                                 </condition>
                                             </conditions>
-                                            <actions>
-                                                <action id="0" name="Set text" sid="450600688310920" type="txtPoints">
-                                                    <param id="0" name="Text">&quot;Sledeća runda počinje za &quot; &amp; pauseTime &amp; &quot; sekundi!&quot;</param>
-                                                </action>
-                                                <action id="-16" name="Wait" sid="290406818878259" type="System">
-                                                    <param id="0" name="Seconds">pauseTime</param>
-                                                </action>
-                                                <action id="-4" name="Set layer visible" sid="554292797474943" type="System">
-                                                    <param id="0" name="Layer">&quot;Points&quot;</param>
-                                                    <param id="1" name="Visibility">0</param>
-                                                </action>
-                                                <action id="-4" name="Set layer visible" sid="839841201169698" type="System">
-                                                    <param id="0" name="Layer">&quot;Dice&quot;</param>
-                                                    <param id="1" name="Visibility">0</param>
-                                                </action>
-                                                <action id="0" name="Call function" sid="516422799900834" type="Function">
-                                                    <param id="0" name="Name">&quot;getSponsor&quot;</param>
-                                                    <param id="1" name="Parameter {n}"></param>
-                                                </action>
-                                            </actions>
+                                            <actions />
+                                            <sub-events>
+                                                <event-block sid="794965066338031">
+                                                    <conditions>
+                                                        <condition id="-14" name="Compare variable" sid="227644493539763" type="System">
+                                                            <param id="0" name="Variable">sponsorNo</param>
+                                                            <param id="1" name="Comparison">0</param>
+                                                            <param id="2" name="Value">3</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-4" name="Set layer visible" sid="607026027040177" type="System">
+                                                            <param id="0" name="Layer">&quot;Quiz&quot;</param>
+                                                            <param id="1" name="Visibility">0</param>
+                                                        </action>
+                                                        <action id="-4" name="Set layer visible" sid="790573990827062" type="System">
+                                                            <param id="0" name="Layer">&quot;Points&quot;</param>
+                                                            <param id="1" name="Visibility">0</param>
+                                                        </action>
+                                                        <action id="-4" name="Set layer visible" sid="364954125444116" type="System">
+                                                            <param id="0" name="Layer">&quot;Dice&quot;</param>
+                                                            <param id="1" name="Visibility">0</param>
+                                                        </action>
+                                                        <action id="-4" name="Set layer visible" sid="121534306567301" type="System">
+                                                            <param id="0" name="Layer">&quot;Halftime&quot;</param>
+                                                            <param id="1" name="Visibility">1</param>
+                                                        </action>
+                                                    </actions>
+                                                    <sub-events>
+                                                        <event-block sid="290412228281772">
+                                                            <conditions>
+                                                                <condition id="-10" name="For" sid="185182309602712" type="System">
+                                                                    <param id="0" name="Name">&quot;i&quot;</param>
+                                                                    <param id="1" name="Start index">0</param>
+                                                                    <param id="2" name="End index">TeamArray.Width</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="3" name="Set at XY" sid="991566152549250" type="TeamArray">
+                                                                    <param id="0" name="X">loopindex(&quot;i&quot;)</param>
+                                                                    <param id="1" name="Y">0</param>
+                                                                    <param id="2" name="Value">TeamArray.At(loopindex(&quot;i&quot;),0) + TeamArray.At(loopindex(&quot;i&quot;),1) </param>
+                                                                </action>
+                                                                <action id="3" name="Set at XY" sid="609378290780867" type="TeamArray">
+                                                                    <param id="0" name="X">loopindex(&quot;i&quot;)</param>
+                                                                    <param id="1" name="Y">1</param>
+                                                                    <param id="2" name="Value">0</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <event-block sid="490174450377975">
+                                                            <conditions>
+                                                                <condition id="-10" name="For" sid="981868049623591" type="System">
+                                                                    <param id="0" name="Name">&quot;id&quot;</param>
+                                                                    <param id="1" name="Start index">0</param>
+                                                                    <param id="2" name="End index">TeamArray.Width - 1</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions />
+                                                            <sub-events>
+                                                                <event-block sid="125651731431493">
+                                                                    <conditions>
+                                                                        <condition id="-34" name="Pick by evaluate" sid="523066613575139" type="System">
+                                                                            <param id="0" name="Object">txtHalfTeam</param>
+                                                                            <param id="1" name="Expression">txtHalfTeam.id = loopindex(&quot;id&quot;)</param>
+                                                                        </condition>
+                                                                    </conditions>
+                                                                    <actions>
+                                                                        <action id="0" name="Set text" sid="450252174365635" type="txtHalfTeam">
+                                                                            <param id="0" name="Text">TeamArray.At(loopindex(&quot;id&quot;),2)</param>
+                                                                        </action>
+                                                                        <action id="-15" name="Set visible" sid="988088040221668" type="txtHalfTeam">
+                                                                            <param id="0" name="Visibility">1</param>
+                                                                        </action>
+                                                                    </actions>
+                                                                </event-block>
+                                                                <event-block sid="149588068052559">
+                                                                    <conditions>
+                                                                        <condition id="-34" name="Pick by evaluate" sid="493171547238441" type="System">
+                                                                            <param id="0" name="Object">txtHalfScore</param>
+                                                                            <param id="1" name="Expression">txtHalfScore.id = loopindex(&quot;id&quot;)</param>
+                                                                        </condition>
+                                                                    </conditions>
+                                                                    <actions>
+                                                                        <action id="0" name="Set text" sid="232137235435950" type="txtHalfScore">
+                                                                            <param id="0" name="Text">zeropad(TeamArray.At(loopindex(&quot;id&quot;),0),2)</param>
+                                                                        </action>
+                                                                        <action id="-15" name="Set visible" sid="787622174309605" type="txtHalfScore">
+                                                                            <param id="0" name="Visibility">1</param>
+                                                                        </action>
+                                                                    </actions>
+                                                                </event-block>
+                                                            </sub-events>
+                                                        </event-block>
+                                                        <event-block sid="645874479475995">
+                                                            <conditions />
+                                                            <actions>
+                                                                <action id="3" name="Set at XY" sid="785166828817080" type="TeamArray">
+                                                                    <param id="0" name="X">loopindex(&quot;i&quot;)</param>
+                                                                    <param id="1" name="Y">0</param>
+                                                                    <param id="2" name="Value">TeamArray.At(loopindex(&quot;i&quot;),0) + TeamArray.At(loopindex(&quot;i&quot;),1) </param>
+                                                                </action>
+                                                                <action id="3" name="Set at XY" sid="155199546489911" type="TeamArray">
+                                                                    <param id="0" name="X">loopindex(&quot;i&quot;)</param>
+                                                                    <param id="1" name="Y">1</param>
+                                                                    <param id="2" name="Value">0</param>
+                                                                </action>
+                                                                <action id="0" name="Set text" sid="966277293752873" type="txtTeamPoints">
+                                                                    <param id="0" name="Text">&quot;00&quot;</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                    </sub-events>
+                                                </event-block>
+                                                <event-block sid="751452610682459">
+                                                    <conditions>
+                                                        <condition id="-22" name="Else" sid="215601532180129" type="System" />
+                                                    </conditions>
+                                                    <actions />
+                                                    <sub-events>
+                                                        <event-block sid="584698840357573">
+                                                            <conditions>
+                                                                <condition id="-10" name="For" sid="844697605110872" type="System">
+                                                                    <param id="0" name="Name">&quot;i&quot;</param>
+                                                                    <param id="1" name="Start index">0</param>
+                                                                    <param id="2" name="End index">TeamArray.Width</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="3" name="Set at XY" sid="459525577033200" type="TeamArray">
+                                                                    <param id="0" name="X">loopindex(&quot;i&quot;)</param>
+                                                                    <param id="1" name="Y">0</param>
+                                                                    <param id="2" name="Value">TeamArray.At(loopindex(&quot;i&quot;),0) + TeamArray.At(loopindex(&quot;i&quot;),1) </param>
+                                                                </action>
+                                                                <action id="3" name="Set at XY" sid="152045778916832" type="TeamArray">
+                                                                    <param id="0" name="X">loopindex(&quot;i&quot;)</param>
+                                                                    <param id="1" name="Y">1</param>
+                                                                    <param id="2" name="Value">0</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <event-block sid="391231207553818">
+                                                            <conditions />
+                                                            <actions>
+                                                                <action id="0" name="Set text" sid="450600688310920" type="txtPoints">
+                                                                    <param id="0" name="Text">&quot;Sledeća runda počinje za &quot; &amp; pauseTime &amp; &quot; sekundi!&quot;</param>
+                                                                </action>
+                                                                <action id="-16" name="Wait" sid="290406818878259" type="System">
+                                                                    <param id="0" name="Seconds">pauseTime + 0.5</param>
+                                                                </action>
+                                                                <action id="-4" name="Set layer visible" sid="554292797474943" type="System">
+                                                                    <param id="0" name="Layer">&quot;Points&quot;</param>
+                                                                    <param id="1" name="Visibility">0</param>
+                                                                </action>
+                                                                <action id="-4" name="Set layer visible" sid="839841201169698" type="System">
+                                                                    <param id="0" name="Layer">&quot;Dice&quot;</param>
+                                                                    <param id="1" name="Visibility">0</param>
+                                                                </action>
+                                                                <action id="0" name="Set text" sid="729625331602533" type="txtTeamPoints">
+                                                                    <param id="0" name="Text">&quot;00&quot;</param>
+                                                                </action>
+                                                                <action id="0" name="Call function" sid="516422799900834" type="Function">
+                                                                    <param id="0" name="Name">&quot;getSponsor&quot;</param>
+                                                                    <param id="1" name="Parameter {n}"></param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                    </sub-events>
+                                                </event-block>
+                                            </sub-events>
                                         </event-block>
                                         <event-block sid="937230528554680">
                                             <conditions>
@@ -466,6 +621,35 @@
                                                     <param id="2" name="Loop">0</param>
                                                     <param id="3" name="Volume">DBlevel - 3</param>
                                                     <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="347706907279920">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="533277633767641" type="System" />
+                                                <condition id="-9" name="Layer is visible" sid="907677381123106" type="System">
+                                                    <param id="0" name="Layer">&quot;Halftime&quot;</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Wait" sid="451100245521074" type="System">
+                                                    <param id="0" name="Seconds">pauseTime + 0.5</param>
+                                                </action>
+                                                <action id="-4" name="Set layer visible" sid="648215076121125" type="System">
+                                                    <param id="0" name="Layer">&quot;Points&quot;</param>
+                                                    <param id="1" name="Visibility">0</param>
+                                                </action>
+                                                <action id="-4" name="Set layer visible" sid="589229715767610" type="System">
+                                                    <param id="0" name="Layer">&quot;Dice&quot;</param>
+                                                    <param id="1" name="Visibility">0</param>
+                                                </action>
+                                                <action id="-4" name="Set layer visible" sid="615612901996368" type="System">
+                                                    <param id="0" name="Layer">&quot;Results&quot;</param>
+                                                    <param id="1" name="Visibility">0</param>
+                                                </action>
+                                                <action id="0" name="Call function" sid="478201083725869" type="Function">
+                                                    <param id="0" name="Name">&quot;getSponsor&quot;</param>
+                                                    <param id="1" name="Parameter {n}"></param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -509,8 +693,11 @@
                                                 <action id="8" name="Sort" sid="776874628173452" type="TeamArray">
                                                     <param id="0" name="Axis">0</param>
                                                 </action>
-                                                <action id="1" name="Append text" sid="609981891594865" type="txtResTeam">
-                                                    <param id="0" name="Text">loopindex(&quot;i&quot;) &amp; &quot; -&quot; &amp; TeamArray.At(TeamArray.Width - loopindex(&quot;i&quot;),1) &amp; &quot;: &quot; &amp; TeamArray.At(TeamArray.Width - loopindex(&quot;i&quot;),0) &amp; &quot; poena&quot; &amp; newline</param>
+                                                <action id="7" name="Reverse" sid="319218806418289" type="TeamArray">
+                                                    <param id="0" name="Axis">0</param>
+                                                </action>
+                                                <action id="1" name="Append text" sid="441435693290594" type="txtResTeam">
+                                                    <param id="0" name="Text">loopindex(&quot;i&quot;) &amp; &quot; - &quot; &amp; TeamArray.At(loopindex(&quot;i&quot;),2) &amp; &quot;: &quot; &amp; TeamArray.At(loopindex(&quot;i&quot;),0) &amp; &quot; poena&quot; &amp; newline</param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -1452,13 +1639,16 @@
                             <param id="1" name="Visibility">1</param>
                         </action>
                         <action id="0" name="Set text" sid="622012539239704" type="txtSponsorName">
-                            <param id="0" name="Text">&quot;Sponzor oblasti - &quot; &amp; replace(SponsorArray.At(sponsorNo,0),newline,&quot;&quot;)</param>
+                            <param id="0" name="Text">trim(SponsorArray.At(sponsorNo,0))</param>
                         </action>
                         <action id="0" name="Set text" sid="182788007490617" type="txtSponsorTopic">
-                            <param id="0" name="Text">&quot;Tema oblasti: &quot; &amp; replace(SponsorArray.At(sponsorNo,1),newline,&quot;&quot;)</param>
+                            <param id="0" name="Text">&quot;Tema oblasti: &quot; &amp; trim(SponsorArray.At(sponsorNo,1))</param>
+                        </action>
+                        <action id="0" name="Set text" sid="461345722542937" type="txtSponsorAward">
+                            <param id="0" name="Text">&quot;Nagrada: &quot; &amp; trim(SponsorArray.At(sponsorNo,2))</param>
                         </action>
                         <action id="0" name="Set text" sid="707742491804492" type="txtSponsorInfo">
-                            <param id="0" name="Text">replace(SponsorArray.At(sponsorNo,2),newline,&quot;&quot;)</param>
+                            <param id="0" name="Text">trim(SponsorArray.At(sponsorNo,3))</param>
                         </action>
                         <action id="10" name="Load image from URL" sid="911901556442818" type="sponsorImg">
                             <param id="0" name="URI">qPath &amp; &quot;/sponzori/&quot; &amp; (sponsorNo + 1) &amp; &quot;.jpg&quot;</param>
@@ -1469,6 +1659,10 @@
                             <param id="0" name="Countdown time">(sponsorTime * 1000) + 900</param>
                             <param id="1" name="Label">&quot;SPONSOR&quot;</param>
                             <param id="2" name="State">0</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="641211411020715" type="System">
+                            <param id="0" name="Variable">sponsorNo</param>
+                            <param id="1" name="Value">1</param>
                         </action>
                     </actions>
                 </event-block>
@@ -1712,14 +1906,8 @@
                         </action>
                     </actions>
                     <sub-events>
-                        <event-block sid="438014467957509">
-                            <conditions>
-                                <condition disabled="1" id="-14" name="Compare variable" sid="842841277584477" type="System">
-                                    <param id="0" name="Variable">questionNumber</param>
-                                    <param id="1" name="Comparison">2</param>
-                                    <param id="2" name="Value">59</param>
-                                </condition>
-                            </conditions>
+                        <event-block any="1" sid="438014467957509">
+                            <conditions />
                             <actions />
                             <sub-events>
                                 <event-block any="1" sid="328166056655132">
@@ -1761,10 +1949,6 @@
                                         </action>
                                         <action id="-15" name="Set visible" sid="973250350383393" type="txtCorrectAnswers">
                                             <param id="0" name="Visibility">0</param>
-                                        </action>
-                                        <action id="-10" name="Add to" sid="273185948526602" type="System">
-                                            <param id="0" name="Variable">sponsorNo</param>
-                                            <param id="1" name="Value">1</param>
                                         </action>
                                         <action id="-4" name="Set layer visible" sid="156758713534429" type="System">
                                             <param id="0" name="Layer">&quot;Quiz&quot;</param>

@@ -15,8 +15,8 @@
                         <action disabled="1" id="10" name="Request fullscreen" sid="793743795465632" type="Browser">
                             <param id="0" name="Mode">3</param>
                         </action>
-                        <action id="3" name="Clear storage" sid="973552874757104" type="LocalStorage" />
-                        <action disabled="1" id="5" name="Check item exists" sid="787104442042782" type="LocalStorage">
+                        <action disabled="1" id="3" name="Clear storage" sid="973552874757104" type="LocalStorage" />
+                        <action id="5" name="Check item exists" sid="787104442042782" type="LocalStorage">
                             <param id="0" name="Key">&quot;settings&quot;</param>
                         </action>
                         <action disabled="1" id="5" name="Check item exists" sid="311162235681333" type="LocalStorage">
