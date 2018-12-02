@@ -2,7 +2,7 @@
 <c2project>
     <name>Kviz</name>
     <description></description>
-    <version>0.75</version>
+    <version>0.95</version>
     <author></author>
     <author-email></author-email>
     <author-website>http://</author-website>
@@ -23,10 +23,12 @@
         <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
         <plugin author="Scirra" id="NinePatch" version="1">9-patch</plugin>
         <plugin author="Scirra" id="NodeWebkit" version="1">NW.js</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
         <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="video" version="1">Video</plugin>
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Persist" version="1">Persist</behavior>
@@ -136,6 +138,13 @@
                 <plugin id="TextBox" />
                 <instance-variables>
                     <instance-variable name="oldY" sid="799860634356158" type="number" />
+                </instance-variables>
+            </object-type>
+            <object-type global="1" name="btnSnow" sid="241861204543290">
+                <plugin id="Button" />
+                <instance-variables>
+                    <instance-variable name="oldY" sid="122432786402687" type="number" />
+                    <instance-variable name="enabled" sid="122970329961287" type="boolean" />
                 </instance-variables>
             </object-type>
         </object-folder>
@@ -289,6 +298,18 @@
                     <instance-variable name="id" sid="268072012950344" type="number" />
                 </instance-variables>
             </object-type>
+            <object-type name="txtPoints2" sid="400360374249956">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="id" sid="903100224634502" type="number" />
+                </instance-variables>
+            </object-type>
+            <object-type name="txtHalf" sid="431841148360209">
+                <plugin id="Text" />
+                <instance-variables>
+                    <instance-variable name="id" sid="385809310512385" type="number" />
+                </instance-variables>
+            </object-type>
         </object-folder>
         <object-folder name="Data">
             <object-type global="1" name="QuestionArray" sid="7596737848745202">
@@ -328,6 +349,14 @@
             </object-type>
             <object-type name="DialogBox" sid="269987659210143">
                 <plugin id="DialogBox" />
+            </object-type>
+            <object-type name="videoPlayer" sid="146086145577861">
+                <plugin id="video" />
+                <behaviors>
+                    <behavior-type name="LiteTween" sid="761431199543326">
+                        <behavior id="lunarray_LiteTween" />
+                    </behavior-type>
+                </behaviors>
             </object-type>
         </object-folder>
         <object-folder name="Graphics">
@@ -449,16 +478,7 @@
                 </behaviors>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="517860435913201" speed="5">
-                        <frame duration="1" hotspotX="0.5" hotspotY="0.497992" original-source="C:\Users\Predrag\Desktop\speechBubble.png">
-                            <collision-poly>
-                                <point x="0.0562963" y="0.305221" />
-                                <point x="0.5" y="0" />
-                                <point x="0.993333" y="0.0361446" />
-                                <point x="0.993333" y="0.963855" />
-                                <point x="0.5" y="1" />
-                                <point x="0.0518519" y="0.718876" />
-                            </collision-poly>
-                        </frame>
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.497992" original-source="C:\Users\Predrag\Desktop\speechBubble.png" />
                     </animation>
                 </animation-folder>
             </object-type>
@@ -517,7 +537,7 @@
                 </behaviors>
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="407934249425130" speed="5">
-                        <frame duration="1" hotspotX="0.5" hotspotY="0.50152" />
+                        <frame duration="1" hotspotX="0" hotspotY="0" />
                     </animation>
                 </animation-folder>
             </object-type>
@@ -540,6 +560,13 @@
             <object-type name="sBG" sid="501197663433031">
                 <plugin id="NinePatch" />
                 <texture original-source="C:\Users\User\Desktop\1.png" />
+            </object-type>
+            <object-type name="snow" sid="916687750739433">
+                <plugin id="Particles" />
+                <instance-variables>
+                    <instance-variable name="snow" sid="733680437831346" type="number" />
+                </instance-variables>
+                <texture original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Textures\partSnow.png" />
             </object-type>
         </object-folder>
         <object-type name="Function" sid="942795225166898">
@@ -567,6 +594,7 @@
                 <member>btnRemTeam</member>
                 <member>btnReset</member>
                 <member>btnSettings</member>
+                <member>btnSnow</member>
             </members>
             <behaviors>
                 <behavior-type name="Persist" sid="921089819113842">
@@ -591,6 +619,7 @@
             <members>
                 <member>btnCheck</member>
                 <member>btnMute</member>
+                <member>btnSnow</member>
             </members>
         </family>
     </families>

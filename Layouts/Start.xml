@@ -215,8 +215,8 @@
             </instances>
             <effects />
         </layer>
-        <layer name="Team" sid="567333438426646">
-            <initially-visible>1</initially-visible>
+        <layer name="Snow" sid="567333438426646">
+            <initially-visible>0</initially-visible>
             <background-color>255,255,255</background-color>
             <transparent>1</transparent>
             <parallax>
@@ -230,7 +230,50 @@
             <use-render-cells>0</use-render-cells>
             <blend-mode>0</blend-mode>
             <effect-fallback>0</effect-fallback>
-            <instances />
+            <instances>
+                <instance type="snow" uid="102">
+                    <properties>
+                        <rate>400</rate>
+                        <spray-cone>180</spray-cone>
+                        <type>Continuous spray</type>
+                        <initial-particle-properties></initial-particle-properties>
+                        <speed>50</speed>
+                        <size>1</size>
+                        <opacity>100</opacity>
+                        <grow-rate>0</grow-rate>
+                        <x-randomiser>1300</x-randomiser>
+                        <y-randomiser>0</y-randomiser>
+                        <speed-randomiser->25</speed-randomiser->
+                        <size-randomiser>10</size-randomiser>
+                        <grow-rate-randomiser>0</grow-rate-randomiser>
+                        <particle-lifetime-properties></particle-lifetime-properties>
+                        <acceleration>2</acceleration>
+                        <gravity>100</gravity>
+                        <angle-randomiser>100</angle-randomiser>
+                        <speed-randomiser>10</speed-randomiser>
+                        <opacity-randomiser>5</opacity-randomiser>
+                        <destroy-mode>Timeout expired</destroy-mode>
+                        <timeout>10</timeout>
+                    </properties>
+                    <instance-variables>
+                        <snow>0</snow>
+                    </instance-variables>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>640</x>
+                        <y>-16</y>
+                        <z>0</z>
+                        <width>16</width>
+                        <height>1312</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>1.570796371</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+            </instances>
             <effects />
         </layer>
     </layers>

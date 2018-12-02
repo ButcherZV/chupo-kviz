@@ -48,13 +48,16 @@
                         <action id="-2" name="Set Y" sid="959692333596325" type="inputQtime">
                             <param id="0" name="Y">Self.oldY</param>
                         </action>
+                        <action id="-2" name="Set Y" sid="904722954177892" type="inputStime">
+                            <param id="0" name="Y">Self.oldY</param>
+                        </action>
                         <action id="-2" name="Set Y" sid="454139491417507" type="btnCheck">
                             <param id="0" name="Y">Self.oldY</param>
                         </action>
                         <action id="-2" name="Set Y" sid="252711958437267" type="btnMute">
                             <param id="0" name="Y">Self.oldY</param>
                         </action>
-                        <action id="-2" name="Set Y" sid="904722954177892" type="inputStime">
+                        <action id="-2" name="Set Y" sid="490201286198900" type="btnSnow">
                             <param id="0" name="Y">Self.oldY</param>
                         </action>
                         <action id="0" name="Set text" sid="827534263063425" type="inputPtime">
@@ -69,6 +72,10 @@
                         <action id="0" name="Set text" sid="862736040997873" type="inputStime">
                             <param id="0" name="Text">str(sponsorTime)</param>
                         </action>
+                        <action id="-4" name="Set layer visible" sid="400395535310684" type="System">
+                            <param id="0" name="Layer">&quot;Snow&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <event-block sid="692984924094239">
@@ -82,6 +89,54 @@
                             <actions>
                                 <action id="-2" name="Set Y" sid="914775098092579" type="inputTeam">
                                     <param id="0" name="Y">inputTeam.oldY</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="429148795086587">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="257676110621441" type="System">
+                                    <param id="0" name="Variable">snow</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Set checked" sid="300190336503830" type="btnSnow">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="330752719009649">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="719069695497566" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Set checked" sid="518568458402043" type="btnSnow">
+                                    <param id="0" name="State">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="804539739750734">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="363204251120166" type="System">
+                                    <param id="0" name="Variable">DBlevel</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Set checked" sid="865016077331905" type="btnMute">
+                                    <param id="0" name="State">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="658562425140851">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="767133419602138" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Set checked" sid="960298855002670" type="btnMute">
+                                    <param id="0" name="State">0</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -187,19 +242,19 @@
                         </action>
                         <action id="-9" name="Set value" sid="122155020394080" type="System">
                             <param id="0" name="Variable">pauseTime</param>
-                            <param id="1" name="Value">inputPtime.Text</param>
+                            <param id="1" name="Value">int(inputPtime.Text)</param>
                         </action>
                         <action id="-9" name="Set value" sid="207146840827108" type="System">
                             <param id="0" name="Variable">questionTime</param>
-                            <param id="1" name="Value">inputQtime.Text</param>
+                            <param id="1" name="Value">int(inputQtime.Text)</param>
                         </action>
                         <action id="-9" name="Set value" sid="854437123860896" type="System">
                             <param id="0" name="Variable">timeout</param>
-                            <param id="1" name="Value">inputAtime.Text</param>
+                            <param id="1" name="Value">int(inputAtime.Text)</param>
                         </action>
                         <action id="-9" name="Set value" sid="696015619504770" type="System">
                             <param id="0" name="Variable">sponsorTime</param>
-                            <param id="1" name="Value">inputStime.Text</param>
+                            <param id="1" name="Value">int(inputStime.Text)</param>
                         </action>
                         <action id="-2" name="Set Y" sid="484835107094419" type="inputTeam">
                             <param id="0" name="Y">-128</param>
@@ -217,6 +272,9 @@
                             <param id="0" name="Y">-128</param>
                         </action>
                         <action id="-2" name="Set Y" sid="585171469041009" type="btnMute">
+                            <param id="0" name="Y">-128</param>
+                        </action>
+                        <action id="-2" name="Set Y" sid="599964870706601" type="btnSnow">
                             <param id="0" name="Y">-128</param>
                         </action>
                         <action id="-2" name="Set Y" sid="508687621802078" type="inputStime">
@@ -307,7 +365,7 @@
                             <actions>
                                 <action id="0" name="Set item" sid="161359859068116" type="LocalStorage">
                                     <param id="0" name="Key">&quot;settings&quot;</param>
-                                    <param id="1" name="Value">questionTime &amp; &quot;;&quot; &amp; pauseTime &amp; &quot;;&quot; &amp; checkIntegrity &amp; &quot;;&quot; &amp; timeout &amp; &quot;;&quot; &amp; sponsorTime</param>
+                                    <param id="1" name="Value">questionTime &amp; &quot;;&quot; &amp; pauseTime &amp; &quot;;&quot; &amp; checkIntegrity &amp; &quot;;&quot; &amp; timeout &amp; &quot;;&quot; &amp; sponsorTime &amp; &quot;;&quot; &amp; snow</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -393,6 +451,28 @@
                         <action id="-9" name="Set value" sid="516240615127437" type="System">
                             <param id="0" name="Variable">DBlevel</param>
                             <param id="1" name="Value">-100</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="395377973742287">
+                    <conditions>
+                        <condition id="1" name="Is checked" sid="437972107387071" type="btnSnow" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="669821713641087" type="System">
+                            <param id="0" name="Variable">snow</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="297538804355660">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="980930292039216" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="687475702039312" type="System">
+                            <param id="0" name="Variable">snow</param>
+                            <param id="1" name="Value">0</param>
                         </action>
                     </actions>
                 </event-block>

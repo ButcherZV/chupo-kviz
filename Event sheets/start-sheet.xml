@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>start-sheet</name>
     <events>
+        <variable constant="0" name="snow" sid="132803305469854" static="0" type="number">0</variable>
         <variable constant="0" name="checkIntegrity" sid="103344830593675" static="0" type="number">1</variable>
         <variable constant="0" name="checkBuffer" sid="114905347693819" static="0" type="text"></variable>
         <event-group description="" sid="639451609564821" title="Start - Initialization">
@@ -30,6 +31,34 @@
                             <param id="1" name="Value">1</param>
                         </action>
                     </actions>
+                    <sub-events>
+                        <event-block sid="129881307768282">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="426331692455152" type="System">
+                                    <param id="0" name="Variable">snow</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="843622530540745" type="System">
+                                    <param id="0" name="Layer">&quot;Snow&quot;</param>
+                                    <param id="1" name="Visibility">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="761691576034668">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="857836266609563" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="-4" name="Set layer visible" sid="950920843469790" type="System">
+                                    <param id="0" name="Layer">&quot;Snow&quot;</param>
+                                    <param id="1" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
                 </event-block>
                 <event-group description="" sid="362054474742271" title="Get save">
                     <sub-events>
@@ -133,6 +162,10 @@
                                     <param id="0" name="Variable">sponsorTime</param>
                                     <param id="1" name="Value">30</param>
                                 </action>
+                                <action id="-9" name="Set value" sid="778550098865838" type="System">
+                                    <param id="0" name="Variable">snow</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
                             </actions>
                         </event-block>
                         <event-block sid="969887869995117">
@@ -161,6 +194,10 @@
                                 <action id="-9" name="Set value" sid="769235456627737" type="System">
                                     <param id="0" name="Variable">sponsorTime</param>
                                     <param id="1" name="Value">tokenat(LocalStorage.ItemValue,4,&quot;;&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="652728614624964" type="System">
+                                    <param id="0" name="Variable">snow</param>
+                                    <param id="1" name="Value">tokenat(LocalStorage.ItemValue,5,&quot;;&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>

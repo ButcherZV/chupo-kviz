@@ -4,8 +4,8 @@
 It is entirely optional and the project will load without it.  If you are placing the project under source control,
 you probably do not want to add any .uistate.xml files to the repository.-->
     <show-addaction-links>1</show-addaction-links>
-    <scroll-pos>1025</scroll-pos>
-    <conditions-column>499</conditions-column>
+    <scroll-pos>434</scroll-pos>
+    <conditions-column>442</conditions-column>
     <actions-namecolumn>152</actions-namecolumn>
     <condition-namecolumns>
         <nest>80</nest>
@@ -16,15 +16,31 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <nest>77</nest>
         <nest>87</nest>
         <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>22</nest>
+        <nest>18</nest>
     </condition-namecolumns>
     <events>
+        <event collapsed="1" sid="977914254279670" />
+        <event collapsed="1" sid="3303036903827664" />
         <event collapsed="1" sid="768247998022238" />
         <event collapsed="1" sid="785002189762096" />
         <event collapsed="1" sid="137516514512642" />
         <event collapsed="1" sid="735908702195233" />
+        <event collapsed="1" sid="646296344541643" />
+        <event collapsed="1" sid="370163532577467" />
         <event collapsed="1" sid="794965066338031" />
+        <event collapsed="1" sid="751452610682459" />
         <event collapsed="1" sid="212019649238129" />
-        <event collapsed="1" sid="2666900784334918" />
         <event collapsed="1" sid="235590452532283" />
         <event collapsed="1" sid="343393015090954" />
         <event collapsed="1" sid="544052149974197" />
@@ -33,9 +49,16 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <event collapsed="1" sid="373726825357913" />
         <event collapsed="1" sid="575911675464274" />
         <event collapsed="1" sid="883553946937364" />
+        <event collapsed="1" sid="198986098510579" />
+        <event collapsed="1" sid="465193535892098" />
+        <event collapsed="1" sid="475767700447980" />
+        <event collapsed="1" sid="397258190283342" />
+        <event collapsed="1" sid="841547553175255" />
         <event collapsed="1" sid="391186389017619" />
         <event collapsed="1" sid="278108923137184" />
         <event collapsed="1" sid="316362040455786" />
+        <event collapsed="1" sid="205035746764411" />
+        <event collapsed="1" sid="438014467957509" />
         <event collapsed="1" sid="328166056655132" />
     </events>
 </c2uistate>
