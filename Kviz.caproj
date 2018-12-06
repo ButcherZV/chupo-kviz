@@ -2,10 +2,10 @@
 <c2project>
     <name>Kviz</name>
     <description></description>
-    <version>0.95</version>
-    <author></author>
+    <version>0.96</version>
+    <author>djAPE</author>
     <author-email></author-email>
-    <author-website>http://</author-website>
+    <author-website>http://www.djape.tk</author-website>
     <app-id>com.mycompany.myapp</app-id>
     <unique-id>7ubldhrhvbso</unique-id>
     <saved-with-version>26500</saved-with-version>
@@ -567,6 +567,29 @@
                     <instance-variable name="snow" sid="733680437831346" type="number" />
                 </instance-variables>
                 <texture original-source="C:\Users\Miroslav\Documents\GitHub\mapeditor\Textures\partSnow.png" />
+            </object-type>
+            <object-type name="christmasHat" sid="155772818281230">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Pin" sid="741417924798360">
+                        <behavior id="Pin" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="153185456302122" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.501597" original-source="C:\Users\Predrag\Downloads\dT487Bo8c.png">
+                            <collision-poly>
+                                <point x="0.1925" y="0.246006" />
+                                <point x="0.5" y="0.0479233" />
+                                <point x="0.9825" y="0.498403" />
+                                <point x="0.8425" y="0.798722" />
+                                <point x="0.5" y="0.961661" />
+                                <point x="0.23" y="0.70607" />
+                                <point x="0.0325" y="0.498403" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
             </object-type>
         </object-folder>
         <object-type name="Function" sid="942795225166898">

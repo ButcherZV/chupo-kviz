@@ -611,6 +611,31 @@
                         <opacity>1</opacity>
                     </world>
                 </instance>
+                <instance type="christmasHat" uid="131">
+                    <properties>
+                        <initial-visibility>Invisible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <behavior-instances>
+                        <behavior-instance type="Pin" />
+                    </behavior-instances>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>1406</x>
+                        <y>53</y>
+                        <z>0</z>
+                        <width>-107.007003784</width>
+                        <height>83.733001709</height>
+                        <depth>0</depth>
+                        <hotspotX>0.5</hotspotX>
+                        <hotspotY>0.501597464</hotspotY>
+                        <angle>-0.251222759</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
@@ -1824,7 +1849,7 @@
                     <properties>
                         <text>&lt; ime oblasti &gt;</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-48,400,0</font>
+                        <font>Arial,-37,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
@@ -1887,9 +1912,9 @@
                 </instance>
                 <instance type="txtSponsorName" uid="95">
                     <properties>
-                        <text>&lt;sponzor &gt;</text>
+                        <text>&lt; sponzor &gt;</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-64,400,0</font>
+                        <font>Arial,-48,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
@@ -1903,10 +1928,10 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>48</x>
+                        <x>32</x>
                         <y>10</y>
                         <z>0</z>
-                        <width>1168</width>
+                        <width>1200</width>
                         <height>96</height>
                         <depth>0</depth>
                         <hotspotX>0</hotspotX>
@@ -1972,7 +1997,7 @@
                     <properties>
                         <text>&lt; nagrada &gt;</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Arial,-48,400,0</font>
+                        <font>Arial,-37,400,0</font>
                         <color>255,255,255</color>
                         <horizontal-alignment>Center</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
@@ -1984,7 +2009,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>48</x>
-                        <y>132</y>
+                        <y>128</y>
                         <z>0</z>
                         <width>1168</width>
                         <height>80</height>

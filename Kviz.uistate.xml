@@ -35,7 +35,7 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="0" path="object-folder/Text/" />
         <folder expanded="0" path="object-folder/Data/" />
         <folder expanded="0" path="object-folder/Plugins/" />
-        <folder expanded="0" path="object-folder/Graphics/" />
+        <folder expanded="1" path="object-folder/Graphics/" />
         <folder expanded="1" path="layout-folder/" />
         <folder expanded="0" path="event-folder/" />
         <folder expanded="1" path="file-folder/" />
@@ -53,5 +53,6 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <folder expanded="1" path="animation-folder/picture/" />
         <folder expanded="1" path="animation-folder/sponsorImg/" />
         <folder expanded="1" path="animation-folder/Sprite2/" />
+        <folder expanded="1" path="animation-folder/christmasHat/" />
     </folders-expanded>
 </c2uistate>

@@ -744,7 +744,7 @@
                 <instance type="btnSnow" uid="129">
                     <properties>
                         <type>Checkbox</type>
-                        <text>Sneg</text>
+                        <text>Novogodišnji izgled</text>
                         <tooltip></tooltip>
                         <initial-visibility>Visible</initial-visibility>
                         <enabled>Yes</enabled>

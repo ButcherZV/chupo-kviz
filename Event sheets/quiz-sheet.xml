@@ -31,6 +31,14 @@
                             <param id="0" name="Layer">&quot;Dice&quot;</param>
                             <param id="1" name="Visibility">0</param>
                         </action>
+                        <action id="-4" name="Set layer visible" sid="981805044157519" type="System">
+                            <param id="0" name="Layer">&quot;Results&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
+                        <action id="-4" name="Set layer visible" sid="322230577833556" type="System">
+                            <param id="0" name="Layer">&quot;Halftime&quot;</param>
+                            <param id="1" name="Visibility">0</param>
+                        </action>
                         <action behavior="Pin" id="0" name="Pin to object" sid="652362550587835" type="txtQuestion">
                             <param id="0" name="Pin to">lion</param>
                             <param id="1" name="Mode">0</param>
@@ -41,6 +49,10 @@
                         </action>
                         <action behavior="Pin" id="0" name="Pin to object" sid="899231841112780" type="border">
                             <param id="0" name="Pin to">picture</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="453353449851739" type="christmasHat">
+                            <param id="0" name="Pin to">lion</param>
                             <param id="1" name="Mode">0</param>
                         </action>
                         <action id="0" name="Call function" sid="833716714140838" type="Function">
@@ -116,6 +128,20 @@
                                     </actions>
                                 </event-block>
                             </sub-events>
+                        </event-block>
+                        <event-block sid="141070518557796">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="297306023305871" type="System">
+                                    <param id="0" name="Variable">snow</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="740631414841826" type="christmasHat">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                            </actions>
                         </event-block>
                     </sub-events>
                 </event-block>
@@ -779,6 +805,10 @@
                             <param id="0" name="X">1312</param>
                             <param id="1" name="Y">368</param>
                         </action>
+                        <action id="-3" name="Set position" sid="202360554463912" type="picture">
+                            <param id="0" name="X">-600</param>
+                            <param id="1" name="Y">-600</param>
+                        </action>
                     </actions>
                     <sub-events>
                         <event-block sid="235590452532283">
@@ -800,10 +830,6 @@
                                         <action id="-3" name="Set position" sid="946324279140879" type="txtTime">
                                             <param id="0" name="X">528</param>
                                             <param id="1" name="Y">419</param>
-                                        </action>
-                                        <action id="-3" name="Set position" sid="202360554463912" type="picture">
-                                            <param id="0" name="X">-600</param>
-                                            <param id="1" name="Y">-600</param>
                                         </action>
                                         <action id="-3" name="Set position" sid="649481933679962" type="border">
                                             <param id="0" name="X">picture.X</param>
