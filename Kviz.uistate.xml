@@ -13,8 +13,8 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <layout order="0">Quiz</layout>
         <layout order="2">Start</layout>
         <layout order="4">Settings</layout>
-        <event-sheet active="1" order="1">quiz-sheet</event-sheet>
-        <event-sheet order="3">start-sheet</event-sheet>
+        <event-sheet order="1">quiz-sheet</event-sheet>
+        <event-sheet active="1" order="3">start-sheet</event-sheet>
         <event-sheet order="5">settings-sheet</event-sheet>
     </open-tabs>
     <properties>
@@ -23,11 +23,11 @@ you probably do not want to add any .uistate.xml files to the repository.-->
         <property expanded="0" name="Window Size" />
         <property expanded="1" name="Configuration Settings" />
     </properties>
-    <families-expanded root="0">
+    <families-expanded root="1">
         <family expanded="0" name="MenuBtn" />
         <family expanded="0" name="Teams" />
         <family expanded="0" name="Answers" />
-        <family expanded="1" name="Check" />
+        <family expanded="0" name="Check" />
     </families-expanded>
     <folders-expanded>
         <folder expanded="1" path="object-folder/" />

@@ -13,7 +13,7 @@
                         <condition id="-2" name="On start of layout" sid="875725040295579" type="System" />
                     </conditions>
                     <actions>
-                        <action disabled="1" id="10" name="Request fullscreen" sid="793743795465632" type="Browser">
+                        <action id="10" name="Request fullscreen" sid="793743795465632" type="Browser">
                             <param id="0" name="Mode">3</param>
                         </action>
                         <action disabled="1" id="3" name="Clear storage" sid="973552874757104" type="LocalStorage" />
@@ -166,6 +166,15 @@
                                     <param id="0" name="Variable">snow</param>
                                     <param id="1" name="Value">0</param>
                                 </action>
+                                <action id="-9" name="Set value" sid="937371217927873" type="System">
+                                    <param id="0" name="Variable">brightness</param>
+                                    <param id="1" name="Value">100</param>
+                                </action>
+                                <action id="-31" name="Set layout effect parameter" sid="451765350712540" type="System">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">brightness</param>
+                                </action>
                             </actions>
                         </event-block>
                         <event-block sid="969887869995117">
@@ -198,6 +207,15 @@
                                 <action id="-9" name="Set value" sid="652728614624964" type="System">
                                     <param id="0" name="Variable">snow</param>
                                     <param id="1" name="Value">tokenat(LocalStorage.ItemValue,5,&quot;;&quot;)</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="795522275845460" type="System">
+                                    <param id="0" name="Variable">brightness</param>
+                                    <param id="1" name="Value">tokenat(LocalStorage.ItemValue,6,&quot;;&quot;)</param>
+                                </action>
+                                <action id="-31" name="Set layout effect parameter" sid="807660325102030" type="System">
+                                    <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                                    <param id="1" name="Parameter index">0</param>
+                                    <param id="2" name="Value">brightness</param>
                                 </action>
                             </actions>
                         </event-block>

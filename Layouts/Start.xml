@@ -311,5 +311,14 @@
             </properties>
         </instance>
     </nonworld-instances>
-    <effects />
+    <effects>
+        <effect-type name="Brightness">
+            <effect id="brightness" />
+            <effect-instance type="Brightness">
+                <parameters>
+                    <brightness>1</brightness>
+                </parameters>
+            </effect-instance>
+        </effect-type>
+    </effects>
 </c2layout>

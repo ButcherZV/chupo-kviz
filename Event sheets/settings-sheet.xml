@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>settings-sheet</name>
     <events>
+        <variable constant="0" name="brightness" sid="787464110358884" static="0" type="number">0</variable>
         <variable constant="0" name="sponsorTime" sid="102741803845124" static="0" type="number">30</variable>
         <variable constant="0" name="qPath" sid="135907534592314" static="0" type="text"></variable>
         <variable constant="0" name="loadQ" sid="886993497551971" static="0" type="number">1</variable>
@@ -20,6 +21,14 @@
                         <condition id="-2" name="On start of layout" sid="849964690013928" type="System" />
                     </conditions>
                     <actions>
+                        <action id="-31" name="Set layout effect parameter" sid="853334650545930" type="System">
+                            <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                            <param id="1" name="Parameter index">0</param>
+                            <param id="2" name="Value">brightness</param>
+                        </action>
+                        <action id="3" name="Set value" sid="689923408660280" type="sliderBrightness">
+                            <param id="0" name="Value">brightness</param>
+                        </action>
                         <action id="0" name="Set text" sid="560645031809250" type="txtVer">
                             <param id="0" name="Text">&quot;ver &quot; &amp; projectversion</param>
                         </action>
@@ -256,6 +265,10 @@
                             <param id="0" name="Variable">sponsorTime</param>
                             <param id="1" name="Value">int(inputStime.Text)</param>
                         </action>
+                        <action id="-9" name="Set value" sid="474113657404656" type="System">
+                            <param id="0" name="Variable">brightness</param>
+                            <param id="1" name="Value">sliderBrightness.Value</param>
+                        </action>
                         <action id="-2" name="Set Y" sid="484835107094419" type="inputTeam">
                             <param id="0" name="Y">-128</param>
                         </action>
@@ -365,7 +378,7 @@
                             <actions>
                                 <action id="0" name="Set item" sid="161359859068116" type="LocalStorage">
                                     <param id="0" name="Key">&quot;settings&quot;</param>
-                                    <param id="1" name="Value">questionTime &amp; &quot;;&quot; &amp; pauseTime &amp; &quot;;&quot; &amp; checkIntegrity &amp; &quot;;&quot; &amp; timeout &amp; &quot;;&quot; &amp; sponsorTime &amp; &quot;;&quot; &amp; snow</param>
+                                    <param id="1" name="Value">questionTime &amp; &quot;;&quot; &amp; pauseTime &amp; &quot;;&quot; &amp; checkIntegrity &amp; &quot;;&quot; &amp; timeout &amp; &quot;;&quot; &amp; sponsorTime &amp; &quot;;&quot; &amp; snow &amp; &quot;;&quot; &amp; brightness</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -473,6 +486,18 @@
                         <action id="-9" name="Set value" sid="687475702039312" type="System">
                             <param id="0" name="Variable">snow</param>
                             <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="789373977752511">
+                    <conditions>
+                        <condition id="2" name="On changed" sid="152138124511641" type="sliderBrightness" />
+                    </conditions>
+                    <actions>
+                        <action id="-31" name="Set layout effect parameter" sid="944311222609106" type="System">
+                            <param id="0" name="Effect">&quot;Brightness&quot;</param>
+                            <param id="1" name="Parameter index">0</param>
+                            <param id="2" name="Value">sliderBrightness.Value</param>
                         </action>
                     </actions>
                 </event-block>
