@@ -3,7 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>settings-sheet</name>
     <events>
-        <variable constant="0" name="brightness" sid="787464110358884" static="0" type="number">0</variable>
+        <variable constant="0" name="brightness" sid="787464110358884" static="0" type="number">100</variable>
         <variable constant="0" name="sponsorTime" sid="102741803845124" static="0" type="number">30</variable>
         <variable constant="0" name="qPath" sid="135907534592314" static="0" type="text"></variable>
         <variable constant="0" name="loadQ" sid="886993497551971" static="0" type="number">1</variable>
